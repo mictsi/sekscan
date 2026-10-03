@@ -24,7 +24,18 @@ func TestDirectoryTargetsOutsideWorkingDirectory(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	dir := filepath.Join(t.TempDir(), "project with spaces")
+	targetParent := t.TempDir()
+	if _, err := filepath.Rel(cwd, targetParent); err != nil {
+		// Windows runners may put the checkout and system temp directory on
+		// different drives, where no relative path can represent the target.
+		targetParent = filepath.Dir(cwd)
+	}
+	container, err := os.MkdirTemp(targetParent, "sekscan-target-")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = os.RemoveAll(container) })
+	dir := filepath.Join(container, "project with spaces")
 	if err := os.MkdirAll(dir, 0700); err != nil {
 		t.Fatal(err)
 	}

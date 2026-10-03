@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -211,8 +212,14 @@ func TestApplicableGoFailureStaysIncompleteAndLogsModule(t *testing.T) {
 	for _, name := range []string{"go", "gosec"} {
 		src := t.TempDir()
 		entry := name
+		if runtime.GOOS == "windows" {
+			entry += ".exe"
+		}
 		if name == "go" {
-			entry = "bin/go"
+			entry = filepath.Join("bin", "go")
+			if runtime.GOOS == "windows" {
+				entry += ".exe"
+			}
 		}
 		writeInput(t, src, entry)
 		if _, err := m.ImportBundle(context.Background(), name, "1.2.3", src, entry, nil); err != nil {

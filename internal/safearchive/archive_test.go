@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"runtime"
 	"testing"
 )
 
@@ -59,8 +60,11 @@ func TestExtractSDKPrefixAndExecutable(t *testing.T) {
 		t.Fatal(err)
 	}
 	st, err := os.Stat(filepath.Join(root, "bin", "go"))
-	if err != nil || st.Size() != 3 || st.Mode()&0100 == 0 {
+	if err != nil || st.Size() != 3 {
 		t.Fatal(st, err)
+	}
+	if runtime.GOOS != "windows" && st.Mode()&0100 == 0 {
+		t.Fatal("executable mode was not preserved", st.Mode())
 	}
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()

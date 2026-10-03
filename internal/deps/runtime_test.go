@@ -69,7 +69,7 @@ func TestPortableBundleImportIntegrityRelocationAndPin(t *testing.T) {
 		t.Fatal(p, src, err)
 	}
 	args := m.CommandArgs("custom-sast", c.Tools["custom-sast"], []string{"scan"})
-	if args[0] != filepath.Join(moved, "custom-sast", "1.2.3", "lib", "rules") {
+	if filepath.Clean(args[0]) != filepath.Join(moved, "custom-sast", "1.2.3", "lib", "rules") {
 		t.Fatal(args)
 	}
 	os.WriteFile(filepath.Join(moved, "custom-sast", "1.2.3", "injected.py"), []byte("evil"), 0600)
@@ -165,7 +165,7 @@ func (x *runtimeExec) Run(_ context.Context, q runner.Request) (runner.Result, e
 }
 func seedRuntime(t *testing.T, m *Manager, name string) {
 	t.Helper()
-	p := filepath.Join(m.Dir, name, "1.2.3", name)
+	p := filepath.Join(m.Dir, name, "1.2.3", binName(name, m.GOOS))
 	os.MkdirAll(filepath.Dir(p), 0700)
 	os.WriteFile(p, []byte("fixture"), 0700)
 	hash, _ := store.SHA256(p)

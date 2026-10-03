@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"sekscan/internal/config"
 	"sekscan/internal/deps"
 	"sekscan/internal/model"
@@ -229,8 +230,14 @@ func TestAllDefaultExtensionInvocations(t *testing.T) {
 			for _, tool := range []string{name, "go"} {
 				src := t.TempDir()
 				entry := tool
+				if runtime.GOOS == "windows" {
+					entry += ".exe"
+				}
 				if tool == "go" {
-					entry = "bin/go"
+					entry = filepath.Join("bin", "go")
+					if runtime.GOOS == "windows" {
+						entry += ".exe"
+					}
 				}
 				os.MkdirAll(filepath.Dir(filepath.Join(src, entry)), 0700)
 				os.WriteFile(filepath.Join(src, entry), []byte("fixture"), 0700)

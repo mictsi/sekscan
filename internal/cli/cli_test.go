@@ -224,17 +224,18 @@ func TestExternalScannerEndToEnd(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	relative, err := filepath.Rel(cwd, outside)
-	if err != nil {
-		t.Fatal(err)
-	}
 	cases := []struct {
 		name string
 		args []string
 	}{
 		{"absolute", []string{"scan", "dir:" + outside}},
-		{"relative_with_spaces", []string{"scan", "dir:" + relative}},
 		{"target_first_trailing_separator", []string{"dir:" + outside + string(filepath.Separator)}},
+	}
+	if relative, relErr := filepath.Rel(cwd, outside); relErr == nil {
+		cases = append(cases, struct {
+			name string
+			args []string
+		}{"relative_with_spaces", []string{"scan", "dir:" + relative}})
 	}
 	for _, test := range cases {
 		t.Run(test.name, func(t *testing.T) {

@@ -89,8 +89,16 @@ func TestBatchCLIContinuesAndPersists(t *testing.T) {
 		t.Fatal(result)
 	}
 	r, e := report.Load(filepath.Join(dest, result.ID, result.Items[1].ReportDir, "results.json"))
-	if e != nil || r.ProjectKey != "local-app" || r.BatchID != result.ID || r.Target.Value != local || !r.Complete {
+	if e != nil || r.ProjectKey != "local-app" || r.BatchID != result.ID || !r.Complete {
 		t.Fatal(r, e)
+	}
+	gotTarget, e := os.Stat(r.Target.Value)
+	if e != nil {
+		t.Fatal(r.Target.Value, e)
+	}
+	wantTarget, e := os.Stat(local)
+	if e != nil || !os.SameFile(gotTarget, wantTarget) {
+		t.Fatal("report target does not identify the local project", r.Target.Value, local, e)
 	}
 	c, e := config.Load(cfg)
 	if e != nil {
