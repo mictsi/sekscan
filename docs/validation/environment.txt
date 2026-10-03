@@ -1,0 +1,6 @@
+go version go1.23.2 linux/amd64
+
+System SQLite: 3.46.1
+
+Production build prerequisite check:
+go: go.mod requires go >= 1.26.0 (running go 1.23.2; GOTOOLCHAIN=local)

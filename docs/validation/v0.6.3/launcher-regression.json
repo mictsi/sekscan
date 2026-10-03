@@ -1,0 +1,12 @@
+{
+  "0.6.2": {
+    "exit": 0,
+    "output": "CLI_EXECUTED_DURING_WORKER_IMPORT",
+    "safe_import_returned": false
+  },
+  "0.6.3": {
+    "exit": 0,
+    "output": "SAFE_IMPORT_RETURNED",
+    "safe_import_returned": true
+  }
+}

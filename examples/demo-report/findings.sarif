@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "results": [
+        {
+          "baselineState": "new",
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/lib/log4j-core-2.14.1.jar"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "CVE-2099-00001 in log4j-core\nSynthetic fixture: remote execution risk in a demonstration package. Not a verified advisory.\nPolicy: fail. Meets configured severity threshold\nReported fixes: 2.17.1"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "3f5149baf83ac4ea90e7f3422d04cf70b138435a09ae32080b9631cf6abd98e6"
+          },
+          "properties": {
+            "category": "vulnerability",
+            "component": "log4j-core",
+            "decision": "fail",
+            "scope": "application"
+          },
+          "ruleId": "CVE-2099-00001",
+          "ruleIndex": 0
+        },
+        {
+          "baselineState": "new",
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/settings.go"
+                },
+                "region": {
+                  "startLine": 17
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Synthetic private key detected\nSecret detected. Matched value and source code are not retained.\nPolicy: fail. Meets configured severity threshold"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "c187acaa0d1711aad003e973d098314d7b0bb67bfe638cc5e0dd59307179729a"
+          },
+          "properties": {
+            "category": "secret",
+            "component": "",
+            "decision": "fail",
+            "scope": "application"
+          },
+          "ruleId": "private-key",
+          "ruleIndex": 1
+        },
+        {
+          "baselineState": "new",
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "license-policy: reporting-addon\nLicense expression does not satisfy the configured allow/deny policy without further review\nPolicy: fail. License expression does not satisfy the configured allow/deny policy without further review"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "0e97cb8e6f8a202bf0c428b8d21f16b231432dea961a670e77bd03a60f1d4caa"
+          },
+          "properties": {
+            "category": "license",
+            "component": "reporting-addon",
+            "decision": "fail",
+            "scope": "application"
+          },
+          "ruleId": "license-policy",
+          "ruleIndex": 2
+        },
+        {
+          "baselineState": "new",
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lib/apk/db/installed"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "CVE-2099-00004 in busybox\nSynthetic OS vulnerability retained separately from application license enforcement.\nPolicy: fail. Meets configured severity threshold"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "2ce43c674bd4685fa82eed5b5dde5b12e3e481393d9a795c532124cb65df5c95"
+          },
+          "properties": {
+            "category": "vulnerability",
+            "component": "busybox",
+            "decision": "fail",
+            "scope": "operating-system"
+          },
+          "ruleId": "CVE-2099-00004",
+          "ruleIndex": 3
+        },
+        {
+          "baselineState": "new",
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "CVE-2099-00002 in lodash\nSynthetic fixture: prototype pollution in a demonstration dependency.\nPolicy: fail. Meets configured severity threshold\nReported fixes: 4.17.21"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "a87c4480c4f32170efcc509cf0f5ea6e90ac19463e6fd786ca470041fdbb0171"
+          },
+          "properties": {
+            "category": "vulnerability",
+            "component": "lodash",
+            "decision": "fail",
+            "scope": "application"
+          },
+          "ruleId": "CVE-2099-00002",
+          "ruleIndex": 4
+        },
+        {
+          "baselineState": "new",
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Container runs as root\nSynthetic Dockerfile configuration finding.\nRemediation: Specify a non-root USER.\nPolicy: fail. Meets configured severity threshold"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "b80954611e43daeb0ca353496e5ae23e464955974d386f35410092339abf3485"
+          },
+          "properties": {
+            "category": "misconfiguration",
+            "component": "",
+            "decision": "fail",
+            "scope": "application"
+          },
+          "ruleId": "AVD-DS-0002",
+          "ruleIndex": 5
+        },
+        {
+          "baselineState": "new",
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "config/service.env"
+                },
+                "region": {
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Synthetic API credential detected\nSecret detected. Matched value and source code are not retained.\nPolicy: fail. Meets configured severity threshold"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "bddbfeca99fc45e84e65387de638310e7fbd2c6de28ed781869446afc5e5b1ba"
+          },
+          "properties": {
+            "category": "secret",
+            "component": "",
+            "decision": "fail",
+            "scope": "application"
+          },
+          "ruleId": "generic-api-key",
+          "ruleIndex": 6
+        },
+        {
+          "baselineState": "new",
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "requirements.txt"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "CVE-2099-00003 in requests\nSynthetic fixture: request metadata handling issue.\nPolicy: pass. Below configured failure threshold\nReported fixes: 2.32.4"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "ba7ddd0869c2a277c0b87b3e1b8187a47cdc73d7e36313c1515106d4a473ac4a"
+          },
+          "properties": {
+            "category": "vulnerability",
+            "component": "requests",
+            "decision": "pass",
+            "scope": "application"
+          },
+          "ruleId": "CVE-2099-00003",
+          "ruleIndex": 7
+        },
+        {
+          "baselineState": "new",
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "deploy/pod.yaml"
+                },
+                "region": {
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Read-only root filesystem not configured\nSynthetic Kubernetes policy finding.\nRemediation: Set readOnlyRootFilesystem where compatible.\nPolicy: pass. Below configured failure threshold"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "c3209dc29632864acef26a81b76d961042eabf6bcb42b31882fdd0713dde4680"
+          },
+          "properties": {
+            "category": "misconfiguration",
+            "component": "",
+            "decision": "pass",
+            "scope": "application"
+          },
+          "ruleId": "AVD-KSV-0014",
+          "ruleIndex": 8
+        },
+        {
+          "baselineState": "new",
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "license-unknown: legacy-parser\nNo usable license evidence was discovered\nPolicy: review. No usable license evidence was discovered"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "c6a7d6ea1e45c2225c205ebb6ff873a4baa02b0a1dc0b44e7de88d00e8b1190b"
+          },
+          "properties": {
+            "category": "license",
+            "component": "legacy-parser",
+            "decision": "review",
+            "scope": "application"
+          },
+          "ruleId": "license-unknown",
+          "ruleIndex": 9
+        },
+        {
+          "baselineState": "new",
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "node_modules/internal-widget/package.json"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "license-evidence-conflict: internal-widget\nDetected license text and package metadata contain different expressions; human review required\nPolicy: review. Detected license text and package metadata contain different expressions; human review required"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "f950c97c8292903431ca6fcd5b83e4e3c5263c8d92b4e7e918ae722028da3129"
+          },
+          "properties": {
+            "category": "license",
+            "component": "internal-widget",
+            "decision": "review",
+            "scope": "application"
+          },
+          "ruleId": "license-evidence-conflict",
+          "ruleIndex": 10
+        },
+        {
+          "baselineState": "new",
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Image health check is missing\nSynthetic Dockerfile configuration finding.\nRemediation: Define a health check where appropriate.\nPolicy: pass. Below configured failure threshold"
+          },
+          "partialFingerprints": {
+            "sekscan/v1": "d902e324b29bf188f2e8d0d7b1cddf2c680aa408b386cf6b15b165b540c6bd11"
+          },
+          "properties": {
+            "category": "misconfiguration",
+            "component": "",
+            "decision": "pass",
+            "scope": "application"
+          },
+          "ruleId": "AVD-DS-0026",
+          "ruleIndex": 11
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "sekscan",
+          "rules": [
+            {
+              "id": "CVE-2099-00001",
+              "properties": {
+                "tags": [
+                  "security",
+                  "vulnerability"
+                ]
+              },
+              "shortDescription": {
+                "text": "CVE-2099-00001"
+              }
+            },
+            {
+              "id": "private-key",
+              "properties": {
+                "tags": [
+                  "security",
+                  "secret"
+                ]
+              },
+              "shortDescription": {
+                "text": "private-key"
+              }
+            },
+            {
+              "id": "license-policy",
+              "properties": {
+                "tags": [
+                  "security",
+                  "license"
+                ]
+              },
+              "shortDescription": {
+                "text": "license-policy"
+              }
+            },
+            {
+              "id": "CVE-2099-00004",
+              "properties": {
+                "tags": [
+                  "security",
+                  "vulnerability"
+                ]
+              },
+              "shortDescription": {
+                "text": "CVE-2099-00004"
+              }
+            },
+            {
+              "id": "CVE-2099-00002",
+              "properties": {
+                "tags": [
+                  "security",
+                  "vulnerability"
+                ]
+              },
+              "shortDescription": {
+                "text": "CVE-2099-00002"
+              }
+            },
+            {
+              "id": "AVD-DS-0002",
+              "properties": {
+                "tags": [
+                  "security",
+                  "misconfiguration"
+                ]
+              },
+              "shortDescription": {
+                "text": "AVD-DS-0002"
+              }
+            },
+            {
+              "id": "generic-api-key",
+              "properties": {
+                "tags": [
+                  "security",
+                  "secret"
+                ]
+              },
+              "shortDescription": {
+                "text": "generic-api-key"
+              }
+            },
+            {
+              "id": "CVE-2099-00003",
+              "properties": {
+                "tags": [
+                  "security",
+                  "vulnerability"
+                ]
+              },
+              "shortDescription": {
+                "text": "CVE-2099-00003"
+              }
+            },
+            {
+              "id": "AVD-KSV-0014",
+              "properties": {
+                "tags": [
+                  "security",
+                  "misconfiguration"
+                ]
+              },
+              "shortDescription": {
+                "text": "AVD-KSV-0014"
+              }
+            },
+            {
+              "id": "license-unknown",
+              "properties": {
+                "tags": [
+                  "security",
+                  "license"
+                ]
+              },
+              "shortDescription": {
+                "text": "license-unknown"
+              }
+            },
+            {
+              "id": "license-evidence-conflict",
+              "properties": {
+                "tags": [
+                  "security",
+                  "license"
+                ]
+              },
+              "shortDescription": {
+                "text": "license-evidence-conflict"
+              }
+            },
+            {
+              "id": "AVD-DS-0026",
+              "properties": {
+                "tags": [
+                  "security",
+                  "misconfiguration"
+                ]
+              },
+              "shortDescription": {
+                "text": "AVD-DS-0026"
+              }
+            }
+          ],
+          "version": "0.5.1-preview (synthetic demonstration)"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

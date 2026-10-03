@@ -1,0 +1,16 @@
+{
+  "go-test": {
+    "pass": 399,
+    "skip": 2
+  },
+  "release-helper": {
+    "pass": 17
+  },
+  "release_control_tests": 18,
+  "race": "passed",
+  "vet": "passed",
+  "statement_coverage_percent": 68.3,
+  "production_build": "blocked: configured Go toolchain download DNS failure",
+  "browser_tests": "not rerun: UI unchanged",
+  "database_schema_version": 1
+}

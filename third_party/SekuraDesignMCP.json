@@ -1,0 +1,23 @@
+{
+  "name": "SekuraDesignMCP",
+  "version": "3.0.2",
+  "repository": "https://github.com/mictsi/SekuraDesignMCP",
+  "commit": "687bcdcf67d56a3bdfe3bbc4ff1ae863239e8c8a",
+  "previous_commit": "73d22913fa513d40926b5639096dd951d3d1fcbb",
+  "reviewed_on": "2026-10-03",
+  "integration": "Go-embedded adaptation; application-owned HTML/CSS/JavaScript, not the complete upstream runtime",
+  "license": "MIT",
+  "license_file": "third_party/SekuraDesignMCP-LICENSE",
+  "reference_git_blob_sha1": {
+    "package.json": "af9c38186eca3e8a85d1d68de4979af26f2182ea",
+    "CHANGELOG.md": "72774bc84c9796315448af98fdb83d66fc02bd97",
+    "MIGRATION.md": "a0722bd89461b04e4b95108842bd588ea123387c",
+    "src/data/components/forms.ts": "2c82771bda15c68f46f60cd4d57a17aaf3a1a505",
+    "src/data/components/navigation.ts": "68a2a4ab2f566f8f1e2162e4b21883fa190d4073",
+    "src/data/primitives.ts": "1653ccfa2e961acb8e0c744e6b02a0607a541520",
+    "src/data/semantic.ts": "3a241731e2aadd7f860d8e306a9f65285f5d5fe3",
+    "src/data/base-css.ts": "a9bae7b01efa8147294889d389f34218b0ee5963"
+  },
+  "runtime_network_dependencies": [],
+  "note": "Blob hashes identify reviewed upstream sources; no upstream verification/certification or full component bundle is implied."
+}

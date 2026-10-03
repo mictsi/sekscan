@@ -1,0 +1,5 @@
+Passed:
+node --check internal/ui/assets/ui.js
+node --check internal/cli/historyweb/history.js
+node --check internal/report/web/app.js
+All source-package JSON files parsed.

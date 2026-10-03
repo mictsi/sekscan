@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "portable": true,
+  "checks": {"govulncheck": true, "gosec": true},
+  "tools": {"gosec": {"version": "latest", "native_config": "gosec.json"}}
+}

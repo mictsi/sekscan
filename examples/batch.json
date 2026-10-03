@@ -1,0 +1,27 @@
+{
+  "$schema": "../schema/batch.schema.json",
+  "version": 1,
+  "defaults": {
+    "gitleaks": true,
+    "actionlint": true
+  },
+  "continue_on_error": true,
+  "projects": [
+    {
+      "project": "local-application",
+      "path": "../testdata/project"
+    },
+    {
+      "repo_url": "https://github.com/mictsi/SekuraDesignMCP"
+    },
+    {
+      "project": "sekura-design-source",
+      "repo_url": "https://github.com/mictsi/SekuraDesignMCP",
+      "ref": "main",
+      "subdir": "src",
+      "settings": {
+        "actionlint": false
+      }
+    }
+  ]
+}

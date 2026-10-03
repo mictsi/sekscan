@@ -1,0 +1,22 @@
+	sekscan/cmd/sekscan		coverage: 0.0% of statements
+ok  	sekscan/internal/batch	1.073s	coverage: 87.6% of statements
+ok  	sekscan/internal/cli	2.705s	coverage: 60.9% of statements
+ok  	sekscan/internal/config	1.037s	coverage: 66.7% of statements
+ok  	sekscan/internal/dbstore	1.309s	coverage: 80.1% of statements
+ok  	sekscan/internal/deps	1.090s	coverage: 72.5% of statements
+ok  	sekscan/internal/history	1.021s	coverage: 91.6% of statements
+ok  	sekscan/internal/model	1.010s	coverage: 42.0% of statements
+ok  	sekscan/internal/policy	1.015s	coverage: 86.5% of statements
+ok  	sekscan/internal/report	1.022s	coverage: 54.7% of statements
+	sekscan/internal/testsupport/fakescanner		coverage: 0.0% of statements
+	sekscan/internal/testsupport/sqlitebridge		coverage: 0.0% of statements
+?   	sekscan/internal/ui	[no test files]
+?   	sekscan/schema	[no test files]
+ok  	sekscan/internal/runner	4.110s	coverage: 79.3% of statements
+ok  	sekscan/internal/scan	1.028s	coverage: 42.2% of statements
+ok  	sekscan/internal/scannerdb	1.035s	coverage: 68.7% of statements
+ok  	sekscan/internal/server	1.010s	coverage: 35.8% of statements
+ok  	sekscan/internal/source	1.064s	coverage: 85.1% of statements
+ok  	sekscan/internal/store	1.024s	coverage: 58.2% of statements
+ok  	sekscan/internal/workspace	1.023s	coverage: 70.9% of statements
+ok  	sekscan/scripts/moduleupdate	2.036s	coverage: 38.0% of statements

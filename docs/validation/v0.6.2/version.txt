@@ -1,0 +1,1 @@
+sekscan 0.6.2-preview [TEST-ONLY: system SQLite; no PostgreSQL or SQL Server drivers]

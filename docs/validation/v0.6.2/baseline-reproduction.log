@@ -1,0 +1,16 @@
+=== RUN   TestSemgrepPreparationSupportsRuntimeDirectoryAliases
+    semgrep_links_test.go:77: runtime directory links are unsupported
+--- FAIL: TestSemgrepPreparationSupportsRuntimeDirectoryAliases (0.01s)
+FAIL
+FAIL	sekscan/internal/deps	0.011s
+=== RUN   TestGoInputApplicability
+=== RUN   TestGoInputApplicability/metadata_only
+    go_inputs_test.go:61: got [/tmp/TestGoInputApplicabilitymetadata_only4024165975/001]; want []
+=== RUN   TestGoInputApplicability/empty_parent_with_nested_Go
+    go_inputs_test.go:61: got [/tmp/TestGoInputApplicabilityempty_parent_with_nested_Go802531100/001 /tmp/TestGoInputApplicabilityempty_parent_with_nested_Go802531100/001/service]; want [/tmp/TestGoInputApplicabilityempty_parent_with_nested_Go802531100/001/service]
+--- FAIL: TestGoInputApplicability (0.00s)
+    --- FAIL: TestGoInputApplicability/metadata_only (0.00s)
+    --- FAIL: TestGoInputApplicability/empty_parent_with_nested_Go (0.00s)
+FAIL
+FAIL	sekscan/internal/scan	0.009s
+FAIL

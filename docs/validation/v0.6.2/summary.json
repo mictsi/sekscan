@@ -1,0 +1,17 @@
+{
+  "version": "0.6.2-preview",
+  "date": "2026-10-03",
+  "application_test_entries_passed": 400,
+  "application_test_entries_skipped": 2,
+  "release_test_entries_passed": 15,
+  "race_detector": "passed",
+  "go_vet": "passed",
+  "statement_coverage_percent": 67.9,
+  "test_toolchain": "go1.23.2",
+  "test_database": "offline_sqltest: system SQLite CGo adapter",
+  "production_build": "blocked: toolchain download DNS/network failure",
+  "live_semgrep_download": "not performed: network unavailable",
+  "ui_assets_changed": false,
+  "database_schema_changed": false,
+  "production_module_pins_changed": false
+}

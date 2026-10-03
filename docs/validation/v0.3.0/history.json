@@ -1,0 +1,14 @@
+{
+  "passed": 8,
+  "checks": [
+    "CLI import is idempotent; history contains one immutable scan",
+    "CLI exports stored report and SBOM",
+    "Live localhost history HTTP serves project-filtered results",
+    "Live report and SBOM endpoints return persisted artifacts",
+    "History HTML renders search, filters, and scan links in Chromium",
+    "Database-backed scan renders interactive findings and history navigation",
+    "History server shuts down cleanly on interrupt",
+    "CLI invocations produce parseable JSONL logs"
+  ],
+  "browser_mode": "set_content using HTML fetched from live localhost server"
+}

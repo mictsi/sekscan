@@ -1,0 +1,15 @@
+{
+  "SchemaVersion":2,
+  "ArtifactName":"SYNTHETIC TEST DATA — not an actual security scan",
+  "ArtifactType":"filesystem",
+  "Results":[
+    {"Target":"package-lock.json","Class":"lang-pkgs","Type":"npm","Packages":[
+      {"Name":"lodash","Version":"4.17.15","Licenses":["MIT"],"Identifier":{"PURL":"pkg:npm/lodash@4.17.15"}},
+      {"Name":"internal-widget","Version":"1.2.0","Licenses":["MIT"],"Identifier":{"PURL":"pkg:npm/internal-widget@1.2.0"}}
+    ],"Vulnerabilities":[{"VulnerabilityID":"CVE-2099-00002","PkgName":"lodash","InstalledVersion":"4.17.15","FixedVersion":"4.17.21","Severity":"HIGH","Title":"Synthetic duplicate advisory","PkgIdentifier":{"PURL":"pkg:npm/lodash@4.17.15"}}],"Licenses":[{"Name":"GPL-3.0-only","PkgName":"internal-widget","FilePath":"node_modules/internal-widget/LICENSE","Confidence":1}]},
+    {"Target":"config/service.env","Class":"secret","Secrets":[{"RuleID":"generic-api-key","Category":"General","Severity":"HIGH","Title":"Synthetic API credential detected","StartLine":8,"Match":"SECRET_SENTINEL_MUST_NOT_APPEAR","Code":{"Lines":[{"Content":"SECRET_SENTINEL_MUST_NOT_APPEAR"}]}}]},
+    {"Target":"src/settings.go","Class":"secret","Secrets":[{"RuleID":"private-key","Severity":"CRITICAL","Title":"Synthetic private key detected","StartLine":17,"Match":"SECRET_SENTINEL_MUST_NOT_APPEAR"}]},
+    {"Target":"Dockerfile","Class":"config","Type":"dockerfile","Misconfigurations":[{"ID":"DS002","AVDID":"AVD-DS-0002","Title":"Container runs as root","Description":"Synthetic Dockerfile configuration finding.","Severity":"HIGH","Status":"FAIL","Resolution":"Specify a non-root USER.","CauseMetadata":{"StartLine":1}},{"ID":"DS026","AVDID":"AVD-DS-0026","Title":"Image health check is missing","Description":"Synthetic Dockerfile configuration finding.","Severity":"LOW","Status":"FAIL","Resolution":"Define a health check where appropriate.","CauseMetadata":{"StartLine":1}}]},
+    {"Target":"deploy/pod.yaml","Class":"config","Type":"kubernetes","Misconfigurations":[{"ID":"KSV014","AVDID":"AVD-KSV-0014","Title":"Read-only root filesystem not configured","Description":"Synthetic Kubernetes policy finding.","Severity":"MEDIUM","Status":"FAIL","Resolution":"Set readOnlyRootFilesystem where compatible.","CauseMetadata":{"StartLine":23}}]}
+  ]
+}

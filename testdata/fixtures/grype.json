@@ -1,0 +1,9 @@
+{
+  "matches": [
+    {"vulnerability":{"id":"CVE-2099-00001","severity":"Critical","namespace":"synthetic-fixture","description":"Synthetic fixture: remote execution risk in a demonstration package. Not a verified advisory.","fix":{"versions":["2.17.1"]}},"relatedVulnerabilities":[{"id":"GHSA-demo-0001"}],"artifact":{"id":"log4j","name":"log4j-core","version":"2.14.1","type":"java-archive","purl":"pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1"}},
+    {"vulnerability":{"id":"CVE-2099-00002","severity":"High","namespace":"synthetic-fixture","description":"Synthetic fixture: prototype pollution in a demonstration dependency.","fix":{"versions":["4.17.21"]}},"relatedVulnerabilities":[],"artifact":{"id":"lodash","name":"lodash","version":"4.17.15","type":"npm","purl":"pkg:npm/lodash@4.17.15"}},
+    {"vulnerability":{"id":"CVE-2099-00003","severity":"Medium","namespace":"synthetic-fixture","description":"Synthetic fixture: request metadata handling issue.","fix":{"versions":["2.32.4"]}},"artifact":{"id":"requests","name":"requests","version":"2.19.1","type":"python","purl":"pkg:pypi/requests@2.19.1"}},
+    {"vulnerability":{"id":"CVE-2099-00004","severity":"High","namespace":"synthetic-fixture","description":"Synthetic OS vulnerability retained separately from application license enforcement.","fix":{"versions":[]}},"artifact":{"id":"busybox","name":"busybox","version":"1.35.0","type":"apk","purl":"pkg:apk/alpine/busybox@1.35.0"}}
+  ],
+  "descriptor":{"name":"grype","version":"1.2.3-test-fixture","db":{"schemaVersion":6,"built":"2026-10-02T00:00:00Z","status":"synthetic test data, not a vulnerability database"}}
+}

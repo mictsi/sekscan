@@ -1,0 +1,572 @@
+{"Time":"2026-10-02T18:50:57.435572727Z","Action":"start","Package":"sekscan/cmd/sekscan"}
+{"Time":"2026-10-02T18:50:57.438074085Z","Action":"output","Package":"sekscan/cmd/sekscan","Output":"\tsekscan/cmd/sekscan\t\tcoverage: 0.0% of statements\n"}
+{"Time":"2026-10-02T18:50:57.440229817Z","Action":"pass","Package":"sekscan/cmd/sekscan","Elapsed":0.005}
+{"Time":"2026-10-02T18:50:58.171256706Z","Action":"start","Package":"sekscan/internal/cli"}
+{"Time":"2026-10-02T18:50:58.171327869Z","Action":"start","Package":"sekscan/internal/config"}
+{"Time":"2026-10-02T18:50:58.171447738Z","Action":"start","Package":"sekscan/internal/dbstore"}
+{"Time":"2026-10-02T18:50:58.171484779Z","Action":"start","Package":"sekscan/internal/deps"}
+{"Time":"2026-10-02T18:50:58.171621026Z","Action":"start","Package":"sekscan/internal/model"}
+{"Time":"2026-10-02T18:50:58.17436141Z","Action":"run","Package":"sekscan/internal/model","Test":"TestSummaryDistinguishesIncompleteFromClean"}
+{"Time":"2026-10-02T18:50:58.174379483Z","Action":"output","Package":"sekscan/internal/model","Test":"TestSummaryDistinguishesIncompleteFromClean","Output":"=== RUN   TestSummaryDistinguishesIncompleteFromClean\n"}
+{"Time":"2026-10-02T18:50:58.174418341Z","Action":"output","Package":"sekscan/internal/model","Test":"TestSummaryDistinguishesIncompleteFromClean","Output":"--- PASS: TestSummaryDistinguishesIncompleteFromClean (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.174422141Z","Action":"pass","Package":"sekscan/internal/model","Test":"TestSummaryDistinguishesIncompleteFromClean","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.174427887Z","Action":"output","Package":"sekscan/internal/model","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.174431331Z","Action":"output","Package":"sekscan/internal/model","Output":"coverage: 42.0% of statements\n"}
+{"Time":"2026-10-02T18:50:58.174516399Z","Action":"output","Package":"sekscan/internal/model","Output":"ok  \tsekscan/internal/model\t0.003s\tcoverage: 42.0% of statements\n"}
+{"Time":"2026-10-02T18:50:58.174527286Z","Action":"pass","Package":"sekscan/internal/model","Elapsed":0.003}
+{"Time":"2026-10-02T18:50:58.179812305Z","Action":"run","Package":"sekscan/internal/cli","Test":"TestHelpAndArgumentHandling"}
+{"Time":"2026-10-02T18:50:58.17982592Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestAssetNames"}
+{"Time":"2026-10-02T18:50:58.179830067Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestHelpAndArgumentHandling","Output":"=== RUN   TestHelpAndArgumentHandling\n"}
+{"Time":"2026-10-02T18:50:58.179890382Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestHelpAndArgumentHandling","Output":"--- PASS: TestHelpAndArgumentHandling (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.179894141Z","Action":"pass","Package":"sekscan/internal/cli","Test":"TestHelpAndArgumentHandling","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.179898579Z","Action":"run","Package":"sekscan/internal/cli","Test":"TestExternalScannerEndToEnd"}
+{"Time":"2026-10-02T18:50:58.179841056Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestAssetNames","Output":"=== RUN   TestAssetNames\n"}
+{"Time":"2026-10-02T18:50:58.179901337Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestExternalScannerEndToEnd","Output":"=== RUN   TestExternalScannerEndToEnd\n"}
+{"Time":"2026-10-02T18:50:58.179907667Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestAssetNames","Output":"--- PASS: TestAssetNames (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.179913061Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestAssetNames","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.179891234Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestSQLiteBackupConsistentAndNoOverwrite"}
+{"Time":"2026-10-02T18:50:58.179918087Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestChecksum"}
+{"Time":"2026-10-02T18:50:58.179921649Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteBackupConsistentAndNoOverwrite","Output":"=== RUN   TestSQLiteBackupConsistentAndNoOverwrite\n"}
+{"Time":"2026-10-02T18:50:58.179922945Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestChecksum","Output":"=== RUN   TestChecksum\n"}
+{"Time":"2026-10-02T18:50:58.179934765Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestChecksum","Output":"--- PASS: TestChecksum (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.1799379Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestChecksum","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.179940823Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestSafeExtraction"}
+{"Time":"2026-10-02T18:50:58.179943528Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestSafeExtraction","Output":"=== RUN   TestSafeExtraction\n"}
+{"Time":"2026-10-02T18:50:58.179943696Z","Action":"run","Package":"sekscan/internal/config","Test":"TestDefaultValid"}
+{"Time":"2026-10-02T18:50:58.179956644Z","Action":"output","Package":"sekscan/internal/config","Test":"TestDefaultValid","Output":"=== RUN   TestDefaultValid\n"}
+{"Time":"2026-10-02T18:50:58.179969416Z","Action":"output","Package":"sekscan/internal/config","Test":"TestDefaultValid","Output":"--- PASS: TestDefaultValid (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.179971834Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestDefaultValid","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.179974869Z","Action":"run","Package":"sekscan/internal/config","Test":"TestStrictConfiguration"}
+{"Time":"2026-10-02T18:50:58.17997654Z","Action":"output","Package":"sekscan/internal/config","Test":"TestStrictConfiguration","Output":"=== RUN   TestStrictConfiguration\n"}
+{"Time":"2026-10-02T18:50:58.179978954Z","Action":"output","Package":"sekscan/internal/config","Test":"TestStrictConfiguration","Output":"--- PASS: TestStrictConfiguration (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.179980845Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestStrictConfiguration","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.179982785Z","Action":"run","Package":"sekscan/internal/config","Test":"TestRelativeToolPath"}
+{"Time":"2026-10-02T18:50:58.179984455Z","Action":"output","Package":"sekscan/internal/config","Test":"TestRelativeToolPath","Output":"=== RUN   TestRelativeToolPath\n"}
+{"Time":"2026-10-02T18:50:58.179986461Z","Action":"output","Package":"sekscan/internal/config","Test":"TestRelativeToolPath","Output":"--- PASS: TestRelativeToolPath (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.179988366Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestRelativeToolPath","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.179989906Z","Action":"run","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation"}
+{"Time":"2026-10-02T18:50:58.179991384Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation","Output":"=== RUN   TestPortableConfigurationRelocation\n"}
+{"Time":"2026-10-02T18:50:58.180019881Z","Action":"run","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation/config_"}
+{"Time":"2026-10-02T18:50:58.180022306Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation/config_","Output":"=== RUN   TestPortableConfigurationRelocation/config_\n"}
+{"Time":"2026-10-02T18:50:58.180024916Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation/config_","Output":"--- PASS: TestPortableConfigurationRelocation/config_ (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.180026672Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation/config_","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.180028509Z","Action":"run","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation/config_config"}
+{"Time":"2026-10-02T18:50:58.180029934Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation/config_config","Output":"=== RUN   TestPortableConfigurationRelocation/config_config\n"}
+{"Time":"2026-10-02T18:50:58.180031986Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation/config_config","Output":"--- PASS: TestPortableConfigurationRelocation/config_config (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.180037554Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation/config_config","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.180039563Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation","Output":"--- PASS: TestPortableConfigurationRelocation (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.18004227Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestPortableConfigurationRelocation","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.180044055Z","Action":"run","Package":"sekscan/internal/config","Test":"TestPortablePathsRejectEscapesAndLinks"}
+{"Time":"2026-10-02T18:50:58.180045606Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortablePathsRejectEscapesAndLinks","Output":"=== RUN   TestPortablePathsRejectEscapesAndLinks\n"}
+{"Time":"2026-10-02T18:50:58.180047603Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortablePathsRejectEscapesAndLinks","Output":"--- PASS: TestPortablePathsRejectEscapesAndLinks (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.180049336Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestPortablePathsRejectEscapesAndLinks","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.180050829Z","Action":"run","Package":"sekscan/internal/config","Test":"TestPortableExtensionsCannotUseBarePath"}
+{"Time":"2026-10-02T18:50:58.180052511Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortableExtensionsCannotUseBarePath","Output":"=== RUN   TestPortableExtensionsCannotUseBarePath\n"}
+{"Time":"2026-10-02T18:50:58.180054517Z","Action":"output","Package":"sekscan/internal/config","Test":"TestPortableExtensionsCannotUseBarePath","Output":"--- PASS: TestPortableExtensionsCannotUseBarePath (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.180056239Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestPortableExtensionsCannotUseBarePath","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.180057911Z","Action":"run","Package":"sekscan/internal/config","Test":"TestDiscoveryPrecedenceAndCI"}
+{"Time":"2026-10-02T18:50:58.180059401Z","Action":"output","Package":"sekscan/internal/config","Test":"TestDiscoveryPrecedenceAndCI","Output":"=== RUN   TestDiscoveryPrecedenceAndCI\n"}
+{"Time":"2026-10-02T18:50:58.180268093Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestSafeExtraction","Output":"--- PASS: TestSafeExtraction (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.18027663Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestSafeExtraction","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.18028192Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestInstallerEndToEndLocalServer"}
+{"Time":"2026-10-02T18:50:58.180284697Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestInstallerEndToEndLocalServer","Output":"=== RUN   TestInstallerEndToEndLocalServer\n"}
+{"Time":"2026-10-02T18:50:58.180537788Z","Action":"output","Package":"sekscan/internal/config","Test":"TestDiscoveryPrecedenceAndCI","Output":"--- PASS: TestDiscoveryPrecedenceAndCI (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.180594494Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestDiscoveryPrecedenceAndCI","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.180601689Z","Action":"run","Package":"sekscan/internal/config","Test":"TestSharedDefaultsAndNativePaths"}
+{"Time":"2026-10-02T18:50:58.180604429Z","Action":"output","Package":"sekscan/internal/config","Test":"TestSharedDefaultsAndNativePaths","Output":"=== RUN   TestSharedDefaultsAndNativePaths\n"}
+{"Time":"2026-10-02T18:50:58.185687602Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestInstallerEndToEndLocalServer","Output":"--- PASS: TestInstallerEndToEndLocalServer (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.185696356Z","Action":"output","Package":"sekscan/internal/config","Test":"TestSharedDefaultsAndNativePaths","Output":"--- PASS: TestSharedDefaultsAndNativePaths (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.18571732Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestSharedDefaultsAndNativePaths","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.185725883Z","Action":"run","Package":"sekscan/internal/config","Test":"TestExtensionAndInstallValidation"}
+{"Time":"2026-10-02T18:50:58.185728274Z","Action":"output","Package":"sekscan/internal/config","Test":"TestExtensionAndInstallValidation","Output":"=== RUN   TestExtensionAndInstallValidation\n"}
+{"Time":"2026-10-02T18:50:58.185731255Z","Action":"output","Package":"sekscan/internal/config","Test":"TestExtensionAndInstallValidation","Output":"--- PASS: TestExtensionAndInstallValidation (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.185733341Z","Action":"pass","Package":"sekscan/internal/config","Test":"TestExtensionAndInstallValidation","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.185735163Z","Action":"output","Package":"sekscan/internal/config","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.185737494Z","Action":"output","Package":"sekscan/internal/config","Output":"coverage: 67.8% of statements\n"}
+{"Time":"2026-10-02T18:50:58.185704505Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestInstallerEndToEndLocalServer","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.185743188Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestTrustedURLs"}
+{"Time":"2026-10-02T18:50:58.185744784Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestTrustedURLs","Output":"=== RUN   TestTrustedURLs\n"}
+{"Time":"2026-10-02T18:50:58.185747537Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestTrustedURLs","Output":"--- PASS: TestTrustedURLs (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.185749929Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestTrustedURLs","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.185752621Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestPortableInstallIgnoresPATHAndRelocates"}
+{"Time":"2026-10-02T18:50:58.185754157Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestPortableInstallIgnoresPATHAndRelocates","Output":"=== RUN   TestPortableInstallIgnoresPATHAndRelocates\n"}
+{"Time":"2026-10-02T18:50:58.186059573Z","Action":"output","Package":"sekscan/internal/config","Output":"ok  \tsekscan/internal/config\t0.014s\tcoverage: 67.8% of statements\n"}
+{"Time":"2026-10-02T18:50:58.186070383Z","Action":"pass","Package":"sekscan/internal/config","Elapsed":0.015}
+{"Time":"2026-10-02T18:50:58.192520241Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestPortableInstallIgnoresPATHAndRelocates","Output":"--- PASS: TestPortableInstallIgnoresPATHAndRelocates (0.01s)\n"}
+{"Time":"2026-10-02T18:50:58.192579005Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestPortableInstallIgnoresPATHAndRelocates","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.192594933Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestPortableEnvironmentIsWorkspaceLocal"}
+{"Time":"2026-10-02T18:50:58.192597257Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestPortableEnvironmentIsWorkspaceLocal","Output":"=== RUN   TestPortableEnvironmentIsWorkspaceLocal\n"}
+{"Time":"2026-10-02T18:50:58.194036637Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestPortableEnvironmentIsWorkspaceLocal","Output":"--- PASS: TestPortableEnvironmentIsWorkspaceLocal (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.194069834Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestPortableEnvironmentIsWorkspaceLocal","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.194082932Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestManagedToolDirectorySymlinkRejected"}
+{"Time":"2026-10-02T18:50:58.194085089Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestManagedToolDirectorySymlinkRejected","Output":"=== RUN   TestManagedToolDirectorySymlinkRejected\n"}
+{"Time":"2026-10-02T18:50:58.194433261Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestManagedToolDirectorySymlinkRejected","Output":"--- PASS: TestManagedToolDirectorySymlinkRejected (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.194463718Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestManagedToolDirectorySymlinkRejected","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.194479387Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestActionlintReleaseNaming"}
+{"Time":"2026-10-02T18:50:58.194481446Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestActionlintReleaseNaming","Output":"=== RUN   TestActionlintReleaseNaming\n"}
+{"Time":"2026-10-02T18:50:58.194500247Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestActionlintReleaseNaming","Output":"--- PASS: TestActionlintReleaseNaming (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.194556335Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestActionlintReleaseNaming","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.194567212Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestSemverPrecedence"}
+{"Time":"2026-10-02T18:50:58.194568982Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestSemverPrecedence","Output":"=== RUN   TestSemverPrecedence\n"}
+{"Time":"2026-10-02T18:50:58.194631059Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestSemverPrecedence","Output":"--- PASS: TestSemverPrecedence (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.194650206Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestSemverPrecedence","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.194659297Z","Action":"run","Package":"sekscan/internal/deps","Test":"TestCustomRecipeInstallAndUpdate"}
+{"Time":"2026-10-02T18:50:58.194661237Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestCustomRecipeInstallAndUpdate","Output":"=== RUN   TestCustomRecipeInstallAndUpdate\n"}
+{"Time":"2026-10-02T18:50:58.195282992Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteBackupConsistentAndNoOverwrite","Output":"--- PASS: TestSQLiteBackupConsistentAndNoOverwrite (0.02s)\n"}
+{"Time":"2026-10-02T18:50:58.195292947Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestSQLiteBackupConsistentAndNoOverwrite","Elapsed":0.02}
+{"Time":"2026-10-02T18:50:58.19533953Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestSQLiteRoundTrip"}
+{"Time":"2026-10-02T18:50:58.19534244Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteRoundTrip","Output":"=== RUN   TestSQLiteRoundTrip\n"}
+{"Time":"2026-10-02T18:50:58.201359087Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteRoundTrip","Output":"--- PASS: TestSQLiteRoundTrip (0.01s)\n"}
+{"Time":"2026-10-02T18:50:58.201394594Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestSQLiteRoundTrip","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.201399018Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestSQLiteRollbackAndForeignKeys"}
+{"Time":"2026-10-02T18:50:58.201400971Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteRollbackAndForeignKeys","Output":"=== RUN   TestSQLiteRollbackAndForeignKeys\n"}
+{"Time":"2026-10-02T18:50:58.205757618Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteRollbackAndForeignKeys","Output":"--- PASS: TestSQLiteRollbackAndForeignKeys (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.205769538Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestSQLiteRollbackAndForeignKeys","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.205775141Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestSQLiteConcurrentWrites"}
+{"Time":"2026-10-02T18:50:58.205777032Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteConcurrentWrites","Output":"=== RUN   TestSQLiteConcurrentWrites\n"}
+{"Time":"2026-10-02T18:50:58.205788519Z","Action":"output","Package":"sekscan/internal/deps","Test":"TestCustomRecipeInstallAndUpdate","Output":"--- PASS: TestCustomRecipeInstallAndUpdate (0.01s)\n"}
+{"Time":"2026-10-02T18:50:58.205806835Z","Action":"pass","Package":"sekscan/internal/deps","Test":"TestCustomRecipeInstallAndUpdate","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.205811861Z","Action":"output","Package":"sekscan/internal/deps","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.205819224Z","Action":"output","Package":"sekscan/internal/deps","Output":"coverage: 72.5% of statements\n"}
+{"Time":"2026-10-02T18:50:58.206023149Z","Action":"output","Package":"sekscan/internal/deps","Output":"ok  \tsekscan/internal/deps\t0.034s\tcoverage: 72.5% of statements\n"}
+{"Time":"2026-10-02T18:50:58.20603227Z","Action":"pass","Package":"sekscan/internal/deps","Elapsed":0.035}
+{"Time":"2026-10-02T18:50:58.23230742Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteConcurrentWrites","Output":"--- PASS: TestSQLiteConcurrentWrites (0.02s)\n"}
+{"Time":"2026-10-02T18:50:58.232330338Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestSQLiteConcurrentWrites","Elapsed":0.02}
+{"Time":"2026-10-02T18:50:58.232337219Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestMigrationChecksum"}
+{"Time":"2026-10-02T18:50:58.232340309Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestMigrationChecksum","Output":"=== RUN   TestMigrationChecksum\n"}
+{"Time":"2026-10-02T18:50:58.236026935Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestMigrationChecksum","Output":"--- PASS: TestMigrationChecksum (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.23604407Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestMigrationChecksum","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.236049035Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestArtifactValidation"}
+{"Time":"2026-10-02T18:50:58.23605212Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestArtifactValidation","Output":"=== RUN   TestArtifactValidation\n"}
+{"Time":"2026-10-02T18:50:58.241207246Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestArtifactValidation","Output":"--- PASS: TestArtifactValidation (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.241263248Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestArtifactValidation","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.241268493Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestDSNSecurity"}
+{"Time":"2026-10-02T18:50:58.241271674Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestDSNSecurity","Output":"=== RUN   TestDSNSecurity\n"}
+{"Time":"2026-10-02T18:50:58.241277439Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestDSNSecurity","Output":"--- PASS: TestDSNSecurity (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.241281189Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestDSNSecurity","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.241284166Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestDialectBindingAndSchema"}
+{"Time":"2026-10-02T18:50:58.241286984Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestDialectBindingAndSchema","Output":"=== RUN   TestDialectBindingAndSchema\n"}
+{"Time":"2026-10-02T18:50:58.241290791Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestDialectBindingAndSchema","Output":"--- PASS: TestDialectBindingAndSchema (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.241295553Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestDialectBindingAndSchema","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.241298435Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration"}
+{"Time":"2026-10-02T18:50:58.241301084Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration","Output":"=== RUN   TestExternalDatabaseIntegration\n"}
+{"Time":"2026-10-02T18:50:58.241304533Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/postgres"}
+{"Time":"2026-10-02T18:50:58.241339685Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/postgres","Output":"=== RUN   TestExternalDatabaseIntegration/postgres\n"}
+{"Time":"2026-10-02T18:50:58.241343205Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/postgres","Output":"    store_test.go:199: no live database DSN\n"}
+{"Time":"2026-10-02T18:50:58.241352053Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/postgres","Output":"--- SKIP: TestExternalDatabaseIntegration/postgres (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.241355368Z","Action":"skip","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/postgres","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.241359387Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/mssql"}
+{"Time":"2026-10-02T18:50:58.24136176Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/mssql","Output":"=== RUN   TestExternalDatabaseIntegration/mssql\n"}
+{"Time":"2026-10-02T18:50:58.241364731Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/mssql","Output":"    store_test.go:199: no live database DSN\n"}
+{"Time":"2026-10-02T18:50:58.241368329Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/mssql","Output":"--- SKIP: TestExternalDatabaseIntegration/mssql (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.241371093Z","Action":"skip","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration/mssql","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.241374387Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration","Output":"--- PASS: TestExternalDatabaseIntegration (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.241376846Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestExternalDatabaseIntegration","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.241379972Z","Action":"run","Package":"sekscan/internal/dbstore","Test":"TestSQLiteIndependentConnections"}
+{"Time":"2026-10-02T18:50:58.241382346Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteIndependentConnections","Output":"=== RUN   TestSQLiteIndependentConnections\n"}
+{"Time":"2026-10-02T18:50:58.281027563Z","Action":"output","Package":"sekscan/internal/dbstore","Test":"TestSQLiteIndependentConnections","Output":"--- PASS: TestSQLiteIndependentConnections (0.04s)\n"}
+{"Time":"2026-10-02T18:50:58.288201412Z","Action":"pass","Package":"sekscan/internal/dbstore","Test":"TestSQLiteIndependentConnections","Elapsed":0.04}
+{"Time":"2026-10-02T18:50:58.288218416Z","Action":"output","Package":"sekscan/internal/dbstore","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.288223048Z","Action":"output","Package":"sekscan/internal/dbstore","Output":"coverage: 74.9% of statements\n"}
+{"Time":"2026-10-02T18:50:58.293243293Z","Action":"output","Package":"sekscan/internal/dbstore","Output":"ok  \tsekscan/internal/dbstore\t0.121s\tcoverage: 74.9% of statements\n"}
+{"Time":"2026-10-02T18:50:58.293256328Z","Action":"pass","Package":"sekscan/internal/dbstore","Elapsed":0.122}
+{"Time":"2026-10-02T18:50:58.495137153Z","Action":"start","Package":"sekscan/internal/policy"}
+{"Time":"2026-10-02T18:50:58.495708318Z","Action":"start","Package":"sekscan/internal/report"}
+{"Time":"2026-10-02T18:50:58.496123599Z","Action":"start","Package":"sekscan/internal/runner"}
+{"Time":"2026-10-02T18:50:58.500478946Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions"}
+{"Time":"2026-10-02T18:50:58.500492377Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions","Output":"=== RUN   TestSPDXExpressions\n"}
+{"Time":"2026-10-02T18:50:58.50062205Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT"}
+{"Time":"2026-10-02T18:50:58.500625557Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT","Output":"=== RUN   TestSPDXExpressions/MIT\n"}
+{"Time":"2026-10-02T18:50:58.500664145Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT","Output":"--- PASS: TestSPDXExpressions/MIT (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.500805837Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText"}
+{"Time":"2026-10-02T18:50:58.500812865Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText","Output":"=== RUN   TestFailureHintsNeverEchoScannerText\n"}
+{"Time":"2026-10-02T18:50:58.50082693Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.500830715Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_GPL-3.0-only"}
+{"Time":"2026-10-02T18:50:58.500832566Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_GPL-3.0-only","Output":"=== RUN   TestSPDXExpressions/MIT_OR_GPL-3.0-only\n"}
+{"Time":"2026-10-02T18:50:58.500901937Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_GPL-3.0-only","Output":"--- PASS: TestSPDXExpressions/MIT_OR_GPL-3.0-only (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.500905743Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_GPL-3.0-only","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.500908578Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_AND_GPL-3.0-only"}
+{"Time":"2026-10-02T18:50:58.500910135Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_AND_GPL-3.0-only","Output":"=== RUN   TestSPDXExpressions/MIT_AND_GPL-3.0-only\n"}
+{"Time":"2026-10-02T18:50:58.500947976Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/invalid_exclude_relative_glob"}
+{"Time":"2026-10-02T18:50:58.500950262Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/invalid_exclude_relative_glob","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/invalid_exclude_relative_glob\n"}
+{"Time":"2026-10-02T18:50:58.501087484Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_AND_GPL-3.0-only","Output":"--- PASS: TestSPDXExpressions/MIT_AND_GPL-3.0-only (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501091081Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_AND_GPL-3.0-only","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501092898Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_(Apache-2.0_AND_GPL-3.0-only)"}
+{"Time":"2026-10-02T18:50:58.501094334Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_(Apache-2.0_AND_GPL-3.0-only)","Output":"=== RUN   TestSPDXExpressions/MIT_OR_(Apache-2.0_AND_GPL-3.0-only)\n"}
+{"Time":"2026-10-02T18:50:58.501096831Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_(Apache-2.0_AND_GPL-3.0-only)","Output":"--- PASS: TestSPDXExpressions/MIT_OR_(Apache-2.0_AND_GPL-3.0-only) (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501098566Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_(Apache-2.0_AND_GPL-3.0-only)","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501100287Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/(MIT_OR_Apache-2.0)_AND_GPL-3.0-only"}
+{"Time":"2026-10-02T18:50:58.501101682Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/(MIT_OR_Apache-2.0)_AND_GPL-3.0-only","Output":"=== RUN   TestSPDXExpressions/(MIT_OR_Apache-2.0)_AND_GPL-3.0-only\n"}
+{"Time":"2026-10-02T18:50:58.501104502Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/(MIT_OR_Apache-2.0)_AND_GPL-3.0-only","Output":"--- PASS: TestSPDXExpressions/(MIT_OR_Apache-2.0)_AND_GPL-3.0-only (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501106238Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/(MIT_OR_Apache-2.0)_AND_GPL-3.0-only","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501109009Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/LicenseRef-Private"}
+{"Time":"2026-10-02T18:50:58.501110608Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/LicenseRef-Private","Output":"=== RUN   TestSPDXExpressions/LicenseRef-Private\n"}
+{"Time":"2026-10-02T18:50:58.501149275Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/LicenseRef-Private","Output":"--- PASS: TestSPDXExpressions/LicenseRef-Private (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501152743Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/LicenseRef-Private","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501154743Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/NONE"}
+{"Time":"2026-10-02T18:50:58.501156418Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/NONE","Output":"=== RUN   TestSPDXExpressions/NONE\n"}
+{"Time":"2026-10-02T18:50:58.501159105Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/NONE","Output":"--- PASS: TestSPDXExpressions/NONE (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.50130458Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/invalid_exclude_relative_glob","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/invalid_exclude_relative_glob (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501309854Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/invalid_exclude_relative_glob","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.50131199Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/unknown_flag"}
+{"Time":"2026-10-02T18:50:58.501313691Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/unknown_flag","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/unknown_flag\n"}
+{"Time":"2026-10-02T18:50:58.501318807Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/NONE","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501320459Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/NOASSERTION"}
+{"Time":"2026-10-02T18:50:58.501321951Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/NOASSERTION","Output":"=== RUN   TestSPDXExpressions/NOASSERTION\n"}
+{"Time":"2026-10-02T18:50:58.501326089Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/NOASSERTION","Output":"--- PASS: TestSPDXExpressions/NOASSERTION (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501328869Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/NOASSERTION","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501586959Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/unknown_flag","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/unknown_flag (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501591823Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/unknown_flag","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501593855Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/database_is_too_old"}
+{"Time":"2026-10-02T18:50:58.501595629Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/database_is_too_old","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/database_is_too_old\n"}
+{"Time":"2026-10-02T18:50:58.501597977Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/database_is_too_old","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/database_is_too_old (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501601335Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/database_is_too_old","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501602997Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/database_not_found"}
+{"Time":"2026-10-02T18:50:58.501604849Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/database_not_found","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/database_not_found\n"}
+{"Time":"2026-10-02T18:50:58.501609469Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/database_not_found","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/database_not_found (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.50161122Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/database_not_found","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501613071Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/x509:_certificate_error"}
+{"Time":"2026-10-02T18:50:58.501614742Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/x509:_certificate_error","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/x509:_certificate_error\n"}
+{"Time":"2026-10-02T18:50:58.501616897Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/x509:_certificate_error","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/x509:_certificate_error (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501618957Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/x509:_certificate_error","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501620841Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/unauthorized"}
+{"Time":"2026-10-02T18:50:58.501622439Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/unauthorized","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/unauthorized\n"}
+{"Time":"2026-10-02T18:50:58.501625554Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/unauthorized","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/unauthorized (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501627317Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/unauthorized","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501628898Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/no_such_host"}
+{"Time":"2026-10-02T18:50:58.501630337Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/no_such_host","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/no_such_host\n"}
+{"Time":"2026-10-02T18:50:58.501632171Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/no_such_host","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/no_such_host (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501633727Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/no_such_host","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501635379Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/permission_denied"}
+{"Time":"2026-10-02T18:50:58.501636944Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/permission_denied","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/permission_denied\n"}
+{"Time":"2026-10-02T18:50:58.501640023Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/permission_denied","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/permission_denied (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501641697Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/permission_denied","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501645102Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_WITH_LLVM-exception"}
+{"Time":"2026-10-02T18:50:58.501646582Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_WITH_LLVM-exception","Output":"=== RUN   TestSPDXExpressions/MIT_WITH_LLVM-exception\n"}
+{"Time":"2026-10-02T18:50:58.501649927Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_WITH_LLVM-exception","Output":"--- PASS: TestSPDXExpressions/MIT_WITH_LLVM-exception (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501651652Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_WITH_LLVM-exception","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.50165325Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_AND"}
+{"Time":"2026-10-02T18:50:58.501654751Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_AND","Output":"=== RUN   TestSPDXExpressions/MIT_AND\n"}
+{"Time":"2026-10-02T18:50:58.501656745Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_AND","Output":"--- PASS: TestSPDXExpressions/MIT_AND (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501658341Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_AND","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501660117Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/(MIT"}
+{"Time":"2026-10-02T18:50:58.50166162Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/(MIT","Output":"=== RUN   TestSPDXExpressions/(MIT\n"}
+{"Time":"2026-10-02T18:50:58.501664343Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/(MIT","Output":"--- PASS: TestSPDXExpressions/(MIT (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.50166609Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/(MIT","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501667709Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_Apache-2.0"}
+{"Time":"2026-10-02T18:50:58.501669282Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_Apache-2.0","Output":"=== RUN   TestSPDXExpressions/MIT_Apache-2.0\n"}
+{"Time":"2026-10-02T18:50:58.501671433Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_Apache-2.0","Output":"--- PASS: TestSPDXExpressions/MIT_Apache-2.0 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.50167351Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_Apache-2.0","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501675584Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_\u0026_Apache-2.0"}
+{"Time":"2026-10-02T18:50:58.50167717Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_\u0026_Apache-2.0","Output":"=== RUN   TestSPDXExpressions/MIT_\u0026_Apache-2.0\n"}
+{"Time":"2026-10-02T18:50:58.501699941Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_\u0026_Apache-2.0","Output":"--- PASS: TestSPDXExpressions/MIT_\u0026_Apache-2.0 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501705699Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_\u0026_Apache-2.0","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.50170972Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_WITH"}
+{"Time":"2026-10-02T18:50:58.501712428Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_WITH","Output":"=== RUN   TestSPDXExpressions/MIT_WITH\n"}
+{"Time":"2026-10-02T18:50:58.501715586Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_WITH","Output":"--- PASS: TestSPDXExpressions/MIT_WITH (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501718414Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_WITH","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501720286Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_OR_Apache-2.0"}
+{"Time":"2026-10-02T18:50:58.501721723Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_OR_Apache-2.0","Output":"=== RUN   TestSPDXExpressions/MIT_OR_OR_Apache-2.0\n"}
+{"Time":"2026-10-02T18:50:58.501726263Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_OR_Apache-2.0","Output":"--- PASS: TestSPDXExpressions/MIT_OR_OR_Apache-2.0 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501728134Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT_OR_OR_Apache-2.0","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501795522Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/config_yaml_parse_failed"}
+{"Time":"2026-10-02T18:50:58.501799193Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/config_yaml_parse_failed","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/config_yaml_parse_failed\n"}
+{"Time":"2026-10-02T18:50:58.501805475Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/config_yaml_parse_failed","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/config_yaml_parse_failed (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.50180926Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/config_yaml_parse_failed","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501811797Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/no_space_left"}
+{"Time":"2026-10-02T18:50:58.501813379Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/no_space_left","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/no_space_left\n"}
+{"Time":"2026-10-02T18:50:58.501832217Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/no_space_left","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/no_space_left (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.50183459Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/no_space_left","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.501836754Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/arbitrary_message"}
+{"Time":"2026-10-02T18:50:58.50183838Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/arbitrary_message","Output":"=== RUN   TestFailureHintsNeverEchoScannerText/arbitrary_message\n"}
+{"Time":"2026-10-02T18:50:58.501906299Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT)"}
+{"Time":"2026-10-02T18:50:58.501909644Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT)","Output":"=== RUN   TestSPDXExpressions/MIT)\n"}
+{"Time":"2026-10-02T18:50:58.501930811Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT)","Output":"--- PASS: TestSPDXExpressions/MIT) (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.501933556Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions/MIT)","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.5020103Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/arbitrary_message","Output":"--- PASS: TestFailureHintsNeverEchoScannerText/arbitrary_message (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.502013409Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText/arbitrary_message","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.502015938Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText","Output":"--- PASS: TestFailureHintsNeverEchoScannerText (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.502017821Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestFailureHintsNeverEchoScannerText","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.50202051Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestPrivateStderrIsExplicitAndRestricted"}
+{"Time":"2026-10-02T18:50:58.502022174Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestPrivateStderrIsExplicitAndRestricted","Output":"=== RUN   TestPrivateStderrIsExplicitAndRestricted\n"}
+{"Time":"2026-10-02T18:50:58.502394981Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions","Output":"--- PASS: TestSPDXExpressions (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.502398721Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestSPDXExpressions","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.502401099Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestLicenseScopeAndConflict"}
+{"Time":"2026-10-02T18:50:58.502402948Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestLicenseScopeAndConflict","Output":"=== RUN   TestLicenseScopeAndConflict\n"}
+{"Time":"2026-10-02T18:50:58.502719929Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestPrivateStderrIsExplicitAndRestricted","Output":"--- PASS: TestPrivateStderrIsExplicitAndRestricted (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.502728679Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestPrivateStderrIsExplicitAndRestricted","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.50273087Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestHelperProcess"}
+{"Time":"2026-10-02T18:50:58.502732423Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestHelperProcess","Output":"=== RUN   TestHelperProcess\n"}
+{"Time":"2026-10-02T18:50:58.502799469Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestHelperProcess","Output":"--- PASS: TestHelperProcess (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.502802533Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestHelperProcess","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.502805141Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestExecutionAndRedaction"}
+{"Time":"2026-10-02T18:50:58.502806511Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestExecutionAndRedaction","Output":"=== RUN   TestExecutionAndRedaction\n"}
+{"Time":"2026-10-02T18:50:58.502997077Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestLicenseScopeAndConflict","Output":"--- PASS: TestLicenseScopeAndConflict (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.503000384Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestLicenseScopeAndConflict","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.503002288Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestScopeOverride"}
+{"Time":"2026-10-02T18:50:58.503003745Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestScopeOverride","Output":"=== RUN   TestScopeOverride\n"}
+{"Time":"2026-10-02T18:50:58.503006587Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestScopeOverride","Output":"--- PASS: TestScopeOverride (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.503008397Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestScopeOverride","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.503010661Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestDedupeAliasesAndVersions"}
+{"Time":"2026-10-02T18:50:58.503012161Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestDedupeAliasesAndVersions","Output":"=== RUN   TestDedupeAliasesAndVersions\n"}
+{"Time":"2026-10-02T18:50:58.503045118Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestDedupeAliasesAndVersions","Output":"--- PASS: TestDedupeAliasesAndVersions (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.503047764Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestDedupeAliasesAndVersions","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.503050106Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestPolicyExceptionsAndBaseline"}
+{"Time":"2026-10-02T18:50:58.503051411Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestPolicyExceptionsAndBaseline","Output":"=== RUN   TestPolicyExceptionsAndBaseline\n"}
+{"Time":"2026-10-02T18:50:58.503382084Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestPolicyExceptionsAndBaseline","Output":"--- PASS: TestPolicyExceptionsAndBaseline (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.503463734Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestPolicyExceptionsAndBaseline","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.50346834Z","Action":"run","Package":"sekscan/internal/policy","Test":"TestDisabledCheckDoesNotResolveBaseline"}
+{"Time":"2026-10-02T18:50:58.503469938Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestDisabledCheckDoesNotResolveBaseline","Output":"=== RUN   TestDisabledCheckDoesNotResolveBaseline\n"}
+{"Time":"2026-10-02T18:50:58.504090751Z","Action":"output","Package":"sekscan/internal/policy","Test":"TestDisabledCheckDoesNotResolveBaseline","Output":"--- PASS: TestDisabledCheckDoesNotResolveBaseline (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.504098336Z","Action":"pass","Package":"sekscan/internal/policy","Test":"TestDisabledCheckDoesNotResolveBaseline","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.504100866Z","Action":"run","Package":"sekscan/internal/policy","Test":"FuzzSPDX"}
+{"Time":"2026-10-02T18:50:58.504104066Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX","Output":"=== RUN   FuzzSPDX\n"}
+{"Time":"2026-10-02T18:50:58.504106258Z","Action":"run","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#0"}
+{"Time":"2026-10-02T18:50:58.504107776Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#0","Output":"=== RUN   FuzzSPDX/seed#0\n"}
+{"Time":"2026-10-02T18:50:58.50411029Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#0","Output":"--- PASS: FuzzSPDX/seed#0 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.504112517Z","Action":"pass","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#0","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.504114625Z","Action":"run","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#1"}
+{"Time":"2026-10-02T18:50:58.504116215Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#1","Output":"=== RUN   FuzzSPDX/seed#1\n"}
+{"Time":"2026-10-02T18:50:58.504117936Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#1","Output":"--- PASS: FuzzSPDX/seed#1 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.504119774Z","Action":"pass","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#1","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.504121399Z","Action":"run","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#2"}
+{"Time":"2026-10-02T18:50:58.504123169Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#2","Output":"=== RUN   FuzzSPDX/seed#2\n"}
+{"Time":"2026-10-02T18:50:58.504124828Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#2","Output":"--- PASS: FuzzSPDX/seed#2 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.504126445Z","Action":"pass","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#2","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.504127923Z","Action":"run","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#3"}
+{"Time":"2026-10-02T18:50:58.504129386Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#3","Output":"=== RUN   FuzzSPDX/seed#3\n"}
+{"Time":"2026-10-02T18:50:58.50413103Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#3","Output":"--- PASS: FuzzSPDX/seed#3 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.504132481Z","Action":"pass","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#3","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.504134727Z","Action":"run","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#4"}
+{"Time":"2026-10-02T18:50:58.504136416Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#4","Output":"=== RUN   FuzzSPDX/seed#4\n"}
+{"Time":"2026-10-02T18:50:58.504138557Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#4","Output":"--- PASS: FuzzSPDX/seed#4 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.504140554Z","Action":"pass","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#4","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.504142032Z","Action":"run","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#5"}
+{"Time":"2026-10-02T18:50:58.504146666Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#5","Output":"=== RUN   FuzzSPDX/seed#5\n"}
+{"Time":"2026-10-02T18:50:58.504149093Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#5","Output":"--- PASS: FuzzSPDX/seed#5 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.504150767Z","Action":"pass","Package":"sekscan/internal/policy","Test":"FuzzSPDX/seed#5","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.504152795Z","Action":"output","Package":"sekscan/internal/policy","Test":"FuzzSPDX","Output":"--- PASS: FuzzSPDX (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.504154407Z","Action":"pass","Package":"sekscan/internal/policy","Test":"FuzzSPDX","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.504155952Z","Action":"output","Package":"sekscan/internal/policy","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.504691104Z","Action":"run","Package":"sekscan/internal/report","Test":"TestHTMLSafeAndSelfContained"}
+{"Time":"2026-10-02T18:50:58.504700632Z","Action":"output","Package":"sekscan/internal/report","Test":"TestHTMLSafeAndSelfContained","Output":"=== RUN   TestHTMLSafeAndSelfContained\n"}
+{"Time":"2026-10-02T18:50:58.505287639Z","Action":"output","Package":"sekscan/internal/policy","Output":"coverage: 86.5% of statements\n"}
+{"Time":"2026-10-02T18:50:58.505424255Z","Action":"output","Package":"sekscan/internal/report","Test":"TestHTMLSafeAndSelfContained","Output":"--- PASS: TestHTMLSafeAndSelfContained (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.505430264Z","Action":"pass","Package":"sekscan/internal/report","Test":"TestHTMLSafeAndSelfContained","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.505434576Z","Action":"run","Package":"sekscan/internal/report","Test":"TestExports"}
+{"Time":"2026-10-02T18:50:58.505436295Z","Action":"output","Package":"sekscan/internal/report","Test":"TestExports","Output":"=== RUN   TestExports\n"}
+{"Time":"2026-10-02T18:50:58.507390056Z","Action":"output","Package":"sekscan/internal/policy","Output":"ok  \tsekscan/internal/policy\t0.012s\tcoverage: 86.5% of statements\n"}
+{"Time":"2026-10-02T18:50:58.507402048Z","Action":"pass","Package":"sekscan/internal/policy","Elapsed":0.012}
+{"Time":"2026-10-02T18:50:58.509029077Z","Action":"output","Package":"sekscan/internal/report","Test":"TestExports","Output":"--- PASS: TestExports (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.509050656Z","Action":"pass","Package":"sekscan/internal/report","Test":"TestExports","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.509055831Z","Action":"run","Package":"sekscan/internal/report","Test":"TestAllowedReviewDoesNotBecomeJUnitFailure"}
+{"Time":"2026-10-02T18:50:58.509059889Z","Action":"output","Package":"sekscan/internal/report","Test":"TestAllowedReviewDoesNotBecomeJUnitFailure","Output":"=== RUN   TestAllowedReviewDoesNotBecomeJUnitFailure\n"}
+{"Time":"2026-10-02T18:50:58.509180408Z","Action":"output","Package":"sekscan/internal/report","Test":"TestAllowedReviewDoesNotBecomeJUnitFailure","Output":"--- PASS: TestAllowedReviewDoesNotBecomeJUnitFailure (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.509187048Z","Action":"pass","Package":"sekscan/internal/report","Test":"TestAllowedReviewDoesNotBecomeJUnitFailure","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.509190634Z","Action":"output","Package":"sekscan/internal/report","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.509787046Z","Action":"output","Package":"sekscan/internal/report","Output":"coverage: 50.8% of statements\n"}
+{"Time":"2026-10-02T18:50:58.510471282Z","Action":"output","Package":"sekscan/internal/report","Output":"ok  \tsekscan/internal/report\t0.014s\tcoverage: 50.8% of statements\n"}
+{"Time":"2026-10-02T18:50:58.510483779Z","Action":"pass","Package":"sekscan/internal/report","Elapsed":0.015}
+{"Time":"2026-10-02T18:50:58.517334444Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestExecutionAndRedaction","Output":"--- PASS: TestExecutionAndRedaction (0.01s)\n"}
+{"Time":"2026-10-02T18:50:58.517375596Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestExecutionAndRedaction","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.517387345Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestOutputLimit"}
+{"Time":"2026-10-02T18:50:58.517390988Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestOutputLimit","Output":"=== RUN   TestOutputLimit\n"}
+{"Time":"2026-10-02T18:50:58.523508074Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestOutputLimit","Output":"--- PASS: TestOutputLimit (0.01s)\n"}
+{"Time":"2026-10-02T18:50:58.52352686Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestOutputLimit","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.523532248Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestTimeout"}
+{"Time":"2026-10-02T18:50:58.523535444Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestTimeout","Output":"=== RUN   TestTimeout\n"}
+{"Time":"2026-10-02T18:50:58.581531211Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestTimeout","Output":"--- PASS: TestTimeout (0.06s)\n"}
+{"Time":"2026-10-02T18:50:58.581552538Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestTimeout","Elapsed":0.06}
+{"Time":"2026-10-02T18:50:58.581557931Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestSanitizeEnvironment"}
+{"Time":"2026-10-02T18:50:58.581560607Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestSanitizeEnvironment","Output":"=== RUN   TestSanitizeEnvironment\n"}
+{"Time":"2026-10-02T18:50:58.581653935Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestSanitizeEnvironment","Output":"--- PASS: TestSanitizeEnvironment (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.581659467Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestSanitizeEnvironment","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.581663298Z","Action":"run","Package":"sekscan/internal/runner","Test":"TestExplicitSuccessCodesRejectZero"}
+{"Time":"2026-10-02T18:50:58.581665838Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestExplicitSuccessCodesRejectZero","Output":"=== RUN   TestExplicitSuccessCodesRejectZero\n"}
+{"Time":"2026-10-02T18:50:58.586387217Z","Action":"output","Package":"sekscan/internal/runner","Test":"TestExplicitSuccessCodesRejectZero","Output":"--- PASS: TestExplicitSuccessCodesRejectZero (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.586407038Z","Action":"pass","Package":"sekscan/internal/runner","Test":"TestExplicitSuccessCodesRejectZero","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.5864115Z","Action":"output","Package":"sekscan/internal/runner","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.588098156Z","Action":"output","Package":"sekscan/internal/runner","Output":"coverage: 79.3% of statements\n"}
+{"Time":"2026-10-02T18:50:58.590525683Z","Action":"output","Package":"sekscan/internal/runner","Output":"ok  \tsekscan/internal/runner\t0.094s\tcoverage: 79.3% of statements\n"}
+{"Time":"2026-10-02T18:50:58.590538523Z","Action":"pass","Package":"sekscan/internal/runner","Elapsed":0.094}
+{"Time":"2026-10-02T18:50:58.752501305Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestExternalScannerEndToEnd","Output":"--- PASS: TestExternalScannerEndToEnd (0.57s)\n"}
+{"Time":"2026-10-02T18:50:58.752576278Z","Action":"pass","Package":"sekscan/internal/cli","Test":"TestExternalScannerEndToEnd","Elapsed":0.57}
+{"Time":"2026-10-02T18:50:58.752584483Z","Action":"run","Package":"sekscan/internal/cli","Test":"TestOutputOwnership"}
+{"Time":"2026-10-02T18:50:58.752587859Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestOutputOwnership","Output":"=== RUN   TestOutputOwnership\n"}
+{"Time":"2026-10-02T18:50:58.752593446Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestOutputOwnership","Output":"--- PASS: TestOutputOwnership (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.752596589Z","Action":"pass","Package":"sekscan/internal/cli","Test":"TestOutputOwnership","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.752599713Z","Action":"run","Package":"sekscan/internal/cli","Test":"TestWorkspaceStorageHistoryCLI"}
+{"Time":"2026-10-02T18:50:58.752607227Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestWorkspaceStorageHistoryCLI","Output":"=== RUN   TestWorkspaceStorageHistoryCLI\n"}
+{"Time":"2026-10-02T18:50:58.77529148Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestWorkspaceStorageHistoryCLI","Output":"--- PASS: TestWorkspaceStorageHistoryCLI (0.02s)\n"}
+{"Time":"2026-10-02T18:50:58.775313848Z","Action":"pass","Package":"sekscan/internal/cli","Test":"TestWorkspaceStorageHistoryCLI","Elapsed":0.02}
+{"Time":"2026-10-02T18:50:58.775320152Z","Action":"run","Package":"sekscan/internal/cli","Test":"TestHistoryHTTPIsolationAndEscaping"}
+{"Time":"2026-10-02T18:50:58.775323742Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestHistoryHTTPIsolationAndEscaping","Output":"=== RUN   TestHistoryHTTPIsolationAndEscaping\n"}
+{"Time":"2026-10-02T18:50:58.786627867Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestHistoryHTTPIsolationAndEscaping","Output":"--- PASS: TestHistoryHTTPIsolationAndEscaping (0.01s)\n"}
+{"Time":"2026-10-02T18:50:58.786650237Z","Action":"pass","Package":"sekscan/internal/cli","Test":"TestHistoryHTTPIsolationAndEscaping","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.78665704Z","Action":"run","Package":"sekscan/internal/cli","Test":"TestRequiredStorageFailurePreservesReportFailure"}
+{"Time":"2026-10-02T18:50:58.786659727Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestRequiredStorageFailurePreservesReportFailure","Output":"=== RUN   TestRequiredStorageFailurePreservesReportFailure\n"}
+{"Time":"2026-10-02T18:50:58.78736452Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestRequiredStorageFailurePreservesReportFailure","Output":"--- PASS: TestRequiredStorageFailurePreservesReportFailure (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.787376105Z","Action":"pass","Package":"sekscan/internal/cli","Test":"TestRequiredStorageFailurePreservesReportFailure","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.787381343Z","Action":"run","Package":"sekscan/internal/cli","Test":"TestSessionLogsRotate"}
+{"Time":"2026-10-02T18:50:58.787384494Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestSessionLogsRotate","Output":"=== RUN   TestSessionLogsRotate\n"}
+{"Time":"2026-10-02T18:50:58.787572905Z","Action":"output","Package":"sekscan/internal/cli","Test":"TestSessionLogsRotate","Output":"--- PASS: TestSessionLogsRotate (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.787578972Z","Action":"pass","Package":"sekscan/internal/cli","Test":"TestSessionLogsRotate","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.787583079Z","Action":"output","Package":"sekscan/internal/cli","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.788390346Z","Action":"output","Package":"sekscan/internal/cli","Output":"coverage: 44.3% of statements\n"}
+{"Time":"2026-10-02T18:50:58.804827727Z","Action":"output","Package":"sekscan/internal/cli","Output":"ok  \tsekscan/internal/cli\t0.633s\tcoverage: 44.3% of statements\n"}
+{"Time":"2026-10-02T18:50:58.804843053Z","Action":"pass","Package":"sekscan/internal/cli","Elapsed":0.634}
+{"Time":"2026-10-02T18:50:58.9362107Z","Action":"start","Package":"sekscan/internal/scan"}
+{"Time":"2026-10-02T18:50:58.936402762Z","Action":"start","Package":"sekscan/internal/scannerdb"}
+{"Time":"2026-10-02T18:50:58.937107112Z","Action":"start","Package":"sekscan/internal/server"}
+{"Time":"2026-10-02T18:50:58.937250654Z","Action":"start","Package":"sekscan/internal/store"}
+{"Time":"2026-10-02T18:50:58.937378581Z","Action":"start","Package":"sekscan/internal/testsupport/fakescanner"}
+{"Time":"2026-10-02T18:50:58.940211685Z","Action":"run","Package":"sekscan/internal/scan","Test":"TestSyftExclusionsAreTargetRelative"}
+{"Time":"2026-10-02T18:50:58.940225919Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestSyftExclusionsAreTargetRelative","Output":"=== RUN   TestSyftExclusionsAreTargetRelative\n"}
+{"Time":"2026-10-02T18:50:58.940261077Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestSyftExclusionsAreTargetRelative","Output":"--- PASS: TestSyftExclusionsAreTargetRelative (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.940268346Z","Action":"pass","Package":"sekscan/internal/scan","Test":"TestSyftExclusionsAreTargetRelative","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.940283922Z","Action":"run","Package":"sekscan/internal/scan","Test":"TestActionlintParserAndPrivacy"}
+{"Time":"2026-10-02T18:50:58.940286415Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestActionlintParserAndPrivacy","Output":"=== RUN   TestActionlintParserAndPrivacy\n"}
+{"Time":"2026-10-02T18:50:58.943372719Z","Action":"run","Package":"sekscan/internal/server","Test":"TestLoopbackOnly"}
+{"Time":"2026-10-02T18:50:58.943389282Z","Action":"run","Package":"sekscan/internal/store","Test":"TestBundleRoundTrip"}
+{"Time":"2026-10-02T18:50:58.943395494Z","Action":"output","Package":"sekscan/internal/store","Test":"TestBundleRoundTrip","Output":"=== RUN   TestBundleRoundTrip\n"}
+{"Time":"2026-10-02T18:50:58.943374522Z","Action":"run","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase"}
+{"Time":"2026-10-02T18:50:58.943422776Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase","Output":"=== RUN   TestTrivyReadinessRequiresMetadataAndDatabase\n"}
+{"Time":"2026-10-02T18:50:58.943434501Z","Action":"run","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase/main"}
+{"Time":"2026-10-02T18:50:58.943436477Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase/main","Output":"=== RUN   TestTrivyReadinessRequiresMetadataAndDatabase/main\n"}
+{"Time":"2026-10-02T18:50:58.943455853Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestActionlintParserAndPrivacy","Output":"--- PASS: TestActionlintParserAndPrivacy (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.943458747Z","Action":"pass","Package":"sekscan/internal/scan","Test":"TestActionlintParserAndPrivacy","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.943461921Z","Action":"run","Package":"sekscan/internal/scan","Test":"TestActionlintControlledInvocation"}
+{"Time":"2026-10-02T18:50:58.943463747Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestActionlintControlledInvocation","Output":"=== RUN   TestActionlintControlledInvocation\n"}
+{"Time":"2026-10-02T18:50:58.943461449Z","Action":"output","Package":"sekscan/internal/testsupport/fakescanner","Output":"\tsekscan/internal/testsupport/fakescanner\t\tcoverage: 0.0% of statements\n"}
+{"Time":"2026-10-02T18:50:58.943392371Z","Action":"output","Package":"sekscan/internal/server","Test":"TestLoopbackOnly","Output":"=== RUN   TestLoopbackOnly\n"}
+{"Time":"2026-10-02T18:50:58.94362332Z","Action":"output","Package":"sekscan/internal/server","Test":"TestLoopbackOnly","Output":"--- PASS: TestLoopbackOnly (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.943627523Z","Action":"pass","Package":"sekscan/internal/server","Test":"TestLoopbackOnly","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.943632035Z","Action":"run","Package":"sekscan/internal/server","Test":"TestHandlerSecurity"}
+{"Time":"2026-10-02T18:50:58.943634756Z","Action":"output","Package":"sekscan/internal/server","Test":"TestHandlerSecurity","Output":"=== RUN   TestHandlerSecurity\n"}
+{"Time":"2026-10-02T18:50:58.943638633Z","Action":"output","Package":"sekscan/internal/server","Test":"TestHandlerSecurity","Output":"--- PASS: TestHandlerSecurity (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.943641556Z","Action":"pass","Package":"sekscan/internal/server","Test":"TestHandlerSecurity","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.94364399Z","Action":"output","Package":"sekscan/internal/server","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.943646927Z","Action":"output","Package":"sekscan/internal/server","Output":"coverage: 35.8% of statements\n"}
+{"Time":"2026-10-02T18:50:58.94383099Z","Action":"output","Package":"sekscan/internal/store","Test":"TestBundleRoundTrip","Output":"--- PASS: TestBundleRoundTrip (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.943843693Z","Action":"pass","Package":"sekscan/internal/store","Test":"TestBundleRoundTrip","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.943876851Z","Action":"run","Package":"sekscan/internal/store","Test":"TestBundleTraversal"}
+{"Time":"2026-10-02T18:50:58.943880546Z","Action":"output","Package":"sekscan/internal/store","Test":"TestBundleTraversal","Output":"=== RUN   TestBundleTraversal\n"}
+{"Time":"2026-10-02T18:50:58.944386775Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestActionlintControlledInvocation","Output":"--- PASS: TestActionlintControlledInvocation (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.94439986Z","Action":"pass","Package":"sekscan/internal/scan","Test":"TestActionlintControlledInvocation","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.94440659Z","Action":"run","Package":"sekscan/internal/scan","Test":"TestDiagnosticStderrOptIn"}
+{"Time":"2026-10-02T18:50:58.944409527Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestDiagnosticStderrOptIn","Output":"=== RUN   TestDiagnosticStderrOptIn\n"}
+{"Time":"2026-10-02T18:50:58.944647135Z","Action":"output","Package":"sekscan/internal/server","Output":"ok  \tsekscan/internal/server\t0.007s\tcoverage: 35.8% of statements\n"}
+{"Time":"2026-10-02T18:50:58.944661421Z","Action":"pass","Package":"sekscan/internal/server","Elapsed":0.008}
+{"Time":"2026-10-02T18:50:58.944845749Z","Action":"start","Package":"sekscan/internal/testsupport/sqlitebridge"}
+{"Time":"2026-10-02T18:50:58.944948472Z","Action":"output","Package":"sekscan/internal/store","Test":"TestBundleTraversal","Output":"--- PASS: TestBundleTraversal (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.944956368Z","Action":"pass","Package":"sekscan/internal/store","Test":"TestBundleTraversal","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.944960296Z","Action":"run","Package":"sekscan/internal/store","Test":"TestAllowedBundlePaths"}
+{"Time":"2026-10-02T18:50:58.944959421Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestDiagnosticStderrOptIn","Output":"--- PASS: TestDiagnosticStderrOptIn (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.944963295Z","Action":"output","Package":"sekscan/internal/store","Test":"TestAllowedBundlePaths","Output":"=== RUN   TestAllowedBundlePaths\n"}
+{"Time":"2026-10-02T18:50:58.944966694Z","Action":"pass","Package":"sekscan/internal/scan","Test":"TestDiagnosticStderrOptIn","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.944970364Z","Action":"run","Package":"sekscan/internal/scan","Test":"TestScannerParsing"}
+{"Time":"2026-10-02T18:50:58.944973103Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestScannerParsing","Output":"=== RUN   TestScannerParsing\n"}
+{"Time":"2026-10-02T18:50:58.944993912Z","Action":"output","Package":"sekscan/internal/store","Test":"TestAllowedBundlePaths","Output":"--- PASS: TestAllowedBundlePaths (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.944997834Z","Action":"pass","Package":"sekscan/internal/store","Test":"TestAllowedBundlePaths","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.945000714Z","Action":"run","Package":"sekscan/internal/store","Test":"TestBundleRejectsSymlinkedParent"}
+{"Time":"2026-10-02T18:50:58.945003383Z","Action":"output","Package":"sekscan/internal/store","Test":"TestBundleRejectsSymlinkedParent","Output":"=== RUN   TestBundleRejectsSymlinkedParent\n"}
+{"Time":"2026-10-02T18:50:58.945242813Z","Action":"output","Package":"sekscan/internal/store","Test":"TestBundleRejectsSymlinkedParent","Output":"--- PASS: TestBundleRejectsSymlinkedParent (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.945250301Z","Action":"pass","Package":"sekscan/internal/store","Test":"TestBundleRejectsSymlinkedParent","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.945255212Z","Action":"output","Package":"sekscan/internal/store","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.946486748Z","Action":"output","Package":"sekscan/internal/store","Output":"coverage: 58.2% of statements\n"}
+{"Time":"2026-10-02T18:50:58.946509366Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestScannerParsing","Output":"--- PASS: TestScannerParsing (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.94652399Z","Action":"pass","Package":"sekscan/internal/scan","Test":"TestScannerParsing","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.946532728Z","Action":"run","Package":"sekscan/internal/scan","Test":"TestUnknownSchemasFailClosed"}
+{"Time":"2026-10-02T18:50:58.94653615Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestUnknownSchemasFailClosed","Output":"=== RUN   TestUnknownSchemasFailClosed\n"}
+{"Time":"2026-10-02T18:50:58.946540716Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestUnknownSchemasFailClosed","Output":"--- PASS: TestUnknownSchemasFailClosed (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.946543621Z","Action":"pass","Package":"sekscan/internal/scan","Test":"TestUnknownSchemasFailClosed","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.946546906Z","Action":"run","Package":"sekscan/internal/scan","Test":"TestTargetValidation"}
+{"Time":"2026-10-02T18:50:58.946551419Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestTargetValidation","Output":"=== RUN   TestTargetValidation\n"}
+{"Time":"2026-10-02T18:50:58.946556039Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestTargetValidation","Output":"--- PASS: TestTargetValidation (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.946559092Z","Action":"pass","Package":"sekscan/internal/scan","Test":"TestTargetValidation","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.946562498Z","Action":"run","Package":"sekscan/internal/scan","Test":"TestNativeSettingsAreExplicitAndHashed"}
+{"Time":"2026-10-02T18:50:58.946565369Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestNativeSettingsAreExplicitAndHashed","Output":"=== RUN   TestNativeSettingsAreExplicitAndHashed\n"}
+{"Time":"2026-10-02T18:50:58.946720558Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestNativeSettingsAreExplicitAndHashed","Output":"--- PASS: TestNativeSettingsAreExplicitAndHashed (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.946766939Z","Action":"pass","Package":"sekscan/internal/scan","Test":"TestNativeSettingsAreExplicitAndHashed","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.94677933Z","Action":"run","Package":"sekscan/internal/scan","Test":"TestDatabaseCredentialsExcludedFromScannerEnvironment"}
+{"Time":"2026-10-02T18:50:58.946781843Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestDatabaseCredentialsExcludedFromScannerEnvironment","Output":"=== RUN   TestDatabaseCredentialsExcludedFromScannerEnvironment\n"}
+{"Time":"2026-10-02T18:50:58.946787461Z","Action":"pass","Package":"sekscan/internal/testsupport/fakescanner","Elapsed":0.009}
+{"Time":"2026-10-02T18:50:58.946881837Z","Action":"output","Package":"sekscan/internal/store","Output":"ok  \tsekscan/internal/store\t0.009s\tcoverage: 58.2% of statements\n"}
+{"Time":"2026-10-02T18:50:58.946890209Z","Action":"pass","Package":"sekscan/internal/store","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.947831344Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase/main","Output":"--- PASS: TestTrivyReadinessRequiresMetadataAndDatabase/main (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.94784742Z","Action":"pass","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase/main","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.947875119Z","Action":"run","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase/java"}
+{"Time":"2026-10-02T18:50:58.947829545Z","Action":"output","Package":"sekscan/internal/scan","Test":"TestDatabaseCredentialsExcludedFromScannerEnvironment","Output":"--- PASS: TestDatabaseCredentialsExcludedFromScannerEnvironment (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.947884371Z","Action":"pass","Package":"sekscan/internal/scan","Test":"TestDatabaseCredentialsExcludedFromScannerEnvironment","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.9478885Z","Action":"run","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON"}
+{"Time":"2026-10-02T18:50:58.947891583Z","Action":"output","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON","Output":"=== RUN   FuzzScannerJSON\n"}
+{"Time":"2026-10-02T18:50:58.947899423Z","Action":"run","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#0"}
+{"Time":"2026-10-02T18:50:58.94790237Z","Action":"output","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#0","Output":"=== RUN   FuzzScannerJSON/seed#0\n"}
+{"Time":"2026-10-02T18:50:58.947906716Z","Action":"output","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#0","Output":"--- PASS: FuzzScannerJSON/seed#0 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.947909936Z","Action":"pass","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#0","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.947913095Z","Action":"run","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#1"}
+{"Time":"2026-10-02T18:50:58.947915846Z","Action":"output","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#1","Output":"=== RUN   FuzzScannerJSON/seed#1\n"}
+{"Time":"2026-10-02T18:50:58.947919318Z","Action":"output","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#1","Output":"--- PASS: FuzzScannerJSON/seed#1 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.947922214Z","Action":"pass","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#1","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.947879232Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase/java","Output":"=== RUN   TestTrivyReadinessRequiresMetadataAndDatabase/java\n"}
+{"Time":"2026-10-02T18:50:58.947925067Z","Action":"run","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#2"}
+{"Time":"2026-10-02T18:50:58.94792737Z","Action":"output","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#2","Output":"=== RUN   FuzzScannerJSON/seed#2\n"}
+{"Time":"2026-10-02T18:50:58.947932282Z","Action":"output","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#2","Output":"--- PASS: FuzzScannerJSON/seed#2 (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.947935175Z","Action":"pass","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON/seed#2","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.947938538Z","Action":"output","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON","Output":"--- PASS: FuzzScannerJSON (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.947941226Z","Action":"pass","Package":"sekscan/internal/scan","Test":"FuzzScannerJSON","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.94794417Z","Action":"output","Package":"sekscan/internal/scan","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.948815299Z","Action":"output","Package":"sekscan/internal/scan","Output":"coverage: 42.5% of statements\n"}
+{"Time":"2026-10-02T18:50:58.950100741Z","Action":"output","Package":"sekscan/internal/testsupport/sqlitebridge","Output":"\tsekscan/internal/testsupport/sqlitebridge\t\tcoverage: 0.0% of statements\n"}
+{"Time":"2026-10-02T18:50:58.950227504Z","Action":"output","Package":"sekscan/internal/scan","Output":"ok  \tsekscan/internal/scan\t0.014s\tcoverage: 42.5% of statements\n"}
+{"Time":"2026-10-02T18:50:58.950240355Z","Action":"pass","Package":"sekscan/internal/scan","Elapsed":0.014}
+{"Time":"2026-10-02T18:50:58.953416274Z","Action":"pass","Package":"sekscan/internal/testsupport/sqlitebridge","Elapsed":0.009}
+{"Time":"2026-10-02T18:50:58.953299287Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase/java","Output":"--- PASS: TestTrivyReadinessRequiresMetadataAndDatabase/java (0.01s)\n"}
+{"Time":"2026-10-02T18:50:58.953454525Z","Action":"pass","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase/java","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.953459724Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase","Output":"--- PASS: TestTrivyReadinessRequiresMetadataAndDatabase (0.01s)\n"}
+{"Time":"2026-10-02T18:50:58.953463005Z","Action":"pass","Package":"sekscan/internal/scannerdb","Test":"TestTrivyReadinessRequiresMetadataAndDatabase","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.953466431Z","Action":"run","Package":"sekscan/internal/scannerdb","Test":"TestGrypeReadinessUsesNativeValidation"}
+{"Time":"2026-10-02T18:50:58.953471123Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestGrypeReadinessUsesNativeValidation","Output":"=== RUN   TestGrypeReadinessUsesNativeValidation\n"}
+{"Time":"2026-10-02T18:50:58.961172414Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestGrypeReadinessUsesNativeValidation","Output":"--- PASS: TestGrypeReadinessUsesNativeValidation (0.01s)\n"}
+{"Time":"2026-10-02T18:50:58.961189981Z","Action":"pass","Package":"sekscan/internal/scannerdb","Test":"TestGrypeReadinessUsesNativeValidation","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:58.961194245Z","Action":"run","Package":"sekscan/internal/scannerdb","Test":"TestDatabaseAgeValidation"}
+{"Time":"2026-10-02T18:50:58.961196103Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestDatabaseAgeValidation","Output":"=== RUN   TestDatabaseAgeValidation\n"}
+{"Time":"2026-10-02T18:50:58.961199278Z","Action":"output","Package":"sekscan/internal/scannerdb","Test":"TestDatabaseAgeValidation","Output":"--- PASS: TestDatabaseAgeValidation (0.00s)\n"}
+{"Time":"2026-10-02T18:50:58.961201239Z","Action":"pass","Package":"sekscan/internal/scannerdb","Test":"TestDatabaseAgeValidation","Elapsed":0}
+{"Time":"2026-10-02T18:50:58.961202918Z","Action":"output","Package":"sekscan/internal/scannerdb","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:58.961377931Z","Action":"output","Package":"sekscan/internal/scannerdb","Output":"coverage: 68.7% of statements\n"}
+{"Time":"2026-10-02T18:50:58.96179984Z","Action":"output","Package":"sekscan/internal/scannerdb","Output":"ok  \tsekscan/internal/scannerdb\t0.025s\tcoverage: 68.7% of statements\n"}
+{"Time":"2026-10-02T18:50:58.961919957Z","Action":"pass","Package":"sekscan/internal/scannerdb","Elapsed":0.026}
+{"Time":"2026-10-02T18:50:59.112876733Z","Action":"start","Package":"sekscan/internal/workspace"}
+{"Time":"2026-10-02T18:50:59.114477164Z","Action":"run","Package":"sekscan/internal/workspace","Test":"TestInitializePreservesFilesAndDiscovery"}
+{"Time":"2026-10-02T18:50:59.114496708Z","Action":"output","Package":"sekscan/internal/workspace","Test":"TestInitializePreservesFilesAndDiscovery","Output":"=== RUN   TestInitializePreservesFilesAndDiscovery\n"}
+{"Time":"2026-10-02T18:50:59.117676347Z","Action":"output","Package":"sekscan/internal/workspace","Test":"TestInitializePreservesFilesAndDiscovery","Output":"--- PASS: TestInitializePreservesFilesAndDiscovery (0.00s)\n"}
+{"Time":"2026-10-02T18:50:59.117686994Z","Action":"pass","Package":"sekscan/internal/workspace","Test":"TestInitializePreservesFilesAndDiscovery","Elapsed":0}
+{"Time":"2026-10-02T18:50:59.117693278Z","Action":"run","Package":"sekscan/internal/workspace","Test":"TestAllStandardAppConfigurationsValidate"}
+{"Time":"2026-10-02T18:50:59.117695903Z","Action":"output","Package":"sekscan/internal/workspace","Test":"TestAllStandardAppConfigurationsValidate","Output":"=== RUN   TestAllStandardAppConfigurationsValidate\n"}
+{"Time":"2026-10-02T18:50:59.119266156Z","Action":"output","Package":"sekscan/internal/workspace","Test":"TestAllStandardAppConfigurationsValidate","Output":"--- PASS: TestAllStandardAppConfigurationsValidate (0.00s)\n"}
+{"Time":"2026-10-02T18:50:59.119271896Z","Action":"pass","Package":"sekscan/internal/workspace","Test":"TestAllStandardAppConfigurationsValidate","Elapsed":0}
+{"Time":"2026-10-02T18:50:59.119273994Z","Action":"output","Package":"sekscan/internal/workspace","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:59.121212958Z","Action":"output","Package":"sekscan/internal/workspace","Output":"coverage: 70.9% of statements\n"}
+{"Time":"2026-10-02T18:50:59.121479543Z","Action":"output","Package":"sekscan/internal/workspace","Output":"ok  \tsekscan/internal/workspace\t0.008s\tcoverage: 70.9% of statements\n"}
+{"Time":"2026-10-02T18:50:59.121492877Z","Action":"pass","Package":"sekscan/internal/workspace","Elapsed":0.009}
+{"Time":"2026-10-02T18:50:59.134743807Z","Action":"start","Package":"sekscan/scripts/moduleupdate"}
+{"Time":"2026-10-02T18:50:59.136420761Z","Action":"run","Package":"sekscan/scripts/moduleupdate","Test":"TestSQLiteLibcRequirement"}
+{"Time":"2026-10-02T18:50:59.136435451Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Test":"TestSQLiteLibcRequirement","Output":"=== RUN   TestSQLiteLibcRequirement\n"}
+{"Time":"2026-10-02T18:50:59.136454741Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Test":"TestSQLiteLibcRequirement","Output":"--- PASS: TestSQLiteLibcRequirement (0.00s)\n"}
+{"Time":"2026-10-02T18:50:59.1364584Z","Action":"pass","Package":"sekscan/scripts/moduleupdate","Test":"TestSQLiteLibcRequirement","Elapsed":0}
+{"Time":"2026-10-02T18:50:59.136462031Z","Action":"run","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleJSONStream"}
+{"Time":"2026-10-02T18:50:59.136464803Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleJSONStream","Output":"=== RUN   TestModuleJSONStream\n"}
+{"Time":"2026-10-02T18:50:59.13647385Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleJSONStream","Output":"--- PASS: TestModuleJSONStream (0.00s)\n"}
+{"Time":"2026-10-02T18:50:59.136492965Z","Action":"pass","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleJSONStream","Elapsed":0}
+{"Time":"2026-10-02T18:50:59.13649648Z","Action":"run","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleUpdateRollback"}
+{"Time":"2026-10-02T18:50:59.136499233Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleUpdateRollback","Output":"=== RUN   TestModuleUpdateRollback\n"}
+{"Time":"2026-10-02T18:50:59.139664089Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleUpdateRollback","Output":"2026/10/02 18:50:59 INFO go command args=version\n"}
+{"Time":"2026-10-02T18:50:59.141300295Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleUpdateRollback","Output":"2026/10/02 18:50:59 INFO go command args=\"get -u -t ./...\"\n"}
+{"Time":"2026-10-02T18:50:59.143188112Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleUpdateRollback","Output":"2026/10/02 18:50:59 WARN module files restored; update was not completed\n"}
+{"Time":"2026-10-02T18:50:59.144703861Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleUpdateRollback","Output":"--- PASS: TestModuleUpdateRollback (0.01s)\n"}
+{"Time":"2026-10-02T18:50:59.144714066Z","Action":"pass","Package":"sekscan/scripts/moduleupdate","Test":"TestModuleUpdateRollback","Elapsed":0.01}
+{"Time":"2026-10-02T18:50:59.14472204Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Output":"PASS\n"}
+{"Time":"2026-10-02T18:50:59.145346043Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Output":"coverage: 38.0% of statements\n"}
+{"Time":"2026-10-02T18:50:59.145616144Z","Action":"output","Package":"sekscan/scripts/moduleupdate","Output":"ok  \tsekscan/scripts/moduleupdate\t0.011s\tcoverage: 38.0% of statements\n"}
+{"Time":"2026-10-02T18:50:59.145630049Z","Action":"pass","Package":"sekscan/scripts/moduleupdate","Elapsed":0.011}

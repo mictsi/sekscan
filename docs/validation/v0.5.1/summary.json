@@ -1,0 +1,25 @@
+{
+  "application": {
+    "pass": 255,
+    "skip": 2,
+    "fail": 0,
+    "skipped_tests": [
+      "TestExternalDatabaseIntegration/postgres",
+      "TestExternalDatabaseIntegration/mssql"
+    ]
+  },
+  "release_helper": {
+    "pass": 15,
+    "skip": 0,
+    "fail": 0,
+    "skipped_tests": []
+  },
+  "portable_browser": 15,
+  "history_design_workflows": 43,
+  "app_version": "0.5.1-preview",
+  "design_version": "3.0.2",
+  "coverage_percent": 64.5,
+  "production_build_verified": false,
+  "race_passed": true,
+  "vet_passed": true
+}

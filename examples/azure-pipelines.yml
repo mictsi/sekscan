@@ -1,0 +1,39 @@
+# Azure DevOps Services example for THIS repository. Use trusted tool builds
+# and policy artifacts when scanning a separate application repository.
+# Agent prerequisite: a supported patched Go toolchain >= 1.26.0.
+# Provision it with GoTool@0 using your approved exact patch version, or a managed agent image.
+trigger:
+  branches:
+    include: [main]
+pr: none
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - checkout: self
+    persistCredentials: false
+  - bash: |
+      set -euo pipefail
+      go version
+      go mod tidy
+      go mod verify
+      CGO_ENABLED=0 go build -trimpath -o "$(Agent.TempDirectory)/sekscan" ./cmd/sekscan
+    displayName: Build security tool with the agent Go toolchain
+  - bash: '"$(Agent.TempDirectory)/sekscan" prepare --yes --config examples/sekscan.json --home "$(Agent.TempDirectory)/sekscan-workspace"'
+    displayName: Install scanner prerequisites
+  - bash: '"$(Agent.TempDirectory)/sekscan" scan dir:. --ci --config examples/sekscan.json --home "$(Agent.TempDirectory)/sekscan-workspace" --project sekscan --out security-report'
+    displayName: Evaluate security policy
+  - task: PublishTestResults@2
+    condition: always()
+    inputs:
+      testResultsFormat: JUnit
+      testResultsFiles: security-report/junit.xml
+      failTaskOnFailedTests: true
+      failTaskOnMissingResultsFile: true
+      testRunTitle: Security policy
+  - task: PublishPipelineArtifact@1
+    condition: always()
+    inputs:
+      targetPath: security-report
+      artifact: security-report
+# On-premises Azure DevOps Server requires Build Artifacts, not this Pipeline
+# Artifact task. Do not use '|| true' or continueOnError on the scan step.

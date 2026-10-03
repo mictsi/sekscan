@@ -1,0 +1,38 @@
+{
+  "version": "0.6.4-preview",
+  "date": "2026-10-03",
+  "application": {
+    "passed": 461,
+    "skipped": 2,
+    "failed": 0,
+    "coverage_percent": 68.7,
+    "race": "passed",
+    "vet": "passed",
+    "drivers": "test-only system SQLite"
+  },
+  "release_helper": {
+    "passed": 17,
+    "failed": 0,
+    "vet": "passed"
+  },
+  "release_workflow": {
+    "unittest_methods_passed": 18,
+    "hosted_execution": false
+  },
+  "windows_arm64": {
+    "scope": "dependency-package test executable, not production application",
+    "goos": "windows",
+    "goarch": "arm64",
+    "pe_machine": "0xaa64",
+    "native_execution": false,
+    "bytes": 10239488
+  },
+  "production_build": {
+    "completed": false,
+    "reason": "Go toolchain download blocked by network/DNS"
+  },
+  "live_semgrep_test": false,
+  "user_exit_2_cause_identified": false,
+  "ui_changes": false,
+  "browser_retested": false
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "dependency-package test executable, not production application",
+  "goos": "windows",
+  "goarch": "arm64",
+  "pe_machine": "0xaa64",
+  "native_execution": false,
+  "bytes": 10239488
+}

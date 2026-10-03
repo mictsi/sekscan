@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en" data-sk-theme="dark" data-sk-density="comfortable" data-sekura-version="3.0.2"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0lEbppACw2zg1nlvnBmfCuT8QG9R0rpIcu2f/TT9aw8='; style-src 'sha256-enjsYnzuVyabiEPnmA4w8tmpQ6QDsO4+EmyNGJ3EjdU='; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer"><title>sekscan | Security report</title><style>/* Sekura 3.0.2 adaptation, commit 687bcdcf67d56a3bdfe3bbc4ff1ae863239e8c8a.
+ * MIT attribution and integration boundary: docs/UI.md.
+ * This application owns its controllers; do not also initialize upstream ones. */
+:root,[data-sk-theme="dark"]{
+ color-scheme:dark;
+ --sk-color-surface-base:#121315;
+ --sk-color-surface-subtle:#0d0e10;
+ --sk-color-surface-raised:#1a1a1a;
+ --sk-color-surface-overlay:#22252a;
+ --sk-color-surface-sunken:#0d0e10;
+ --sk-color-surface-selected:#1c3557;
+ --sk-color-surface-hover:#22252a;
+ --sk-color-text-primary:#fafafa;
+ --sk-color-text-secondary:#f1f1f1;
+ --sk-color-text-tertiary:#dedede;
+ --sk-color-text-link:#85b8ff;
+ --sk-color-text-on-brand:#121315;
+ --sk-color-border-subtle:#2b2b2b;
+ --sk-color-border-default:#555555;
+ --sk-color-border-control:#858585;
+ --sk-color-focus:#85b8ff;
+ --sk-color-action-primary-bg:#579dff;
+ --sk-color-action-primary-hover:#85b8ff;
+ --sk-color-status-danger:#f08a8a;
+ --sk-color-status-danger-bg:#380c0c;
+ --sk-color-status-warning:#f7bd3f;
+ --sk-color-status-warning-bg:#301d05;
+ --sk-color-status-success:#63c489;
+ --sk-color-status-success-bg:#042013;
+ --sk-color-status-info:#85b8ff;
+ --sk-color-status-info-bg:#1c3557;
+ --sk-color-chart-1:#85b8ff;
+ --sk-color-chart-2:#f7bd3f;
+ --sk-color-chart-3:#55d5c7;
+ --sk-color-chart-4:#63c489;
+ --sk-color-chart-5:#f08a8a;
+ --sk-color-chart-6:#dedede;
+ --sk-space-4:4px;
+ --sk-space-8:8px;
+ --sk-space-12:12px;
+ --sk-space-16:16px;
+ --sk-space-24:24px;
+ --sk-space-32:32px;
+ --sk-radius-sm:4px;
+ --sk-radius-md:6px;
+}
+[data-sk-theme="light"]{color-scheme:light;
+ --sk-color-surface-base:#ffffff;
+ --sk-color-surface-subtle:#fafafa;
+ --sk-color-surface-raised:#ffffff;
+ --sk-color-surface-overlay:#f1f1f1;
+ --sk-color-surface-sunken:#f1f1f1;
+ --sk-color-surface-selected:#e9f2ff;
+ --sk-color-surface-hover:#f1f1f1;
+ --sk-color-text-primary:#1a1a1a;
+ --sk-color-text-secondary:#454545;
+ --sk-color-text-tertiary:#555555;
+ --sk-color-text-link:#1558bc;
+ --sk-color-text-on-brand:#ffffff;
+ --sk-color-border-subtle:#dedede;
+ --sk-color-border-default:#b8b8b8;
+ --sk-color-border-control:#858585;
+ --sk-color-focus:#1868db;
+ --sk-color-action-primary-bg:#1868db;
+ --sk-color-action-primary-hover:#1558bc;
+ --sk-color-status-danger:#8e2020;
+ --sk-color-status-danger-bg:#fdeeee;
+ --sk-color-status-warning:#7e4e0c;
+ --sk-color-status-warning-bg:#fff8e6;
+ --sk-color-status-success:#0c5732;
+ --sk-color-status-success-bg:#eaf8ee;
+ --sk-color-status-info:#1558bc;
+ --sk-color-status-info-bg:#e9f2ff;
+ --sk-color-chart-1:#1558bc;
+ --sk-color-chart-2:#9e6408;
+ --sk-color-chart-3:#057b76;
+ --sk-color-chart-4:#0d6d3d;
+ --sk-color-chart-5:#b02626;
+ --sk-color-chart-6:#555555}
+[data-sk-theme="hc-dark"]{color-scheme:dark;
+ --sk-color-surface-base:#000000;
+ --sk-color-surface-subtle:#000000;
+ --sk-color-surface-raised:#000000;
+ --sk-color-surface-overlay:#1a1a1a;
+ --sk-color-surface-sunken:#000000;
+ --sk-color-surface-selected:#1c3557;
+ --sk-color-text-primary:#ffffff;
+ --sk-color-text-secondary:#ffffff;
+ --sk-color-text-tertiary:#ffffff;
+ --sk-color-border-subtle:#858585;
+ --sk-color-border-default:#b8b8b8;
+ --sk-color-border-control:#ffffff;
+ --sk-color-text-link:#b3d4ff;
+ --sk-color-focus:#b3d4ff}
+[data-sk-theme="hc-light"]{color-scheme:light;
+ --sk-color-surface-base:#ffffff;
+ --sk-color-surface-subtle:#ffffff;
+ --sk-color-surface-raised:#ffffff;
+ --sk-color-surface-overlay:#f1f1f1;
+ --sk-color-surface-sunken:#ffffff;
+ --sk-color-surface-selected:#cce0ff;
+ --sk-color-surface-hover:#f1f1f1;
+ --sk-color-text-primary:#000000;
+ --sk-color-text-secondary:#000000;
+ --sk-color-text-tertiary:#000000;
+ --sk-color-text-link:#12396f;
+ --sk-color-text-on-brand:#ffffff;
+ --sk-color-border-subtle:#555555;
+ --sk-color-border-default:#000000;
+ --sk-color-border-control:#000000;
+ --sk-color-focus:#144794;
+ --sk-color-action-primary-bg:#144794;
+ --sk-color-action-primary-hover:#12396f;
+ --sk-color-status-danger:#751e1e;
+ --sk-color-status-danger-bg:#fdeeee;
+ --sk-color-status-warning:#68400e;
+ --sk-color-status-warning-bg:#fff8e6;
+ --sk-color-status-success:#0c462a;
+ --sk-color-status-success-bg:#eaf8ee;
+ --sk-color-status-info:#12396f;
+ --sk-color-status-info-bg:#e9f2ff;
+ --sk-color-chart-1:#144794;
+ --sk-color-chart-2:#7e4e0c;
+ --sk-color-chart-3:#07625f;
+ --sk-color-chart-4:#0c5732;
+ --sk-color-chart-5:#8e2020;
+ --sk-color-chart-6:#3c3c3c}
+
+/* Geometry and type. Density never reduces text size. */
+:root {
+  --sk-space-2: 2px; --sk-space-6: 6px; --sk-space-10: 10px;
+  --sk-layout-header-height: 3rem; --sk-layout-nav-width: 17rem;
+  --sk-layout-nav-collapsed: 3.5rem; --sk-layout-detail-width: 22.5rem;
+  --sk-layout-document-width: 47.5rem; --sk-layout-touch-target: 2.75rem;
+  --sk-control-height-md: 2.25rem; --sk-table-row-padding: .75rem;
+  --sk-font-family-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sk-font-family-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --sk-font-size-body-md: 1rem; --sk-font-size-body-sm: .875rem;
+  --sk-font-size-body-xs: .75rem; --sk-line-height-body-md: 1.5;
+  --sk-focus-ring-width: 2px; --sk-focus-ring-offset: 2px;
+  --sk-color-focus-ring: var(--sk-color-focus);
+  --sk-color-border-brand: var(--sk-color-action-primary-bg);
+  --sk-color-text-brand: var(--sk-color-text-link);
+  --sk-color-surface-scrim: rgb(0 0 0 / 64%);
+  --sk-z-header: 20; --sk-z-scrim: 50; --sk-z-drawer: 60; --sk-z-tooltip: 70;
+  --sk-z-skip-link: 100;
+  --bg: var(--sk-color-surface-base); --surface: var(--sk-color-surface-raised);
+  --border: var(--sk-color-border-subtle); --text: var(--sk-color-text-primary);
+  --muted: var(--sk-color-text-tertiary); --accent: var(--sk-color-text-link);
+  --ink: var(--text); --line: var(--border); --canvas: var(--bg);
+  --teal: var(--sk-color-status-success); --red: var(--sk-color-status-danger);
+  --amber: var(--sk-color-status-warning);
+  --c0: var(--sk-color-chart-1); --c1: var(--sk-color-chart-2); --c2: var(--sk-color-chart-3);
+  --c3: var(--sk-color-chart-4); --c4: var(--sk-color-chart-5); --c5: var(--sk-color-chart-6);
+}
+[data-sk-density="compact"] { --sk-table-row-padding: .5rem; }
+[data-sk-density="dense"] { --sk-table-row-padding: .25rem; }
+
+/* Baseline and controls. */
+*, *::before, *::after { box-sizing: border-box; }
+html { font: 100%/var(--sk-line-height-body-md) var(--sk-font-family-sans); background: var(--bg); color: var(--text); }
+body { margin: 0; min-block-size: 100dvh; }
+body > *, main > * { min-inline-size: 0; }
+[hidden] { display: none !important; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+button, input, select { font: inherit; max-inline-size: 100%; }
+button, a { touch-action: manipulation; }
+button { cursor: pointer; }
+button:disabled, [aria-disabled="true"] { opacity: .5; cursor: default; }
+:focus-visible { outline: var(--sk-focus-ring-width) solid var(--sk-color-focus-ring); outline-offset: var(--sk-focus-ring-offset); }
+:target, [tabindex="-1"] { scroll-margin-block-start: calc(var(--sekscan-header-size, var(--sk-layout-header-height)) + 1rem); }
+input, select {
+  background-color: var(--sk-color-surface-base); color: var(--text);
+  border: 1px solid var(--sk-color-border-control); border-radius: var(--sk-radius-sm);
+  padding: .375rem .625rem; min-block-size: var(--sk-control-height-md);
+  font-size: var(--sk-font-size-body-sm); line-height: 1.428571; min-inline-size: 0;
+}
+input::placeholder { color: var(--muted); opacity: 1; }
+input[readonly] { background-color: var(--sk-color-surface-sunken); }
+input[list]::-webkit-calendar-picker-indicator { opacity: 0; }
+.sk-input-with-indicator { position: relative; display: block; min-inline-size: 0; }
+.sk-input-with-indicator input { display: block; inline-size: 100%; padding-inline-end: 2rem; }
+.sk-input-with-indicator::after { content: ""; position: absolute; inset-inline-end: .75rem; inset-block-start: 50%; inline-size: .4rem; block-size: .4rem; border-inline-end: 1.5px solid currentColor; border-block-end: 1.5px solid currentColor; transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+.sk-input-with-indicator:has(input[readonly])::after { display: none; }
+button, .button {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sk-space-6);
+  padding: .375rem .75rem; min-block-size: var(--sk-control-height-md);
+  border: 1px solid transparent; border-radius: var(--sk-radius-sm);
+  color: var(--sk-color-text-on-brand); background: var(--sk-color-action-primary-bg);
+  font-size: var(--sk-font-size-body-sm); line-height: 1.428571; font-weight: 500;
+  text-decoration: none; overflow-wrap: anywhere;
+}
+button:hover, .button:hover { background: var(--sk-color-action-primary-hover); }
+button.secondary, .button.secondary {
+  background: var(--bg); color: var(--text); border-color: var(--sk-color-border-control);
+}
+button.secondary:hover, .button.secondary:hover { background: var(--sk-color-surface-hover); }
+button.text-button { background: transparent; color: var(--accent); text-decoration: underline; padding-inline: .375rem; }
+.icon-button { inline-size: var(--sk-control-height-md); padding: .25rem; flex: 0 0 auto; }
+.icon-button svg, .sk-side-nav svg { inline-size: 1.25rem; block-size: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; flex-shrink: 0; }
+.muted, small { color: var(--muted); }
+small { display: block; font-size: var(--sk-font-size-body-xs); line-height: 1.333333; margin-block-start: 3px; }
+.small { font-size: var(--sk-font-size-body-xs); }
+.grow { flex: 1 1 14rem; min-inline-size: 0; }
+.strong { font-weight: 600; }
+p { margin: .375rem 0 .75rem; color: var(--sk-color-text-secondary); }
+h1 { font-size: 2rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.25; margin: .25rem 0 .5rem; overflow-wrap: anywhere; }
+h2 { font-size: 1.125rem; line-height: 1.5; margin: 0 0 .5rem; font-weight: 600; overflow-wrap: anywhere; }
+h3 { font-size: 1rem; margin: 0 0 .5rem; }
+.eyebrow { color: var(--muted); letter-spacing: .08em; font-size: .75rem; font-weight: 600; text-transform: uppercase; }
+code, pre { font-family: var(--sk-font-family-mono); font-size: .8125rem; }
+code { overflow-wrap: anywhere; }
+pre { padding: 1rem; background: var(--sk-color-surface-sunken); border: 1px solid var(--border); border-radius: var(--sk-radius-sm); max-block-size: 24rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* One shared workspace shell, with a 48px header and 272px desktop navigation. */
+.app-topbar {
+  position: sticky; inset-block-start: 0; z-index: var(--sk-z-header);
+  display: flex; align-items: center; flex-wrap: wrap; gap: .75rem;
+  min-block-size: var(--sk-layout-header-height); padding: .25rem 1rem;
+  border-block-end: 1px solid var(--border); background: var(--bg);
+}
+.brand { display: inline-flex; align-items: center; gap: .5rem; font-size: 1.125rem; font-weight: 650; text-decoration: none; color: var(--text); min-inline-size: 0; }
+.brand-icon { display: inline-grid; place-items: center; inline-size: 1.5rem; block-size: 1.5rem; background: var(--sk-color-action-primary-bg); color: var(--sk-color-text-on-brand); border-radius: var(--sk-radius-sm); font-size: .875rem; }
+.workspace-marker { color: var(--muted); border: 1px solid var(--border); border-radius: var(--sk-radius-sm); font-size: .75rem; padding: .0625rem .375rem; }
+.breadcrumbs { display: flex; align-items: center; gap: .5rem; flex: 1 1 14rem; flex-wrap: wrap; font-size: .875rem; color: var(--muted); min-inline-size: 0; overflow-wrap: anywhere; }
+.breadcrumbs a { text-decoration: none; }
+.theme-control { display: inline-flex; align-items: center; gap: .5rem; font-size: .875rem; color: var(--muted); margin-inline-start: auto; }
+.theme-control select { min-block-size: 2rem; padding-block: .25rem; max-inline-size: 12rem; }
+.app-rail {
+  position: fixed; inset-block: var(--sekscan-header-size, var(--sk-layout-header-height)) 0; inset-inline-start: 0;
+  inline-size: var(--sk-layout-nav-width); padding: .75rem .5rem;
+  display: flex; flex-direction: column; gap: 1rem; background: var(--sk-color-surface-subtle);
+  border-inline-end: 1px solid var(--border); overflow-y: auto; overscroll-behavior: contain; z-index: 10;
+}
+.app-area { margin-inline-start: var(--sk-layout-nav-width); min-inline-size: 0; }
+.sk-side-nav__list, .sk-side-nav__children { display: flex; flex-direction: column; gap: .125rem; padding: 0; margin: 0; list-style: none; }
+.sk-side-nav__item {
+  position: relative; display: flex; align-items: center; gap: .625rem;
+  min-inline-size: 0; min-block-size: 2.25rem; padding: .375rem .75rem;
+  border-radius: var(--sk-radius-md); color: var(--sk-color-text-secondary); font-size: .875rem; text-decoration: none;
+}
+.sk-side-nav__item:hover { background: var(--sk-color-surface-hover); color: var(--text); }
+.sk-side-nav__label { flex: 1 1 auto; min-inline-size: 0; overflow-wrap: anywhere; }
+.sk-side-nav__item[data-active-ancestor] { color: var(--text); font-weight: 600; }
+.sk-side-nav__item[aria-current="page"] { background: var(--sk-color-surface-selected); color: var(--sk-color-text-brand); font-weight: 600; }
+.sk-side-nav__item[aria-current="page"]::before {
+  content: ""; position: absolute; inset-inline-start: 0; inset-block: .25rem;
+  inline-size: var(--sk-space-4); border-radius: 0; background: var(--sk-color-border-brand);
+}
+.sk-side-nav__item:focus-visible { outline-offset: -2px; }
+.sk-side-nav__branch-row { display: flex; align-items: flex-start; gap: .125rem; min-inline-size: 0; }
+.sk-side-nav__branch-row > a { flex: 1 1 auto; }
+.sk-side-nav__toggle { flex: 0 0 auto; inline-size: 2rem; min-block-size: 2.25rem; padding: 0; background: transparent; color: var(--text); }
+.sk-side-nav__toggle:hover { background: var(--sk-color-surface-hover); }
+.sk-side-nav__toggle svg { rotate: -90deg; }
+.sk-side-nav__toggle:dir(rtl) svg { rotate: 90deg; }
+.sk-side-nav__toggle[aria-expanded="true"] svg { rotate: 0deg; }
+.sk-side-nav__children { margin-block: .25rem; margin-inline: 1rem 0; padding-inline: .75rem 0; border-inline-start: 1px solid var(--border); }
+.nav-context { padding: .5rem .75rem .25rem; color: var(--muted); font-size: .75rem; overflow-wrap: anywhere; }
+.sk-side-nav__open-items { margin-block-start: 1rem; padding-block-start: .5rem; border-block-start: 1px solid var(--sk-color-border-default); }
+.sk-side-nav__group-label { padding-inline: .75rem; margin-block: .5rem .25rem; font-size: .75rem; line-height: 1.3333; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.rail-note { margin-block-start: auto; padding: 1rem .75rem; border-block-start: 1px solid var(--border); color: var(--muted); font-size: .75rem; overflow-wrap: anywhere; }
+.rail-note strong { font-weight: 500; }
+.drawer-heading { display: none; }
+.nav-trigger { display: none; }
+[data-ui-ready] .nav-trigger { display: inline-flex; }
+.nav-scrim { position: fixed; inset: 0; background: var(--sk-color-surface-scrim); z-index: var(--sk-z-scrim); }
+.nav-tooltip { position: fixed; z-index: var(--sk-z-tooltip); background: var(--sk-color-surface-overlay); color: var(--text); padding: .375rem .625rem; border: 1px solid var(--sk-color-border-control); border-radius: var(--sk-radius-sm); font-size: .875rem; pointer-events: none; max-inline-size: 16rem; }
+@media (min-width: 64rem) {
+  [data-nav-collapsed] .app-rail { inline-size: var(--sk-layout-nav-collapsed); }
+  [data-nav-collapsed] .app-area { margin-inline-start: var(--sk-layout-nav-collapsed); }
+  [data-nav-collapsed] .sk-side-nav__children, [data-nav-collapsed] .sk-side-nav__toggle, [data-nav-collapsed] .rail-note, [data-nav-collapsed] .sk-side-nav__group-label { display: none; }
+  [data-nav-collapsed] .sk-side-nav__item { justify-content: center; padding-inline: 0; }
+  [data-nav-collapsed] .sk-side-nav__label { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* Continuous content canvas. Data and chart regions remain wide. */
+main { max-inline-size: 100rem; margin-inline: auto; padding: 1.5rem 2rem 2.5rem; min-inline-size: 0; }
+.heading, .sk-page-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1rem 1.5rem; margin: 0 0 1.5rem; }
+.heading > div { min-inline-size: 0; }
+.heading > div:first-child { flex: 1 1 22rem; }
+.heading p { overflow-wrap: anywhere; max-inline-size: var(--sk-layout-document-width); margin-block-end: 0; }
+.toolbar { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; min-inline-size: 0; }
+.tabs { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0 1.25rem; border-block-end: 1px solid var(--border); margin: 1rem 0 1.5rem; }
+.tabs [role="tab"] { color: var(--muted); background: transparent; text-decoration: none; padding: .625rem .125rem; min-block-size: 2.75rem; border: 0; border-radius: 0; border-block-end: 3px solid transparent; font-size: .875rem; font-weight: 500; display: inline-flex; align-items: center; gap: .5rem; }
+.tabs [role="tab"][aria-selected="true"] { color: var(--accent); border-block-end-color: var(--sk-color-border-brand); font-weight: 600; }
+.tabs [role="tab"]:hover { color: var(--text); }
+.tab-count { font-size: .75rem; padding: .0625rem .375rem; background: var(--sk-color-surface-overlay); border-radius: var(--sk-radius-sm); color: var(--muted); }
+.panel { border: 1px solid var(--border); border-radius: var(--sk-radius-md); background: var(--bg); margin: 0 0 1.25rem; overflow: hidden; min-inline-size: 0; }
+.panel-heading, .panel-head { padding: 1rem; display: flex; justify-content: space-between; align-items: center; gap: .75rem; flex-wrap: wrap; border-block-end: 1px solid var(--border); }
+.panel-heading > div, .panel-head > div { min-inline-size: 0; }
+.panel-heading h2, .panel-head h2 { margin: 0; }
+.panel-heading > span { font-size: .75rem; color: var(--muted); }
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 1rem 0 1.5rem; border-block: 1px solid var(--border); }
+.metric { display: flex; flex-direction: column; gap: .375rem; padding: 1rem; min-inline-size: 0; border-inline-end: 1px solid var(--border); }
+.metric:last-child { border-inline-end: 0; }
+.metric > span, .metric-label { color: var(--muted); font-size: .875rem; }
+.metric > strong, .metric-value { font-size: 2rem; font-weight: 600; line-height: 1.25; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.metric small { font-size: .75rem; }
+
+/* Sekura 3.0.2 shared label / hint / control / feedback tracks. */
+.sk-field { display: flex; flex-direction: column; gap: var(--sk-space-6); min-inline-size: 0; }
+.sk-field-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sk-space-6) 1rem; min-inline-size: 0; }
+.sk-field-row > .sk-field, .sk-field-row__actions { display: grid; grid-template-rows: auto auto auto 1fr; grid-row: span 4; gap: var(--sk-space-6); min-inline-size: 0; }
+@supports (grid-template-rows: subgrid) {
+  .sk-field-row { grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr)); }
+  .sk-field-row > .sk-field, .sk-field-row__actions { grid-template-rows: subgrid; }
+}
+.sk-field-row > .sk-field > .sk-field__label { grid-row: 1; align-self: start; }
+.sk-field-row > .sk-field > .sk-field__hint { grid-row: 2; align-self: start; }
+.sk-field-row > .sk-field > .sk-field__control, .sk-field-row__actions > * { grid-row: 3; align-self: start; min-inline-size: 0; }
+.sk-field-row > .sk-field > .sk-field__support { grid-row: 4; }
+.sk-field-row__action-group { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; justify-self: stretch; }
+.sk-field-row__action-group > button { flex: 0 1 auto; align-self: stretch; }
+.sk-field__label { font-size: .875rem; line-height: 1.428571; color: var(--text); font-weight: 500; overflow-wrap: anywhere; }
+.sk-field__hint, .sk-field__support { font-size: .875rem; line-height: 1.428571; margin: 0; color: var(--sk-color-text-secondary); overflow-wrap: anywhere; }
+.sk-field__control { inline-size: 100%; }
+.filters { padding: 1rem; margin: 1rem 0 1.25rem; border-block: 1px solid var(--border); background: var(--sk-color-surface-subtle); }
+.filters .reset { font-size: .875rem; padding: .5rem .25rem; }
+
+/* Tables: scrolling stays local, while paging and focus stay visible. */
+.scroll, .table-wrap { overflow: auto; max-inline-size: 100%; overscroll-behavior-inline: contain; }
+table { border-collapse: collapse; inline-size: 100%; font-size: .875rem; line-height: 1.428571; }
+th, td { text-align: start; vertical-align: top; padding: var(--sk-table-row-padding) 1rem; border-block-end: 1px solid var(--border); }
+th { color: var(--muted); font-size: .75rem; font-weight: 600; white-space: nowrap; background: var(--sk-color-surface-subtle); }
+td { overflow-wrap: anywhere; }
+tbody tr:hover { background: var(--sk-color-surface-hover); }
+tbody tr:last-child td { border-block-end: 0; }
+td small { font-size: .75rem; }
+.table-density { display: inline-flex; align-items: center; gap: .5rem; flex-wrap: wrap; font-size: .875rem; color: var(--muted); }
+.table-density select { min-block-size: 2rem; padding-block: .25rem; }
+.empty { padding: 2.5rem 1.25rem; text-align: center; color: var(--muted); font-size: .875rem; }
+.path { max-inline-size: 20rem; overflow-wrap: anywhere; }
+.badge { display: inline-flex; align-items: center; gap: .25rem; font-size: .875rem; line-height: 1.428571; border: 1px solid currentColor; border-radius: var(--sk-radius-sm); padding: .0625rem .375rem; font-weight: 500; white-space: nowrap; color: var(--muted); }
+.badge.failed, .badge.fail, .badge.critical, .badge.new { color: var(--sk-color-status-danger); background: var(--sk-color-status-danger-bg); }
+.badge.high, .badge.incomplete, .badge.unverified, .badge.review { color: var(--sk-color-status-warning); background: var(--sk-color-status-warning-bg); }
+.badge.passed, .badge.pass, .badge.completed, .badge.accepted, .badge.resolved, .badge.removed { color: var(--sk-color-status-success); background: var(--sk-color-status-success-bg); }
+.badge.medium, .badge.changed, .badge.added, .badge.info { color: var(--sk-color-status-info); background: var(--sk-color-status-info-bg); }
+.notice, .banner { padding: .75rem 1rem; border: 1px solid var(--sk-color-status-info); border-radius: var(--sk-radius-sm); color: var(--sk-color-status-info); background: var(--sk-color-status-info-bg); font-size: .875rem; margin: 1rem 0; overflow-wrap: anywhere; }
+.notice p { color: inherit; font-size: .875rem; margin: .375rem 0 0; }
+.notice.warning, .banner.warning { color: var(--sk-color-status-warning); border-color: var(--sk-color-status-warning); background: var(--sk-color-status-warning-bg); }
+.notice.error { color: var(--sk-color-status-danger); border-color: var(--sk-color-status-danger); background: var(--sk-color-status-danger-bg); }
+.paging, .table-footer { border-block-start: 1px solid var(--border); padding: .75rem 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; color: var(--muted); font-size: .875rem; }
+.paging nav, .pagination { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; min-inline-size: 0; }
+.paging nav > a, .paging nav > span { min-block-size: 2.25rem; display: inline-flex; align-items: center; padding: .375rem .625rem; border: 1px solid var(--sk-color-border-control); border-radius: var(--sk-radius-sm); text-decoration: none; }
+.jump { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: .625rem; padding: 0 1rem 1rem; }
+.jump label { display: inline-flex; flex-wrap: wrap; gap: .5rem; align-items: center; font-size: .875rem; }
+.jump input, #jump-page { inline-size: 4.625rem; min-inline-size: 0; }
+.page-footer { font-size: .75rem; color: var(--muted); border-block-start: 1px solid var(--border); padding-block-start: 1rem; margin-block-start: 2rem; }
+details { margin-block-start: .5rem; }
+summary { cursor: pointer; color: var(--accent); font-size: .875rem; min-block-size: 1.5rem; }
+details pre { max-inline-size: 32rem; }
+.field { display: inline-block; background: var(--sk-color-surface-selected); border-radius: var(--sk-radius-sm); padding: .0625rem .3125rem; font-size: .75rem; margin: 0 .25rem .25rem 0; }
+.visually-hidden { position: absolute; inline-size: 1px; block-size: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; inset-block-start: -100px; inset-inline-start: .5rem; z-index: var(--sk-z-skip-link); background: var(--surface); padding: .75rem 1rem; border: 2px solid var(--sk-color-focus-ring); border-radius: var(--sk-radius-md); }
+.skip-link:focus { inset-block-start: .5rem; }
+
+@media (max-width: 80rem) {
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metric:nth-child(2n) { border-inline-end: 0; }
+  .metric:nth-child(n+3) { border-block-start: 1px solid var(--border); }
+}
+@media (max-width: 63.999rem) {
+  .app-area { margin-inline-start: 0; }
+  .app-rail { position: static; inline-size: auto; border-block-end: 1px solid var(--border); }
+  [data-ui-ready] .app-rail { position: fixed; inset-block: 0; inline-size: min(20rem, 90vw); z-index: var(--sk-z-drawer); }
+  .drawer-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .25rem .75rem .75rem; border-block-end: 1px solid var(--border); }
+  .drawer-heading h2 { margin: 0; }
+  .app-topbar .breadcrumbs { flex-basis: 100%; order: 4; padding-block: .25rem; }
+  .workspace-marker { display: none; }
+  main { padding: 1.25rem 1rem 2rem; }
+}
+@media (max-width: 30rem) {
+  .theme-control > span { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); }
+  .theme-control select { max-inline-size: 10rem; }
+  .app-topbar { gap: .5rem; padding-inline: .5rem; }
+  .metric { padding: .75rem; }
+  .tabs { gap: 0 1rem; }
+  .toolbar { inline-size: 100%; }
+  .paging { padding-inline: .75rem; }
+}
+@media (pointer: coarse) {
+  button, .button, .sk-side-nav__item, input, select, .paging nav > a, .sk-side-nav__toggle { min-block-size: var(--sk-layout-touch-target); }
+  .icon-button, .sk-side-nav__toggle { min-inline-size: var(--sk-layout-touch-target); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+@media (forced-colors: active) {
+  :focus-visible { outline-color: Highlight; }
+  .tabs [role="tab"][aria-selected="true"] { border-block-end-color: Highlight; }
+  .badge, .panel, .metric, .sk-side-nav__children, .sk-side-nav__open-items, .nav-tooltip { border-color: CanvasText; }
+  .sk-side-nav__item[aria-current="page"]::before { background: Highlight; forced-color-adjust: none; }
+  .nav-tooltip { background: Canvas; color: CanvasText; }
+  input[list] { forced-color-adjust: auto; }
+}
+
+.sk-input-with-indicator:dir(rtl)::after { transform: translateY(-70%) rotate(-45deg); }
+
+/* Report-specific data presentation. Shell, controls and tokens are shared. */
+.run-status { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.overview-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.overview-panels > .panel { min-inline-size: 0; }
+.metric-top, .metric-label, .metric .metric-caption { font-size: .875rem; color: var(--muted); }
+.metric-top { display: flex; align-items: center; justify-content: space-between; }
+.metric .metric-number { font-size: 2rem; font-weight: 600; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.metric .metric-icon { display: none; }
+.metric-note, .metric .metric-hint, .metric-sub { color: var(--muted); font-size: .75rem; }
+.engine-row { display: flex; justify-content: space-between; align-items: center; padding: .875rem 1rem; gap: .75rem; border-block-end: 1px solid var(--border); }
+.engine-row:last-child { border-block-end: 0; }
+.engine-name { font-weight: 600; font-size: .875rem; }
+.engine-description { font-size: .75rem; color: var(--muted); }
+.engine-row .badge { flex-shrink: 0; }
+.data-panel .filters { border: 0; border-block-end: 1px solid var(--border); border-radius: 0; margin: 0; }
+.data-panel table { min-inline-size: 56rem; }
+.data-panel th button { background: transparent; color: var(--muted); padding: 0; min-block-size: 1.75rem; font-size: .75rem; font-weight: 600; justify-content: flex-start; }
+.data-panel td { max-inline-size: 24rem; }
+.row-link { color: var(--accent); background: transparent; font-weight: 600; padding: 0; min-block-size: 1.75rem; text-decoration: underline; display: block; text-align: start; white-space: normal; overflow-wrap: anywhere; }
+.row-link:hover { background: transparent; }
+.subline { font-size: .75rem; color: var(--muted); margin-block-start: .25rem; overflow-wrap: anywhere; }
+.pagination button, .pagination select { font-size: .875rem; min-block-size: 2.25rem; }
+.pagination label { display: inline-flex; align-items: center; gap: .5rem; flex-wrap: wrap; font-size: .875rem; }
+.health-card { border-block: 1px solid var(--border); background: var(--bg); padding: 1rem; margin-block-end: 1rem; }
+.health-card h2 { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+.keyvalue { display: grid; grid-template-columns: minmax(6rem, 10rem) minmax(0, 1fr); gap: .625rem 1.25rem; margin-block-start: .875rem; font-size: .875rem; }
+.keyvalue .value { overflow-wrap: anywhere; white-space: pre-wrap; }
+.notes { padding: 1rem; }
+.notes li { color: var(--sk-color-text-secondary); margin: .5rem 0; overflow-wrap: anywhere; }
+dialog { background: var(--sk-color-surface-overlay); color: var(--text); border: 1px solid var(--sk-color-border-control); border-radius: var(--sk-radius-md); inline-size: min(51.25rem, calc(100vw - 2rem)); max-block-size: 88dvh; padding: 0; overflow: auto; }
+dialog::backdrop { background: var(--sk-color-surface-scrim); }
+.dialog-header { position: sticky; inset-block-start: 0; z-index: 1; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.25rem; border-block-end: 1px solid var(--border); background: var(--sk-color-surface-overlay); }
+.dialog-header > div { min-inline-size: 0; flex: 1 1 auto; }
+.dialog-header h2 { overflow-wrap: anywhere; }
+#detail-body { padding: 1.25rem; }
+.detail-section { margin: 1.5rem 0; }
+.detail-section p, .detail-section pre { overflow-wrap: anywhere; white-space: pre-wrap; }
+.detail-section h3 { margin-block-end: .625rem; }
+.noscript { margin: 1.25rem; padding: 1rem; border: 1px solid var(--sk-color-status-warning); }
+.chart-row { display: grid; grid-template-columns: 5rem 1fr 2.125rem; gap: .75rem; align-items: center; margin: .875rem 1rem; font-size: .875rem; }
+.chart-row progress { inline-size: 100%; block-size: .5rem; appearance: none; border: 0; border-radius: 2px; background: var(--sk-color-surface-overlay); color: var(--sk-color-chart-1); }
+.chart-row progress::-webkit-progress-bar { background: var(--sk-color-surface-overlay); border-radius: 2px; }
+.chart-row progress::-webkit-progress-value { background: var(--sk-color-chart-1); border-radius: 2px; }
+.chart-row progress.critical::-webkit-progress-value { background: var(--sk-color-status-danger); }
+.chart-row progress.high::-webkit-progress-value { background: var(--sk-color-status-warning); }
+.chart-row progress::-moz-progress-bar { background: var(--sk-color-chart-1); }
+.chart-row progress.critical::-moz-progress-bar { background: var(--sk-color-status-danger); }
+.chart-row progress.high::-moz-progress-bar { background: var(--sk-color-status-warning); }
+@media (max-width: 70rem) { .overview-panels { grid-template-columns: 1fr; } }
+@media (max-width: 40rem) {
+  .keyvalue { grid-template-columns: 1fr; gap: .3125rem; }
+  .keyvalue .value { margin-block-end: .625rem; }
+  .dialog-header { padding: .875rem; }
+  .engine-row { flex-wrap: wrap; }
+}
+@media (pointer: coarse) { .row-link, .data-panel th button, .pagination button, .pagination select { min-block-size: var(--sk-layout-touch-target); } }
+@media (forced-colors: active) { dialog { border-color: CanvasText; } .chart-row progress { appearance: auto; } }
+</style></head>
+<body data-mode="report">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="app-topbar sk-top-bar" data-app-header>
+  <button type="button" class="secondary icon-button nav-trigger" data-nav-trigger aria-expanded="true" aria-controls="app-navigation" aria-label="Collapse navigation"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4h14v12H3z M7 4v12"/></svg></button>
+  <a class="brand" href="#overview" aria-label="sekscan home"><span class="brand-icon" aria-hidden="true">S</span><span>sekscan</span></a>
+  <span class="workspace-marker">Read only</span>
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><span aria-current="page">Portable report</span></nav>
+  <label class="theme-control"><span>Appearance</span><select data-theme aria-label="Appearance"><option value="dark">Dark</option><option value="light">Light</option><option value="hc-dark">High contrast dark</option><option value="hc-light">High contrast light</option><option value="system">System</option></select></label>
+</header>
+<div class="nav-scrim" data-nav-scrim hidden></div>
+<aside class="app-rail sk-side-nav" id="app-navigation" aria-label="Workspace navigation" tabindex="-1">
+  <div class="drawer-heading"><h2>Navigation</h2><button type="button" class="secondary icon-button" data-nav-close aria-label="Close navigation"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10 M15 5 5 15"/></svg></button></div>
+  <nav aria-label="Workspace">
+  <ul class="sk-side-nav__list">
+  
+    <li><a class="sk-side-nav__item" href="#overview" aria-current="page" data-nav-label="Scan report"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2h7l4 4v12H5z M12 2v4h4 M8 10h5 M8 13h5"/></svg><span class="sk-side-nav__label">Scan report</span></a></li>
+  
+  </ul>
+  
+  </nav>
+  <div class="rail-note"><strong>Portable evidence</strong><small>No external assets or telemetry</small><small>Immutable scan evidence</small><small id="app-version"></small></div>
+</aside>
+<div class="app-area">
+
+<main id="main" tabindex="-1"><section class="heading sk-page-header"><div><div class="eyebrow">APPLICATION SECURITY · <span id="report-id"></span></div><h1 id="page-title">Security overview</h1><p id="target-description"></p></div><div class="toolbar"><button id="load-report" class="button secondary">Open report JSON</button><input type="file" id="report-file" accept="application/json,.json" hidden><button id="download-json" class="button secondary">Export JSON</button></div></section><div id="import-error" class="notice error" role="alert" hidden></div><div class="run-status"><span id="status" class="badge"></span><span id="run-time" class="muted small"></span></div>
+<nav class="tabs" role="tablist" aria-label="Report views"><button id="tab-overview" role="tab" aria-controls="report-panel" aria-selected="true" tabindex="0" data-view="overview" class="nav">Dashboard</button><button id="tab-findings" role="tab" aria-controls="report-panel" aria-selected="false" tabindex="-1" data-view="findings" class="nav">Findings<span id="nav-count" class="tab-count"></span></button><button id="tab-licenses" role="tab" aria-controls="report-panel" aria-selected="false" tabindex="-1" data-view="licenses" class="nav">Application licenses</button><button id="tab-components" role="tab" aria-controls="report-panel" aria-selected="false" tabindex="-1" data-view="components" class="nav">Inventory / SBOM</button><button id="tab-changes" role="tab" aria-controls="report-panel" aria-selected="false" tabindex="-1" data-view="changes" class="nav">Changes</button><button id="tab-health" role="tab" aria-controls="report-panel" aria-selected="false" tabindex="-1" data-view="health" class="nav">Scan health</button></nav><section id="report-panel" role="tabpanel" aria-labelledby="tab-overview"><div id="coverage-banner" class="banner" role="status"></div>
+<section id="metrics" class="metrics" aria-label="Scan metrics"></section>
+<section id="overview-panels" class="overview-panels"><article class="panel"><div class="panel-head"><h2>Finding distribution</h2><span class="muted small">BY SEVERITY</span></div><div id="severity-chart"></div></article><article class="panel"><div class="panel-head"><h2>Analysis coverage</h2><button class="text-button" id="view-health">View scan health →</button></div><div id="engine-overview"></div></article></section>
+<section id="data-section" class="panel data-panel"><div class="panel-head"><div><h2 id="table-title">Prioritized findings</h2><p id="table-subtitle" class="muted small">Inspect a finding to see evidence, fixes, and policy decisions.</p></div><button class="button secondary" id="export-csv">Export filtered CSV</button></div>
+<div class="filters sk-field-row" aria-label="Report filters">
+<div class="sk-field"><label class="sk-field__label" for="search">Search report</label><input class="sk-input sk-field__control" id="search" type="search" placeholder="Search packages, CVEs, licenses, paths…"><div class="sk-field__support"></div></div>
+<div class="sk-field"><label class="sk-field__label" for="category">Category</label><select class="sk-input sk-field__control" id="category" aria-label="Category"><option value="">All categories</option></select><div class="sk-field__support"></div></div>
+<div class="sk-field"><label class="sk-field__label" for="severity">Severity</label><select class="sk-input sk-field__control" id="severity" aria-label="Severity"><option value="">All severities</option></select><div class="sk-field__support"></div></div>
+<div class="sk-field"><label class="sk-field__label" for="scope">Scope</label><select class="sk-input sk-field__control" id="scope" aria-label="Scope"><option value="">All scopes</option></select><div class="sk-field__support"></div></div>
+<div class="sk-field"><label class="sk-field__label" for="decision">Policy decision</label><select class="sk-input sk-field__control" id="decision" aria-label="Policy decision"><option value="">All decisions</option></select><div class="sk-field__support"></div></div>
+<div class="sk-field"><label class="sk-field__label" for="engine">Engine</label><select class="sk-input sk-field__control" id="engine" aria-label="Engine"><option value="">All engines</option></select><div class="sk-field__support"></div></div>
+<div class="sk-field"><label class="sk-field__label" for="baseline">Change</label><select class="sk-input sk-field__control" id="baseline" aria-label="Baseline status"><option value="">All changes</option></select><div class="sk-field__support"></div></div>
+<div class="sk-field"><label class="sk-field__label" for="fix">Fix availability</label><select class="sk-input sk-field__control" id="fix" aria-label="Fix availability"><option value="">Any fix status</option><option value="yes">Fix available</option><option value="no">No reported fix</option></select><div class="sk-field__support"></div></div>
+<div class="sk-field-row__actions"><div class="sk-field-row__action-group"><button id="reset-filters" class="secondary">Reset filters</button></div></div></div>
+<div class="table-wrap"><table id="report-table" aria-labelledby="table-title"><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><div id="empty-state" class="empty" hidden>No matching records. Adjust the filters or select another view.</div>
+<footer class="table-footer"><span id="result-count" class="muted small"></span><div class="pagination"><label class="small">Rows <select id="page-size" aria-label="Rows per page"><option>10</option><option selected>25</option><option>50</option><option>100</option><option>200</option></select></label><button id="first-page" class="button secondary">First</button><button id="previous" class="button secondary">← Previous</button><span id="page-number" class="small"></span><input id="jump-page" type="number" min="1" value="1" aria-label="Go to page"><button id="next" class="button secondary">Next →</button><button id="last-page" class="button secondary">Last</button></div></footer></section>
+<section id="health-section" hidden><div id="health-cards"></div><article class="panel notes"><h2>Coverage notes & limitations</h2><ul id="warnings"></ul></article></section>
+</section><footer class="page-footer">Evidence, not a security score. Application-license policy excludes OS components. <span id="footer-time"></span></footer></main></div>
+<dialog id="detail" aria-labelledby="detail-title"><div class="dialog-header"><div><div id="detail-category" class="eyebrow"></div><h2 id="detail-title" tabindex="-1"></h2></div><button id="close-detail" class="button secondary" aria-label="Close details">Close ×</button></div><div id="detail-body"></div></dialog>
+<noscript><p class="noscript">Enable JavaScript to search this report. The companion results.json contains all normalized data.</p></noscript>
+<script id="report-data" type="application/json">{"project_key":"demo-application","namespace":"demo","schema_version":"1.0","app_version":"0.5.1-preview (synthetic demonstration)","id":"synthetic-demo-fixture-001","started_at":"2026-10-02T06:40:41.725382532Z","finished_at":"2026-10-02T06:40:41.742359695Z","target":{"kind":"dir","value":"SYNTHETIC DEMO / checkout-service","identity":"synthetic-test-fixtures"},"revision":"DEMO — NOT A LIVE SECURITY SCAN","config_hash":"905bdc70efa5121af5325946cd164f7542bce0e5b13bee5c5113855dcd9b4d97","complete":true,"status":"failed","exit_code":1,"fail_on_review":true,"components":[{"id":"4a49231a6888d0751980ce6f","name":"log4j-core","version":"2.14.1","ecosystem":"java","purl":"pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1","scope":"application","scope_reason":"Language package-manager provenance (review unusual ownership cases)","locations":[{"path":"app/lib/log4j-core-2.14.1.jar"}],"licenses":[{"expression":"Apache-2.0","source":"syft","kind":"metadata"}],"license_decision":"pass","license_reason":"License expression satisfies configured policy"},{"id":"b80f76d8fc8eb4e4a82f92e3","name":"lodash","version":"4.17.15","ecosystem":"npm","purl":"pkg:npm/lodash@4.17.15","scope":"application","scope_reason":"Language package-manager provenance (review unusual ownership cases)","locations":[{"path":"package-lock.json"}],"licenses":[{"expression":"MIT","source":"syft","kind":"metadata"},{"expression":"MIT","source":"trivy","kind":"metadata"}],"license_decision":"pass","license_reason":"License expression satisfies configured policy"},{"id":"b9731e4e6a13508e818f905d","name":"requests","version":"2.19.1","ecosystem":"python","purl":"pkg:pypi/requests@2.19.1","scope":"application","scope_reason":"Language package-manager provenance (review unusual ownership cases)","locations":[{"path":"requirements.txt"}],"licenses":[{"expression":"Apache-2.0","source":"syft","kind":"metadata"}],"license_decision":"pass","license_reason":"License expression satisfies configured policy"},{"id":"74a21cf4bd00cb5165a2396c","name":"busybox","version":"1.35.0","ecosystem":"apk","purl":"pkg:apk/alpine/busybox@1.35.0","scope":"operating-system","scope_reason":"OS package-manager provenance","locations":[{"path":"lib/apk/db/installed"}],"licenses":[{"expression":"GPL-2.0-only","source":"syft","kind":"metadata"}],"license_decision":"excluded","license_reason":"OS licenses are excluded from application license policy"},{"id":"0473039e986c114e72cb50cc","name":"react","version":"18.3.1","ecosystem":"npm","purl":"pkg:npm/react@18.3.1","scope":"application","scope_reason":"Language package-manager provenance (review unusual ownership cases)","locations":[{"path":"package-lock.json"}],"licenses":[{"expression":"MIT","source":"syft","kind":"metadata"}],"license_decision":"pass","license_reason":"License expression satisfies configured policy"},{"id":"7c24baa157cfc2cd24d61066","name":"axios","version":"1.7.4","ecosystem":"npm","purl":"pkg:npm/axios@1.7.4","scope":"application","scope_reason":"Language package-manager provenance (review unusual ownership cases)","locations":[{"path":"package-lock.json"}],"licenses":[{"expression":"MIT","source":"syft","kind":"metadata"}],"license_decision":"pass","license_reason":"License expression satisfies configured policy"},{"id":"dc087082100edae2854c1ef0","name":"internal-widget","version":"1.2.0","ecosystem":"npm","purl":"pkg:npm/internal-widget@1.2.0","scope":"application","scope_reason":"Language package-manager provenance (review unusual ownership cases)","locations":[{"path":"node_modules/internal-widget/package.json"},{"path":"package-lock.json"}],"licenses":[{"expression":"MIT","source":"syft","kind":"metadata"},{"expression":"MIT","source":"trivy","kind":"metadata"},{"expression":"GPL-3.0-only","source":"trivy","kind":"detected","locations":[{"path":"node_modules/internal-widget/LICENSE"}]}],"license_decision":"review","license_reason":"Detected license text and package metadata contain different expressions; human review required"},{"id":"acca92e728bfc4f000a00dbd","name":"legacy-parser","version":"0.9.2","ecosystem":"npm","purl":"pkg:npm/legacy-parser@0.9.2","scope":"application","scope_reason":"Language package-manager provenance (review unusual ownership cases)","locations":[{"path":"package-lock.json"}],"licenses":[],"license_decision":"review","license_reason":"No usable license evidence was discovered"},{"id":"718ef027ac8aff8dfc9b0d31","name":"reporting-addon","version":"3.0.0","ecosystem":"npm","purl":"pkg:npm/reporting-addon@3.0.0","scope":"application","scope_reason":"Language package-manager provenance (review unusual ownership cases)","locations":[{"path":"package-lock.json"}],"licenses":[{"expression":"AGPL-3.0-only","source":"syft","kind":"metadata"}],"license_decision":"fail","license_reason":"License expression does not satisfy the configured allow/deny policy without further review"},{"id":"c6f141ddb02541fc87ad6cd2","name":"dual-license-lib","version":"2.1.0","ecosystem":"npm","purl":"pkg:npm/dual-license-lib@2.1.0","scope":"application","scope_reason":"Language package-manager provenance (review unusual ownership cases)","locations":[{"path":"package-lock.json"}],"licenses":[{"expression":"MIT OR GPL-3.0-only","source":"syft","kind":"metadata"}],"license_decision":"pass","license_reason":"License expression satisfies configured policy"}],"findings":[{"id":"3f5149baf83ac4ea90e7f342","fingerprint":"3f5149baf83ac4ea90e7f3422d04cf70b138435a09ae32080b9631cf6abd98e6","category":"vulnerability","rule_id":"CVE-2099-00001","aliases":["CVE-2099-00001","GHSA-demo-0001"],"component_id":"4a49231a6888d0751980ce6f","package":"log4j-core","version":"2.14.1","ecosystem":"java","scope":"application","severity":"critical","title":"CVE-2099-00001 in log4j-core","description":"Synthetic fixture: remote execution risk in a demonstration package. Not a verified advisory.","locations":[{"path":"app/lib/log4j-core-2.14.1.jar"}],"fixed_versions":["2.17.1"],"observations":[{"engine":"grype","advisory":"CVE-2099-00001","severity":"critical","severity_source":"synthetic-fixture","fixed_versions":["2.17.1"]}],"decision":"fail","decision_reason":"Meets configured severity threshold","baseline":"new"},{"id":"c187acaa0d1711aad003e973","fingerprint":"c187acaa0d1711aad003e973d098314d7b0bb67bfe638cc5e0dd59307179729a","category":"secret","rule_id":"private-key","aliases":["private-key"],"scope":"application","severity":"critical","title":"Synthetic private key detected","description":"Secret detected. Matched value and source code are not retained.","locations":[{"path":"src/settings.go","line":17}],"observations":[{"engine":"trivy","severity":"critical"}],"decision":"fail","decision_reason":"Meets configured severity threshold","baseline":"new"},{"id":"0e97cb8e6f8a202bf0c428b8","fingerprint":"0e97cb8e6f8a202bf0c428b8d21f16b231432dea961a670e77bd03a60f1d4caa","category":"license","rule_id":"license-policy","aliases":["license-policy"],"component_id":"718ef027ac8aff8dfc9b0d31","package":"reporting-addon","version":"3.0.0","ecosystem":"npm","scope":"application","severity":"high","title":"license-policy: reporting-addon","description":"License expression does not satisfy the configured allow/deny policy without further review","locations":[{"path":"package-lock.json"}],"observations":[{"engine":"syft","severity":"high"}],"decision":"fail","decision_reason":"License expression does not satisfy the configured allow/deny policy without further review","baseline":"new"},{"id":"2ce43c674bd4685fa82eed5b","fingerprint":"2ce43c674bd4685fa82eed5b5dde5b12e3e481393d9a795c532124cb65df5c95","category":"vulnerability","rule_id":"CVE-2099-00004","aliases":["CVE-2099-00004"],"component_id":"74a21cf4bd00cb5165a2396c","package":"busybox","version":"1.35.0","ecosystem":"apk","scope":"operating-system","severity":"high","title":"CVE-2099-00004 in busybox","description":"Synthetic OS vulnerability retained separately from application license enforcement.","locations":[{"path":"lib/apk/db/installed"}],"observations":[{"engine":"grype","advisory":"CVE-2099-00004","severity":"high","severity_source":"synthetic-fixture"}],"decision":"fail","decision_reason":"Meets configured severity threshold","baseline":"new"},{"id":"a87c4480c4f32170efcc509c","fingerprint":"a87c4480c4f32170efcc509cf0f5ea6e90ac19463e6fd786ca470041fdbb0171","category":"vulnerability","rule_id":"CVE-2099-00002","aliases":["CVE-2099-00002"],"component_id":"b80f76d8fc8eb4e4a82f92e3","package":"lodash","version":"4.17.15","ecosystem":"npm","scope":"application","severity":"high","title":"CVE-2099-00002 in lodash","description":"Synthetic fixture: prototype pollution in a demonstration dependency.","locations":[{"path":"package-lock.json"}],"fixed_versions":["4.17.21"],"observations":[{"engine":"grype","advisory":"CVE-2099-00002","severity":"high","severity_source":"synthetic-fixture","fixed_versions":["4.17.21"]}],"decision":"fail","decision_reason":"Meets configured severity threshold","baseline":"new"},{"id":"b80954611e43daeb0ca35349","fingerprint":"b80954611e43daeb0ca353496e5ae23e464955974d386f35410092339abf3485","category":"misconfiguration","rule_id":"AVD-DS-0002","aliases":["AVD-DS-0002"],"scope":"application","severity":"high","title":"Container runs as root","description":"Synthetic Dockerfile configuration finding.\nRemediation: Specify a non-root USER.","locations":[{"path":"Dockerfile","line":1}],"observations":[{"engine":"trivy","severity":"high"}],"decision":"fail","decision_reason":"Meets configured severity threshold","baseline":"new"},{"id":"bddbfeca99fc45e84e65387d","fingerprint":"bddbfeca99fc45e84e65387de638310e7fbd2c6de28ed781869446afc5e5b1ba","category":"secret","rule_id":"generic-api-key","aliases":["generic-api-key"],"scope":"application","severity":"high","title":"Synthetic API credential detected","description":"Secret detected. Matched value and source code are not retained.","locations":[{"path":"config/service.env","line":8}],"observations":[{"engine":"trivy","severity":"high"},{"engine":"gitleaks","severity":"high"}],"decision":"fail","decision_reason":"Meets configured severity threshold","baseline":"new"},{"id":"ba7ddd0869c2a277c0b87b3e","fingerprint":"ba7ddd0869c2a277c0b87b3e1b8187a47cdc73d7e36313c1515106d4a473ac4a","category":"vulnerability","rule_id":"CVE-2099-00003","aliases":["CVE-2099-00003"],"component_id":"b9731e4e6a13508e818f905d","package":"requests","version":"2.19.1","ecosystem":"python","scope":"application","severity":"medium","title":"CVE-2099-00003 in requests","description":"Synthetic fixture: request metadata handling issue.","locations":[{"path":"requirements.txt"}],"fixed_versions":["2.32.4"],"observations":[{"engine":"grype","advisory":"CVE-2099-00003","severity":"medium","severity_source":"synthetic-fixture","fixed_versions":["2.32.4"]}],"decision":"pass","decision_reason":"Below configured failure threshold","baseline":"new"},{"id":"c3209dc29632864acef26a81","fingerprint":"c3209dc29632864acef26a81b76d961042eabf6bcb42b31882fdd0713dde4680","category":"misconfiguration","rule_id":"AVD-KSV-0014","aliases":["AVD-KSV-0014"],"scope":"application","severity":"medium","title":"Read-only root filesystem not configured","description":"Synthetic Kubernetes policy finding.\nRemediation: Set readOnlyRootFilesystem where compatible.","locations":[{"path":"deploy/pod.yaml","line":23}],"observations":[{"engine":"trivy","severity":"medium"}],"decision":"pass","decision_reason":"Below configured failure threshold","baseline":"new"},{"id":"c6a7d6ea1e45c2225c205ebb","fingerprint":"c6a7d6ea1e45c2225c205ebb6ff873a4baa02b0a1dc0b44e7de88d00e8b1190b","category":"license","rule_id":"license-unknown","aliases":["license-unknown"],"component_id":"acca92e728bfc4f000a00dbd","package":"legacy-parser","version":"0.9.2","ecosystem":"npm","scope":"application","severity":"medium","title":"license-unknown: legacy-parser","description":"No usable license evidence was discovered","locations":[{"path":"package-lock.json"}],"observations":[],"decision":"review","decision_reason":"No usable license evidence was discovered","baseline":"new"},{"id":"f950c97c8292903431ca6fcd","fingerprint":"f950c97c8292903431ca6fcd5b83e4e3c5263c8d92b4e7e918ae722028da3129","category":"license","rule_id":"license-evidence-conflict","aliases":["license-evidence-conflict"],"component_id":"dc087082100edae2854c1ef0","package":"internal-widget","version":"1.2.0","ecosystem":"npm","scope":"application","severity":"medium","title":"license-evidence-conflict: internal-widget","description":"Detected license text and package metadata contain different expressions; human review required","locations":[{"path":"node_modules/internal-widget/package.json"},{"path":"package-lock.json"}],"observations":[{"engine":"syft","severity":"medium"},{"engine":"trivy","severity":"medium"}],"decision":"review","decision_reason":"Detected license text and package metadata contain different expressions; human review required","baseline":"new"},{"id":"d902e324b29bf188f2e8d0d7","fingerprint":"d902e324b29bf188f2e8d0d7b1cddf2c680aa408b386cf6b15b165b540c6bd11","category":"misconfiguration","rule_id":"AVD-DS-0026","aliases":["AVD-DS-0026"],"scope":"application","severity":"low","title":"Image health check is missing","description":"Synthetic Dockerfile configuration finding.\nRemediation: Define a health check where appropriate.","locations":[{"path":"Dockerfile","line":1}],"observations":[{"engine":"trivy","severity":"low"}],"decision":"pass","decision_reason":"Below configured failure threshold","baseline":"new"}],"resolved":[],"engines":[{"name":"syft","version":"fixture-1.2.3","executable":"test-fixture:syft","status":"completed","required":true,"checks":["inventory","sbom","license"],"duration_ms":1,"error":"Synthetic external test executable; not the upstream scanner."},{"name":"grype","version":"fixture-1.2.3","executable":"test-fixture:grype","status":"completed","required":true,"checks":["vulnerability"],"duration_ms":0,"error":"Synthetic external test executable; not the upstream scanner.","database":{"schemaVersion":6,"built":"2026-10-02T00:00:00Z","status":"synthetic test data, not a vulnerability database"}},{"name":"trivy","version":"fixture-1.2.3","executable":"test-fixture:trivy","status":"completed","required":true,"checks":["secret","misconfig","license"],"duration_ms":0,"error":"Synthetic external test executable; not the upstream scanner."},{"name":"gitleaks","version":"fixture-1.2.3","executable":"test-fixture:gitleaks","status":"completed","required":true,"checks":["secret"],"duration_ms":0,"error":"Synthetic external test executable; not the upstream scanner."}],"warnings":["SYNTHETIC DEMONSTRATION DATA. CVE-2099 identifiers and scanner results are fabricated test fixtures, not verified vulnerabilities or live scanner output.","Coverage is limited to artifacts visible to the scanners. No project builds or dependency installations were executed.","License checks apply to application dependencies; results express organizational policy, not legal compatibility.","A directory scan does not inspect a built container image or provide general source-code SAST. Use image/archive targets and optional SARIF extensions for those checks."],"summary":{"components":10,"findings":12,"failures":7,"reviews":2,"accepted":0,"new":12,"resolved":0,"by_severity":{"critical":2,"high":5,"low":1,"medium":4},"by_category":{"license":3,"misconfiguration":3,"secret":2,"vulnerability":4}}}</script><script>/* Sekura 3.0.2 host-owned controllers. No network access or executable user content.
+ * Full-page navigation disposes controllers; report imports reuse the same shell. */
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const themes = ['dark', 'light', 'hc-dark', 'hc-light', 'system'];
+  const darkQuery = matchMedia('(prefers-color-scheme: dark)');
+  const contrastQuery = matchMedia('(prefers-contrast: more)');
+  const read = (key, fallback) => { try { return localStorage.getItem(key) || fallback; } catch { return fallback; } };
+  const save = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Preferences are optional. */ } };
+  let preference = read('sekscan.theme', contrastQuery.matches ? (darkQuery.matches ? 'hc-dark' : 'hc-light') : 'dark');
+  if (!themes.includes(preference)) preference = 'dark';
+  function applyTheme(value, persist = true) {
+    if (!themes.includes(value)) return;
+    preference = value;
+    const resolved = value === 'system'
+      ? (contrastQuery.matches ? 'hc-' : '') + (darkQuery.matches ? 'dark' : 'light') : value;
+    root.dataset.skTheme = resolved;
+    document.querySelectorAll('[data-theme]').forEach(select => { select.value = value; });
+    if (persist) save('sekscan.theme', value);
+  }
+  applyTheme(preference, false);
+  document.querySelectorAll('[data-theme]').forEach(select => select.addEventListener('change', () => applyTheme(select.value)));
+  const followSystem = () => { if (preference === 'system') applyTheme(preference, false); };
+  darkQuery.addEventListener('change', followSystem);
+  contrastQuery.addEventListener('change', followSystem);
+
+  // Manual activation: arrows move focus; Enter/Space selects. Links keep browser Back.
+  document.querySelectorAll('[role="tablist"]').forEach(list => list.addEventListener('keydown', event => {
+    const tabs = [...list.querySelectorAll('[role="tab"]')].filter(tab => !tab.hidden && !tab.disabled);
+    const index = tabs.indexOf(document.activeElement);
+    if (index < 0) return;
+    const rtl = getComputedStyle(list).direction === 'rtl';
+    let next;
+    if (event.key === 'ArrowRight') next = (index + (rtl ? -1 : 1) + tabs.length) % tabs.length;
+    else if (event.key === 'ArrowLeft') next = (index + (rtl ? 1 : -1) + tabs.length) % tabs.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = tabs.length - 1;
+    else if (event.key === ' ' && tabs[index].tagName === 'A') { event.preventDefault(); tabs[index].click(); return; }
+    else return;
+    event.preventDefault();
+    tabs.forEach((tab, i) => { tab.tabIndex = i === next ? 0 : -1; });
+    tabs[next].focus();
+  }));
+
+  const nav = document.getElementById('app-navigation');
+  const trigger = document.querySelector('[data-nav-trigger]');
+  const scrim = document.querySelector('[data-nav-scrim]');
+  const header = document.querySelector('[data-app-header]');
+  if (header && typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(() => root.style.setProperty('--sekscan-header-size', header.getBoundingClientRect().height + 'px')).observe(header);
+  }
+  if (nav && trigger && scrim) {
+    const narrow = matchMedia('(max-width: 63.999rem)');
+    let collapsed = read('sekscan.nav.collapsed', 'false') === 'true';
+    let modal = false;
+    let inertStates = [];
+    let oldOverflow = '';
+    const focusables = () => [...nav.querySelectorAll('a[href],button:not(:disabled),input,select,[tabindex="0"]')]
+      .filter(element => element.getClientRects().length && !element.closest('[hidden]') && !element.inert);
+    function releaseBackground() {
+      inertStates.forEach(([element, value]) => { element.inert = value; });
+      inertStates = [];
+      document.body.style.overflow = oldOverflow;
+    }
+    function sync() {
+      root.toggleAttribute('data-nav-collapsed', !narrow.matches && collapsed);
+      nav.classList.toggle('sk-side-nav--collapsed', !narrow.matches && collapsed);
+      nav.hidden = narrow.matches && !modal;
+      scrim.hidden = !modal;
+      trigger.setAttribute('aria-expanded', String(narrow.matches ? modal : !collapsed));
+      trigger.setAttribute('aria-label', narrow.matches ? (modal ? 'Close navigation' : 'Open navigation') : (collapsed ? 'Expand navigation' : 'Collapse navigation'));
+      if (modal) { nav.setAttribute('role', 'dialog'); nav.setAttribute('aria-modal', 'true'); }
+      else { nav.removeAttribute('role'); nav.removeAttribute('aria-modal'); }
+    }
+    function close(returnFocus = true) {
+      if (!modal) return;
+      modal = false;
+      releaseBackground();
+      sync();
+      if (returnFocus) trigger.focus();
+    }
+    function open() {
+      if (!narrow.matches || modal) return;
+      modal = true;
+      oldOverflow = document.body.style.overflow;
+      inertStates = [...document.body.children].filter(element => element !== nav && element !== scrim)
+        .map(element => [element, element.inert]);
+      inertStates.forEach(([element]) => { element.inert = true; });
+      document.body.style.overflow = 'hidden';
+      sync();
+      (nav.querySelector('[data-nav-close]') || nav).focus();
+    }
+    trigger.addEventListener('click', () => {
+      if (narrow.matches) { if (modal) close(); else open(); }
+      else { collapsed = !collapsed; save('sekscan.nav.collapsed', String(collapsed)); sync(); }
+    });
+    nav.querySelector('[data-nav-close]')?.addEventListener('click', () => close());
+    scrim.addEventListener('click', () => close());
+    nav.addEventListener('keydown', event => {
+      if (!modal) return;
+      if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); close(); }
+      if (event.key === 'Tab') {
+        const items = focusables();
+        const first = items[0], last = items[items.length - 1];
+        if (!first) { event.preventDefault(); nav.focus(); return; }
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === nav)) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
+    nav.addEventListener('click', event => {
+      if (modal && event.target.closest('a[href]')) {
+        close(false);
+        document.getElementById('main')?.focus();
+      }
+    });
+    narrow.addEventListener('change', () => {
+      if (modal) close();
+      sync();
+      if (narrow.matches && nav.contains(document.activeElement)) trigger.focus();
+    });
+    // Disclosure state owns only expansion; it never changes routes/current markers.
+    nav.querySelectorAll('[data-nav-disclosure]').forEach(button => {
+      const children = document.getElementById(button.dataset.navDisclosure);
+      if (!children || !nav.contains(children)) return;
+      const setExpanded = value => { button.setAttribute('aria-expanded', String(value)); children.hidden = !value; };
+      setExpanded(button.getAttribute('aria-expanded') === 'true');
+      button.addEventListener('click', () => setExpanded(button.getAttribute('aria-expanded') !== 'true'));
+      children.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !modal) { event.preventDefault(); event.stopPropagation(); setExpanded(false); button.focus(); }
+      });
+    });
+    sync();
+    // Labels remain accessible in icon-only mode; tooltips also help pointer users.
+    const tooltip = document.createElement('div');
+    tooltip.id = 'nav-tooltip'; tooltip.className = 'nav-tooltip'; tooltip.setAttribute('role', 'tooltip'); tooltip.hidden = true;
+    document.body.append(tooltip);
+    let tooltipOwner;
+    const hideTooltip = () => { tooltip.hidden = true; if (tooltipOwner) tooltipOwner.removeAttribute('aria-describedby'); tooltipOwner = null; };
+    nav.querySelectorAll('[data-nav-label]').forEach(link => {
+      const show = () => {
+        if (narrow.matches || !collapsed) return;
+        hideTooltip(); tooltipOwner = link; tooltip.textContent = link.dataset.navLabel;
+        tooltip.hidden = false; link.setAttribute('aria-describedby', tooltip.id);
+        const rect = link.getBoundingClientRect();
+        const rtl = getComputedStyle(nav).direction === 'rtl';
+        const left = rtl ? rect.left - tooltip.offsetWidth - 12 : rect.right + 12;
+        tooltip.style.left = Math.max(8, Math.min(left, innerWidth - tooltip.offsetWidth - 8)) + 'px';
+        tooltip.style.top = Math.max(8, Math.min(rect.top, innerHeight - tooltip.offsetHeight - 8)) + 'px';
+      };
+      link.addEventListener('mouseenter', show); link.addEventListener('focus', show);
+      link.addEventListener('mouseleave', hideTooltip); link.addEventListener('blur', hideTooltip);
+    });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') hideTooltip(); });
+    trigger.addEventListener('click', hideTooltip);
+    narrow.addEventListener('change', hideTooltip);
+  }
+
+  // Density is local to a table's scrolling region, never the surrounding controls.
+  document.querySelectorAll('.panel').forEach((panel, index) => {
+    const table = panel.querySelector('table');
+    const head = panel.querySelector('.panel-heading, .panel-head');
+    const region = panel.querySelector('.scroll, .table-wrap');
+    if (!table || !head || !region) return;
+    const key = 'sekscan.tableDensity:' + (table.id || (document.body.dataset.mode + ':' + index));
+    const choices = ['comfortable', 'compact', 'dense'];
+    const label = document.createElement('label'); label.className = 'table-density';
+    label.append(document.createTextNode('Table density'));
+    const select = document.createElement('select'); select.dataset.tableDensity = '';
+    select.setAttribute('aria-label', 'Table density');
+    choices.forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value[0].toUpperCase() + value.slice(1); select.append(option); });
+    const stored = read(key, 'comfortable'); select.value = choices.includes(stored) ? stored : 'comfortable';
+    region.dataset.skDensity = select.value;
+    select.addEventListener('change', () => { region.dataset.skDensity = select.value; save(key, select.value); });
+    label.append(select); head.append(label);
+    region.tabIndex = 0; region.setAttribute('role', 'region'); region.setAttribute('aria-label', (head.querySelector('h2')?.textContent || 'Evidence') + ' table');
+  });
+  root.setAttribute('data-ui-ready', '');
+})();
+
+'use strict';
+(() => {
+  const $ = id => document.getElementById(id);
+  const el = (tag, text, cls) => { const n = document.createElement(tag); if (text !== undefined) n.textContent = String(text); if (cls) n.className = cls; return n; };
+  const clear = node => node.replaceChildren();
+  const labels = {overview:'Security overview',findings:'All findings',licenses:'Application licenses',components:'Component inventory',changes:'Changes from baseline',health:'Scan health'};
+  const rank = {critical:5,high:4,medium:3,low:2,info:1,unknown:0};
+  const badgeClasses = new Set(['critical','high','medium','low','info','unknown','fail','failed','review','incomplete','pass','passed','completed','accepted','existing','new','resolved','skipped','excluded','unverified']);
+  const badge = value => el('span', value || 'unknown', 'badge ' + (badgeClasses.has(value) ? value : 'unknown'));
+  let report = JSON.parse($('report-data').textContent);
+  let state = {view:'overview',page:0,sort:'severity',direction:-1};
+  const viewSettings = new Map();
+  let filtered = [], columns = [], componentIndex = new Map();
+  let pageSize = 25;
+  const controls = ['search','category','severity','scope','decision','engine','baseline','fix'];
+  const normalize = v => String(v || '').toLowerCase();
+  const at = array => Array.isArray(array) ? array : [];
+  const fieldValue = (row, key) => {
+    if (key === 'engine') return at(row.observations).map(x=>x.engine).join(', ');
+    if (key === 'license') return at(row.licenses).map(x=>x.expression).join(' / ') || 'Unknown';
+    if (key === 'fix') return at(row.fixed_versions).join(', ') || 'Not reported';
+    if (key === 'decision') return row.decision || row.license_decision || 'not evaluated';
+    return row[key] || '';
+  };
+  function fillSelect(id, values) {
+    const node=$(id), first=node.options[0].textContent; clear(node);
+    node.append(new Option(first,'')); [...new Set(values.filter(Boolean))].sort().forEach(v=>node.append(new Option(v,v)));
+  }
+  function initialize() {
+    if (report.schema_version !== '1.0' || !Array.isArray(report.findings) || !Array.isArray(report.components) || !Array.isArray(report.engines)) throw new Error('Unsupported report schema');
+    componentIndex=new Map(report.components.map(c=>[c.id,c]));
+    const rows=report.findings.concat(at(report.resolved));
+    fillSelect('category',rows.map(f=>f.category)); fillSelect('severity',rows.map(f=>f.severity));
+    fillSelect('scope',['application','operating-system','unknown']);
+    fillSelect('decision',['pass','fail','review','accepted','excluded']); fillSelect('engine',report.engines.map(e=>e.name));
+    fillSelect('baseline',['new','existing','resolved']);
+    $('target-description').textContent=(report.project_key?report.project_key+' · ':'')+(report.target.kind || 'target')+' / '+report.target.value;
+    $('report-id').textContent='SCAN '+report.id.slice(0,12).toUpperCase();
+    const status=badge(report.status); status.id='status'; $('status').replaceWith(status);
+    $('run-time').textContent=new Date(report.finished_at).toLocaleString();
+    $('footer-time').textContent='Generated '+new Date(report.finished_at).toISOString();
+    $('app-version').textContent='sekscan '+report.app_version+' · schema '+report.schema_version;
+    $('nav-count').textContent=String(report.findings.length);
+    document.title=(report.project_key||'Scan report')+' — sekscan';
+    document.querySelectorAll('[data-history-project]').forEach(a=>{a.textContent=report.project_key||'Project';a.href='/projects?'+new URLSearchParams({project:report.project_key||''});});
+    document.querySelectorAll('[data-project-context]').forEach(e=>e.textContent=report.project_key||'Project');
+    document.querySelectorAll('[data-project-route]').forEach(a=>a.href='/projects?'+new URLSearchParams({project:report.project_key||'',tab:a.dataset.projectRoute==='runs'?'runs':'overview'}));
+    const banner=$('coverage-banner');
+    banner.className='banner'+(report.complete && report.status==='passed'?'':' warning');
+    banner.textContent=report.complete ? 'Configured scans completed. '+report.summary.failures+' policy failures · '+report.summary.reviews+' items require review. Completed scans do not guarantee full security coverage.' : 'INCOMPLETE SCAN — one or more required engines did not complete. Missing results must not be treated as a clean scan.';
+    renderMetrics(); renderCharts(); renderHealth(); resetFilters();
+    viewSettings.clear();const hash=location.hash.slice(1);state.view=labels[hash]?hash:'overview';render();
+  }
+  function renderMetrics() {
+    clear($('metrics')); const s=report.summary;
+    const specs=[['Critical findings',s.by_severity.critical || 0,'Immediate investigation','critical'],['High findings',s.by_severity.high || 0,'Prioritize remediation','high'],['Review required',s.reviews || 0,'License and evidence decisions','review'],['Components',s.components || 0,'Discovered in the supplied target','']];
+    specs.forEach(([title,value,note,color])=>{const card=el('article',undefined,'metric');const top=el('div',undefined,'metric-top');top.append(el('span',title),el('span',undefined,'metric-dot '+color));card.append(top,el('div',value,'metric-number'),el('div',note,'metric-note'));$('metrics').append(card);});
+  }
+  function renderCharts() {
+    const total=Math.max(report.findings.length,1);clear($('severity-chart'));
+    ['critical','high','medium','low','info','unknown'].forEach(s=>{const row=el('div',undefined,'chart-row'), count=report.summary.by_severity[s] || 0;const progress=el('progress');progress.max=total;progress.value=count;progress.className=s;progress.setAttribute('aria-label',s+' findings');row.append(el('span',s,'chart-label'),progress,el('span',count,'chart-value'));$('severity-chart').append(row);});
+    clear($('engine-overview'));report.engines.forEach(e=>{const row=el('div',undefined,'engine-row');const name=el('div');name.append(el('div',e.name+' '+(e.version||''),'engine-name'),el('div',at(e.checks).join(' · '),'engine-description'));row.append(name,badge(e.status));$('engine-overview').append(row);});
+  }
+  function keyValues(parent, pairs) {const grid=el('div',undefined,'keyvalue');pairs.forEach(([k,v])=>{grid.append(el('div',k,'muted'),el('div',v || 'Not recorded','value'));});parent.append(grid);}
+  function renderHealth() {
+    clear($('health-cards'));report.engines.forEach(e=>{const card=el('article',undefined,'health-card'), h=el('h2',e.name);h.append(badge(e.status));card.append(h);keyValues(card,[['Version',e.version],['Required',e.required?'Yes':'No'],['Checks',at(e.checks).join(', ')],['Duration',(e.duration_ms/1000).toFixed(2)+' seconds'],['Executable',e.executable],['SHA-256',e.executable_sha256],['Diagnostics',e.error || 'No execution error'],['Database',e.database?JSON.stringify(e.database,null,2):'No database metadata recorded for this engine']]);$('health-cards').append(card);});
+    if(report.source){const card=el('article',undefined,'health-card');card.append(el('h2','Source provenance'));keyValues(card,[['Repository',report.source.repository],['Requested ref',report.source.requested_ref||'Default branch'],['Resolved ref',report.source.resolved_ref],['Commit',report.source.revision],['Subdirectory',report.source.subdir||'Repository root'],['Archive SHA-256',report.source.archive_sha256],['Batch',report.batch_id]]);$('health-cards').prepend(card);}
+    clear($('warnings'));at(report.warnings).forEach(w=>$('warnings').append(el('li',w)));
+  }
+  function resetFilters() {controls.forEach(id=>$(id).value='');state.page=0;}
+  function currentRows() {
+    if (state.view==='components') return report.components;
+    if (state.view==='licenses') return report.components.filter(c=>$('scope').value ? true : c.scope!=='operating-system');
+    if (state.view==='changes') return report.findings.concat(at(report.resolved));
+    return report.findings;
+  }
+  function matches(row) {
+    const query=normalize($('search').value);
+    if(query && !normalize(JSON.stringify(row)).includes(query)) return false;
+    for(const key of ['category','severity','scope','decision','baseline']) {
+      const value=$(key).value; if(value && fieldValue(row,key)!==value) return false;
+    }
+    const engine=$('engine').value;
+    if(engine && !at(row.observations).some(o=>o.engine===engine) && !at(row.licenses).some(l=>l.source===engine)) return false;
+    const fix=$('fix').value; if(fix && (at(row.fixed_versions).length>0)!==(fix==='yes')) return false;
+    return true;
+  }
+  function selectView(view) {
+    if(!labels[view])return;
+    viewSettings.set(state.view,{...state,filters:Object.fromEntries(controls.map(id=>[id,$(id).value]))});
+    const saved=viewSettings.get(view);
+    if(saved){state={view,page:saved.page,sort:saved.sort,direction:saved.direction};controls.forEach(id=>$(id).value=saved.filters[id]||'');}
+    else {state={view,page:0,sort:(view==='components'||view==='licenses')?'name':'severity',direction:(view==='components'||view==='licenses')?1:-1};resetFilters();}
+    try{history.replaceState(null,'','#'+view);}catch{} render();
+  }
+  function render() {
+    $('page-title').textContent=labels[state.view];document.querySelectorAll('.nav[data-view]').forEach(n=>{const active=n.dataset.view===state.view;n.classList.toggle('active',active);n.setAttribute('aria-selected',String(active));n.tabIndex=active?0:-1;});$('report-panel').setAttribute('aria-labelledby','tab-'+state.view);
+    const health=state.view==='health', isComponent=state.view==='components'||state.view==='licenses';
+    $('health-section').hidden=!health;$('data-section').hidden=health||state.view==='overview';$('overview-panels').hidden=state.view!=='overview';$('metrics').hidden=state.view!=='overview';$('coverage-banner').hidden=!['overview','health'].includes(state.view);
+    ['category','severity','baseline','fix'].forEach(id=>{$(id).hidden=isComponent;$(id).closest('.sk-field').hidden=isComponent;});
+    if(health)return;
+    columns=isComponent ? [['name','Component'],['version','Version'],['ecosystem','Ecosystem'],['scope','Scope'],['license','License evidence'],['decision','Policy']] : [['severity','Severity'],['rule_id','Finding'],['package','Package / location'],['category','Category'],['fix','Reported fix'],['decision','Policy'],['baseline','Change']];
+    $('table-title').textContent=state.view==='overview'?'Prioritized findings':labels[state.view];
+    $('table-subtitle').textContent=state.view==='licenses'?'OS license policy is excluded. Different license expressions require evidence review.':isComponent?'Inspect packages, locations, license evidence, and ownership classification.':'Inspect a finding to see evidence, fixes, and policy decisions.';
+    filtered=currentRows().filter(matches).sort((a,b)=>{let x=fieldValue(a,state.sort),y=fieldValue(b,state.sort);if(state.sort==='severity'){x=rank[x]||0;y=rank[y]||0;return (x-y)*state.direction;}return String(x).localeCompare(String(y))*state.direction;});
+    const pages=Math.max(1,Math.ceil(filtered.length/pageSize));state.page=Math.min(state.page,pages-1);
+    clear($('table-head'));const head=el('tr');columns.forEach(([key,title])=>{const th=el('th'),button=el('button',title+(key===state.sort?(state.direction>0?' ↑':' ↓'):''));button.addEventListener('click',()=>{if(state.sort===key)state.direction*=-1;else{state.sort=key;state.direction=1;}render();});th.setAttribute('scope','col');if(key===state.sort)th.setAttribute('aria-sort',state.direction>0?'ascending':'descending');th.append(button);head.append(th);});$('table-head').append(head);
+    clear($('table-body'));filtered.slice(state.page*pageSize,(state.page+1)*pageSize).forEach(row=>{
+      const tr=el('tr');columns.forEach(([key])=>{
+        const td=el('td');let value=fieldValue(row,key);
+        if(['severity','decision','baseline'].includes(key))td.append(badge(value));
+        else if(key==='rule_id'||key==='name'){const button=el('button',value,'row-link');button.title=value;button.addEventListener('click',()=>showDetail(row,isComponent));td.append(button);td.append(el('div',isComponent?row.purl||row.ecosystem:row.title,'subline'));}
+        else if(key==='package'){value=row.package || (at(row.locations)[0]||{}).path || 'Target-level finding';td.append(el('span',value));td.append(el('div',row.version || row.scope,'subline'));}
+        else {td.textContent=value||'—';td.title=value;}
+        tr.append(td);
+      });$('table-body').append(tr);
+    });
+    $('empty-state').hidden=filtered.length!==0;$('result-count').textContent=filtered.length+' matching records · '+currentRows().length+' in this view';$('page-number').textContent=(state.page+1)+' / '+pages;$('previous').disabled=state.page===0;$('next').disabled=state.page>=pages-1;$('first-page').disabled=state.page===0;$('last-page').disabled=state.page>=pages-1;$('jump-page').value=state.page+1;$('jump-page').max=pages;
+  }
+  function section(title,text,pre=false) {const s=el('section',undefined,'detail-section');s.append(el('h3',title),el(pre?'pre':'p',text));$('detail-body').append(s);return s;}
+  function showDetail(row,isComponent) {
+    $('detail-title').textContent=isComponent?row.name:row.title;$('detail-category').textContent=isComponent?'COMPONENT EVIDENCE':row.category;clear($('detail-body'));
+    if(isComponent){keyValues($('detail-body'),[['Version',row.version],['Ecosystem',row.ecosystem],['Package URL',row.purl],['Scope',row.scope],['Scope evidence',row.scope_reason],['License decision',row.license_decision],['Policy reason',row.license_reason]]);section('License evidence',JSON.stringify(at(row.licenses),null,2),true);}
+    else {
+      keyValues($('detail-body'),[['Rule',row.rule_id],['Severity',row.severity],['Decision',row.decision],['Policy reason',row.decision_reason],['Package',row.package],['Version',row.version],['Scope',row.scope],['Baseline',row.baseline],['Exception',row.exception],['Fingerprint',row.fingerprint]]);
+      section('Description',row.description||'No additional description.');section('Reported fixed versions',at(row.fixed_versions).join(', ')||'No fix was reported by the scanner.');section('Scanner observations',JSON.stringify(at(row.observations),null,2),true);
+      const links=at(row.observations).filter(o=>o.url&&/^https?:\/\//i.test(o.url));if(links.length){const s=section('Advisory references','');links.forEach(o=>{const p=el('p'),a=el('a',o.url);a.href=o.url;a.target='_blank';a.rel='noopener noreferrer';p.append(a);s.append(p);});}
+      if(componentIndex.has(row.component_id)){const c=componentIndex.get(row.component_id);section('Component license evidence',JSON.stringify(at(c.licenses),null,2),true);}
+    }
+    section('Locations',at(row.locations).map(l=>l.path+(l.line?':'+l.line:'')).join('\n')||'No source location reported.',true);$('detail').showModal();$('detail-title').focus();
+  }
+  function download(name,type,content) {const address=URL.createObjectURL(new Blob([content],{type}));const a=el('a');a.href=address;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(address),1000);}
+  function csvCell(value) {let s=String(value??'');if(/^\s*[=+@-]/.test(s)||/^[\t\r\n]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';}
+  document.querySelectorAll('.nav[data-view]').forEach(n=>n.addEventListener('click',()=>selectView(n.dataset.view)));
+  $('view-health').addEventListener('click',()=>selectView('health'));$('reset-filters').addEventListener('click',()=>{resetFilters();render();});
+  controls.forEach(id=>$(id).addEventListener(id==='search'?'input':'change',()=>{state.page=0;render();}));
+  $('page-size').addEventListener('change',()=>{pageSize=Number($('page-size').value);state.page=0;render();});
+  $('first-page').addEventListener('click',()=>{state.page=0;render();});
+  $('last-page').addEventListener('click',()=>{state.page=Math.max(0,Math.ceil(filtered.length/pageSize)-1);render();});
+  $('jump-page').addEventListener('change',()=>{const v=Number($('jump-page').value);if(Number.isInteger(v)&&v>0){state.page=v-1;render();}});
+  $('previous').addEventListener('click',()=>{state.page--;render();});$('next').addEventListener('click',()=>{state.page++;render();});
+  $('close-detail').addEventListener('click',()=>$('detail').close());
+  $('download-json').addEventListener('click',()=>download('sekscan-results.json','application/json',JSON.stringify(report,null,2)));
+  $('export-csv').addEventListener('click',()=>{const content=[columns.map(c=>csvCell(c[1])).join(',')].concat(filtered.map(r=>columns.map(([key])=>csvCell(fieldValue(r,key))).join(','))).join('\r\n');download('sekscan-'+state.view+'.csv','text/csv;charset=utf-8',content);});
+  $('load-report').addEventListener('click',()=>$('report-file').click());
+  $('report-file').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;const previous=report;const savedState={...state};const savedFilters=Object.fromEntries(controls.map(id=>[id,$(id).value]));$('import-error').hidden=true;try{if(file.size>512*1024*1024)throw new Error('Report exceeds 512 MiB');report=JSON.parse(await file.text());initialize();}catch(error){report=previous;initialize();state=savedState;controls.forEach(id=>$(id).value=savedFilters[id]||'');render();$('import-error').textContent='Cannot open report: '+String(error.message).slice(0,240)+'. The previous report is still displayed.';$('import-error').hidden=false;}event.target.value='';});
+  window.addEventListener('hashchange',()=>{const view=location.hash.slice(1);if(labels[view]&&view!==state.view)selectView(view);});
+  initialize();
+})();
+</script></body></html>

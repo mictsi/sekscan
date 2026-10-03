@@ -1,0 +1,31 @@
+{
+  "application": "sekscan",
+  "version": "0.6.5-preview",
+  "package_type": "source-preview",
+  "production_binaries_included": false,
+  "scanner_binaries_included": false,
+  "scanner_databases_included": false,
+  "database_schema_version": 1,
+  "release_builder_targets": [
+    "linux/amd64",
+    "linux/arm64",
+    "windows/amd64",
+    "windows/arm64",
+    "darwin/amd64",
+    "darwin/arm64"
+  ],
+  "validation_record": "TESTING.md",
+  "module_state": "go.sum unresolved; connected bootstrap and review required",
+  "batch_schema_version": 1,
+  "design_reference": {
+    "repository": "mictsi/SekuraDesignMCP",
+    "commit": "687bcdcf67d56a3bdfe3bbc4ff1ae863239e8c8a",
+    "license": "MIT",
+    "version": "3.0.2",
+    "manifest": "third_party/SekuraDesignMCP.json"
+  },
+  "source_archives_included": false,
+  "release_workflow": ".github/workflows/release.yml",
+  "release_trigger": "release.published",
+  "release_target_manifest": "scripts/release/targets.json"
+}

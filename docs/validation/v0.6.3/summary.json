@@ -1,0 +1,18 @@
+{
+  "version": "0.6.3-preview",
+  "application_test_entries_passed": 435,
+  "external_database_entries_skipped": 2,
+  "application_test_entries_failed": 0,
+  "coverage_percent": 68.5,
+  "race": "passed",
+  "vet": "passed",
+  "go_release_helper_test_entries_passed": 15,
+  "release_helper_vet": "passed",
+  "python_release_control_tests_passed": 17,
+  "workflow_yaml": "parsed and structure checked",
+  "production_build": "blocked: toolchain download DNS/network failure",
+  "live_semgrep": "not executed",
+  "hosted_release_workflow": "not executed",
+  "ui_assets": "unchanged; no new browser validation",
+  "sql_schema_version": 1
+}

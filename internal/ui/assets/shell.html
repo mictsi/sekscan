@@ -1,0 +1,31 @@
+<header class="app-topbar sk-top-bar" data-app-header>
+  <button type="button" class="secondary icon-button nav-trigger" data-nav-trigger aria-expanded="true" aria-controls="app-navigation" aria-label="Collapse navigation"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4h14v12H3z M7 4v12"/></svg></button>
+  <a class="brand" href="{{.BrandURL}}" aria-label="sekscan home"><span class="brand-icon" aria-hidden="true">S</span><span>sekscan</span></a>
+  <span class="workspace-marker">Read only</span>
+  <nav class="breadcrumbs" aria-label="Breadcrumb">{{range $i, $c := .Breadcrumbs}}{{if $i}}<span aria-hidden="true">/</span>{{end}}{{if $c.URL}}<a href="{{$c.URL}}" {{if $c.Project}}data-history-project{{end}}>{{$c.Label}}</a>{{else}}<span aria-current="page">{{$c.Label}}</span>{{end}}{{end}}</nav>
+  <label class="theme-control"><span>Appearance</span><select data-theme aria-label="Appearance"><option value="dark">Dark</option><option value="light">Light</option><option value="hc-dark">High contrast dark</option><option value="hc-light">High contrast light</option><option value="system">System</option></select></label>
+</header>
+<div class="nav-scrim" data-nav-scrim hidden></div>
+<aside class="app-rail sk-side-nav" id="app-navigation" aria-label="Workspace navigation" tabindex="-1">
+  <div class="drawer-heading"><h2>Navigation</h2><button type="button" class="secondary icon-button" data-nav-close aria-label="Close navigation"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10 M15 5 5 15"/></svg></button></div>
+  <nav aria-label="Workspace">
+  <ul class="sk-side-nav__list">
+  {{if .Portable}}
+    <li><a class="sk-side-nav__item" href="#overview" aria-current="page" data-nav-label="Scan report"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2h7l4 4v12H5z M12 2v4h4 M8 10h5 M8 13h5"/></svg><span class="sk-side-nav__label">Scan report</span></a></li>
+  {{else}}
+    <li><a class="sk-side-nav__item" href="/" data-nav-label="Portfolio" {{if eq .Active "portfolio"}}aria-current="page"{{end}}><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h6v6H3z M12 3h5v6h-5z M3 12h6v5H3z M12 12h5v5h-5z"/></svg><span class="sk-side-nav__label">Portfolio</span></a></li>
+    <li>
+      <div class="sk-side-nav__branch-row">
+        <a class="sk-side-nav__item" href="/?tab=projects" data-nav-label="Projects" {{if eq .Active "projects"}}aria-current="page"{{else if .ProjectAncestor}}data-active-ancestor{{end}}><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 5h6l2 2h8v10H2z M2 5V3h6l2 2h6v2"/></svg><span class="sk-side-nav__label">Projects</span></a>
+        {{if .Project}}<button type="button" class="sk-side-nav__toggle" data-nav-disclosure="project-nav-children" aria-expanded="true" aria-controls="project-nav-children" aria-label="Pages for {{.Project}}"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7 5 5 5-5"/></svg></button>{{end}}
+      </div>
+      {{if .Project}}<ul class="sk-side-nav__children" id="project-nav-children" aria-label="{{.Project}} pages"><li class="nav-context" data-project-context>{{.Project}}</li><li><a class="sk-side-nav__item" href="{{.ProjectURL}}" data-project-route="dashboard" {{if eq .Active "project-overview"}}aria-current="page"{{end}}><span class="sk-side-nav__label">Dashboard</span></a></li><li><a class="sk-side-nav__item" href="{{.ProjectRunsURL}}" data-project-route="runs" {{if eq .Active "project-runs"}}aria-current="page"{{end}}><span class="sk-side-nav__label">Runs</span></a></li></ul>{{end}}
+    </li>
+    <li><a class="sk-side-nav__item" href="/?tab=runs" data-nav-label="All runs" {{if eq .Active "all-runs"}}aria-current="page"{{end}}><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 4h12 M5 10h12 M5 16h12 M2 4h.1 M2 10h.1 M2 16h.1"/></svg><span class="sk-side-nav__label">All runs</span></a></li>
+  {{end}}
+  </ul>
+  {{if .OpenLabel}}<section class="sk-side-nav__open-items" aria-labelledby="open-items-label"><h2 class="sk-side-nav__group-label" id="open-items-label">Open view</h2><ul class="sk-side-nav__list"><li><a class="sk-side-nav__item" href="{{.OpenURL}}" aria-current="page" data-nav-label="{{.OpenLabel}}"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2h7l4 4v12H5z M12 2v4h4 M8 10h5 M8 13h5"/></svg><span class="sk-side-nav__label">{{.OpenLabel}}</span></a></li></ul></section>{{end}}
+  </nav>
+  <div class="rail-note">{{if .Portable}}<strong>Portable evidence</strong><small>No external assets or telemetry</small>{{else}}<strong>Local scan history</strong><small>{{.Driver}} / {{.Namespace}}</small>{{end}}<small>Immutable scan evidence</small><small id="app-version"></small></div>
+</aside>
+<div class="app-area">

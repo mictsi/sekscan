@@ -1,0 +1,3 @@
+# Trusted defaults. No rules or source pragmas are silently suppressed.
+ignored: []
+override: {}

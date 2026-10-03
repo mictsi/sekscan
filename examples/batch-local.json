@@ -1,0 +1,10 @@
+{
+  "$schema": "../schema/batch.schema.json",
+  "version": 1,
+  "projects": [
+    {
+      "project": "local-demo",
+      "path": "../testdata/project"
+    }
+  ]
+}

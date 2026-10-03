@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="sekscan" tests="16" failures="9" errors="0">
+  <testcase name="CVE-2099-00001 log4j-core" classname="vulnerability">
+    <failure message="fail">CVE-2099-00001 in log4j-core&#xA;Meets configured severity threshold</failure>
+  </testcase>
+  <testcase name="private-key " classname="secret">
+    <failure message="fail">Synthetic private key detected&#xA;Meets configured severity threshold</failure>
+  </testcase>
+  <testcase name="license-policy reporting-addon" classname="license">
+    <failure message="fail">license-policy: reporting-addon&#xA;License expression does not satisfy the configured allow/deny policy without further review</failure>
+  </testcase>
+  <testcase name="CVE-2099-00004 busybox" classname="vulnerability">
+    <failure message="fail">CVE-2099-00004 in busybox&#xA;Meets configured severity threshold</failure>
+  </testcase>
+  <testcase name="CVE-2099-00002 lodash" classname="vulnerability">
+    <failure message="fail">CVE-2099-00002 in lodash&#xA;Meets configured severity threshold</failure>
+  </testcase>
+  <testcase name="AVD-DS-0002 " classname="misconfiguration">
+    <failure message="fail">Container runs as root&#xA;Meets configured severity threshold</failure>
+  </testcase>
+  <testcase name="generic-api-key " classname="secret">
+    <failure message="fail">Synthetic API credential detected&#xA;Meets configured severity threshold</failure>
+  </testcase>
+  <testcase name="CVE-2099-00003 requests" classname="vulnerability"></testcase>
+  <testcase name="AVD-KSV-0014 " classname="misconfiguration"></testcase>
+  <testcase name="license-unknown legacy-parser" classname="license">
+    <failure message="review">license-unknown: legacy-parser&#xA;No usable license evidence was discovered</failure>
+  </testcase>
+  <testcase name="license-evidence-conflict internal-widget" classname="license">
+    <failure message="review">license-evidence-conflict: internal-widget&#xA;Detected license text and package metadata contain different expressions; human review required</failure>
+  </testcase>
+  <testcase name="AVD-DS-0026 " classname="misconfiguration"></testcase>
+  <testcase name="syft" classname="scan-health"></testcase>
+  <testcase name="grype" classname="scan-health"></testcase>
+  <testcase name="trivy" classname="scan-health"></testcase>
+  <testcase name="gitleaks" classname="scan-health"></testcase>
+</testsuite>

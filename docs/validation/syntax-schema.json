@@ -1,0 +1,9 @@
+{
+  "passed": [
+    "Standalone SQLite SQL creates 7 tables and migration ledger",
+    "Foreign keys enabled in standalone SQL",
+    "Workflow and native YAML syntax parsed",
+    "Bash script syntax checked",
+    "Embedded dashboard JavaScript syntax checked"
+  ]
+}

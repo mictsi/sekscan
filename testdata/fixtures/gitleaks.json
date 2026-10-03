@@ -1,0 +1,1 @@
+[{"RuleID":"generic-api-key","Description":"Synthetic credential fixture","File":"config/service.env","StartLine":8,"Secret":"SECRET_SENTINEL_MUST_NOT_APPEAR","Match":"SECRET_SENTINEL_MUST_NOT_APPEAR"}]

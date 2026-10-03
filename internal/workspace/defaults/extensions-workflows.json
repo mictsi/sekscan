@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "portable": true,
+  "checks": {"actionlint": true, "zizmor": true}
+}

@@ -1,0 +1,16 @@
+{
+  "version": "0.3.0-preview",
+  "date": "2026-10-02",
+  "go_test_variant": "offline_sqltest; Go 1.23.2; system SQLite test-only adapter",
+  "passing_test_events": 120,
+  "passing_top_level_tests": 80,
+  "skipped_live_database_tests": 2,
+  "statement_coverage_percent": 57.4,
+  "race_detector": "passed for test-only variant",
+  "go_vet": "passed for test-only variant",
+  "dashboard_checks": 14,
+  "history_checks": 8,
+  "production_build": "not verified; toolchain/dependency download blocked",
+  "upstream_scanners_and_cve_databases": "not downloaded or executed",
+  "all_transitive_module_updates": "not completed; connected updater included"
+}

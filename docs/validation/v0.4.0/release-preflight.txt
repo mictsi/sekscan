@@ -1,0 +1,4 @@
+release: a resolved, nonempty go.sum is required; run go mod tidy on a connected machine, review and commit go.mod/go.sum, then retry
+exit status 1
+
+Exit status: 1

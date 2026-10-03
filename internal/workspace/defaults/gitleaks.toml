@@ -1,0 +1,5 @@
+# Optional native config. Using this replaces the generated exclusion config;
+# review exclusions explicitly before assigning tools.gitleaks.native_config.
+title = "Sekscan Gitleaks starter"
+[extend]
+useDefault = true

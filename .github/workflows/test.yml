@@ -1,0 +1,31 @@
+name: Test sekscan
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      # Pin reviewed full action commit SHAs before production deployment.
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache: false
+      - run: go mod tidy
+      - run: go mod verify
+      - run: go test ./...
+      - run: go vet ./...
+      - run: go build ./cmd/sekscan
+      - name: Race detector
+        if: runner.os == 'Linux'
+        run: go test -race ./...

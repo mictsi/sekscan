@@ -1,0 +1,1 @@
+{"tool":"semgrep","status":"failed","checks":[],"error":"semgrep is not installed in workspace bin; run sekscan deps install semgrep --yes --diagnostic-stderr with the same --home/--config and check its exit status (PATH copies are intentionally ignored)"}

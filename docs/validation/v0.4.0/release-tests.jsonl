@@ -1,0 +1,65 @@
+{"Time":"2026-10-02T19:33:46.980892912Z","Action":"start","Package":"sekscan-release"}
+{"Time":"2026-10-02T19:33:46.982718912Z","Action":"run","Package":"sekscan-release","Test":"TestTargetsAndVersionValidation"}
+{"Time":"2026-10-02T19:33:46.982736217Z","Action":"output","Package":"sekscan-release","Test":"TestTargetsAndVersionValidation","Output":"=== RUN   TestTargetsAndVersionValidation\n"}
+{"Time":"2026-10-02T19:33:46.982780372Z","Action":"output","Package":"sekscan-release","Test":"TestTargetsAndVersionValidation","Output":"--- PASS: TestTargetsAndVersionValidation (0.00s)\n"}
+{"Time":"2026-10-02T19:33:46.982784328Z","Action":"pass","Package":"sekscan-release","Test":"TestTargetsAndVersionValidation","Elapsed":0}
+{"Time":"2026-10-02T19:33:46.982794443Z","Action":"run","Package":"sekscan-release","Test":"TestGoBuildEnvironmentCannotSelectTestDriver"}
+{"Time":"2026-10-02T19:33:46.982797648Z","Action":"output","Package":"sekscan-release","Test":"TestGoBuildEnvironmentCannotSelectTestDriver","Output":"=== RUN   TestGoBuildEnvironmentCannotSelectTestDriver\n"}
+{"Time":"2026-10-02T19:33:46.982802145Z","Action":"output","Package":"sekscan-release","Test":"TestGoBuildEnvironmentCannotSelectTestDriver","Output":"--- PASS: TestGoBuildEnvironmentCannotSelectTestDriver (0.00s)\n"}
+{"Time":"2026-10-02T19:33:46.982805149Z","Action":"pass","Package":"sekscan-release","Test":"TestGoBuildEnvironmentCannotSelectTestDriver","Elapsed":0}
+{"Time":"2026-10-02T19:33:46.982808975Z","Action":"run","Package":"sekscan-release","Test":"TestReadOnlyDependencyGraph"}
+{"Time":"2026-10-02T19:33:46.982811438Z","Action":"output","Package":"sekscan-release","Test":"TestReadOnlyDependencyGraph","Output":"=== RUN   TestReadOnlyDependencyGraph\n"}
+{"Time":"2026-10-02T19:33:46.982837216Z","Action":"output","Package":"sekscan-release","Test":"TestReadOnlyDependencyGraph","Output":"--- PASS: TestReadOnlyDependencyGraph (0.00s)\n"}
+{"Time":"2026-10-02T19:33:46.982862834Z","Action":"pass","Package":"sekscan-release","Test":"TestReadOnlyDependencyGraph","Elapsed":0}
+{"Time":"2026-10-02T19:33:46.98286699Z","Action":"run","Package":"sekscan-release","Test":"TestProductionBinaryGate"}
+{"Time":"2026-10-02T19:33:46.982869664Z","Action":"output","Package":"sekscan-release","Test":"TestProductionBinaryGate","Output":"=== RUN   TestProductionBinaryGate\n"}
+{"Time":"2026-10-02T19:33:46.98294141Z","Action":"output","Package":"sekscan-release","Test":"TestProductionBinaryGate","Output":"--- PASS: TestProductionBinaryGate (0.00s)\n"}
+{"Time":"2026-10-02T19:33:46.98294783Z","Action":"pass","Package":"sekscan-release","Test":"TestProductionBinaryGate","Elapsed":0}
+{"Time":"2026-10-02T19:33:46.982951896Z","Action":"run","Package":"sekscan-release","Test":"TestReleasePreflight"}
+{"Time":"2026-10-02T19:33:46.98295431Z","Action":"output","Package":"sekscan-release","Test":"TestReleasePreflight","Output":"=== RUN   TestReleasePreflight\n"}
+{"Time":"2026-10-02T19:33:46.986673847Z","Action":"output","Package":"sekscan-release","Test":"TestReleasePreflight","Output":"--- PASS: TestReleasePreflight (0.00s)\n"}
+{"Time":"2026-10-02T19:33:46.986684153Z","Action":"pass","Package":"sekscan-release","Test":"TestReleasePreflight","Elapsed":0}
+{"Time":"2026-10-02T19:33:46.986688699Z","Action":"run","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility"}
+{"Time":"2026-10-02T19:33:46.986693717Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility","Output":"=== RUN   TestRuntimeZipContentsAndReproducibility\n"}
+{"Time":"2026-10-02T19:33:46.988898195Z","Action":"run","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/linux/amd64"}
+{"Time":"2026-10-02T19:33:46.988907329Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/linux/amd64","Output":"=== RUN   TestRuntimeZipContentsAndReproducibility/linux/amd64\n"}
+{"Time":"2026-10-02T19:33:46.994480176Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/linux/amd64","Output":"--- PASS: TestRuntimeZipContentsAndReproducibility/linux/amd64 (0.01s)\n"}
+{"Time":"2026-10-02T19:33:46.994498073Z","Action":"pass","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/linux/amd64","Elapsed":0.01}
+{"Time":"2026-10-02T19:33:46.994507687Z","Action":"run","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/linux/arm64"}
+{"Time":"2026-10-02T19:33:46.994510481Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/linux/arm64","Output":"=== RUN   TestRuntimeZipContentsAndReproducibility/linux/arm64\n"}
+{"Time":"2026-10-02T19:33:47.000350613Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/linux/arm64","Output":"--- PASS: TestRuntimeZipContentsAndReproducibility/linux/arm64 (0.01s)\n"}
+{"Time":"2026-10-02T19:33:47.000369962Z","Action":"pass","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/linux/arm64","Elapsed":0.01}
+{"Time":"2026-10-02T19:33:47.000374629Z","Action":"run","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/windows/amd64"}
+{"Time":"2026-10-02T19:33:47.000377503Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/windows/amd64","Output":"=== RUN   TestRuntimeZipContentsAndReproducibility/windows/amd64\n"}
+{"Time":"2026-10-02T19:33:47.005369633Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/windows/amd64","Output":"--- PASS: TestRuntimeZipContentsAndReproducibility/windows/amd64 (0.00s)\n"}
+{"Time":"2026-10-02T19:33:47.005383303Z","Action":"pass","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/windows/amd64","Elapsed":0}
+{"Time":"2026-10-02T19:33:47.00538845Z","Action":"run","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/darwin/amd64"}
+{"Time":"2026-10-02T19:33:47.005392216Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/darwin/amd64","Output":"=== RUN   TestRuntimeZipContentsAndReproducibility/darwin/amd64\n"}
+{"Time":"2026-10-02T19:33:47.010275594Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/darwin/amd64","Output":"--- PASS: TestRuntimeZipContentsAndReproducibility/darwin/amd64 (0.00s)\n"}
+{"Time":"2026-10-02T19:33:47.010287151Z","Action":"pass","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/darwin/amd64","Elapsed":0}
+{"Time":"2026-10-02T19:33:47.010292659Z","Action":"run","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/darwin/arm64"}
+{"Time":"2026-10-02T19:33:47.010294832Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/darwin/arm64","Output":"=== RUN   TestRuntimeZipContentsAndReproducibility/darwin/arm64\n"}
+{"Time":"2026-10-02T19:33:47.015305198Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/darwin/arm64","Output":"--- PASS: TestRuntimeZipContentsAndReproducibility/darwin/arm64 (0.00s)\n"}
+{"Time":"2026-10-02T19:33:47.015316555Z","Action":"pass","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility/darwin/arm64","Elapsed":0}
+{"Time":"2026-10-02T19:33:47.015486877Z","Action":"output","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility","Output":"--- PASS: TestRuntimeZipContentsAndReproducibility (0.03s)\n"}
+{"Time":"2026-10-02T19:33:47.015491995Z","Action":"pass","Package":"sekscan-release","Test":"TestRuntimeZipContentsAndReproducibility","Elapsed":0.03}
+{"Time":"2026-10-02T19:33:47.015496261Z","Action":"run","Package":"sekscan-release","Test":"TestSourceArchiveDoesNotIncludeWorkspaceData"}
+{"Time":"2026-10-02T19:33:47.015498424Z","Action":"output","Package":"sekscan-release","Test":"TestSourceArchiveDoesNotIncludeWorkspaceData","Output":"=== RUN   TestSourceArchiveDoesNotIncludeWorkspaceData\n"}
+{"Time":"2026-10-02T19:33:47.021339077Z","Action":"output","Package":"sekscan-release","Test":"TestSourceArchiveDoesNotIncludeWorkspaceData","Output":"--- PASS: TestSourceArchiveDoesNotIncludeWorkspaceData (0.01s)\n"}
+{"Time":"2026-10-02T19:33:47.021355472Z","Action":"pass","Package":"sekscan-release","Test":"TestSourceArchiveDoesNotIncludeWorkspaceData","Elapsed":0.01}
+{"Time":"2026-10-02T19:33:47.021359568Z","Action":"run","Package":"sekscan-release","Test":"TestSymlinksAndChecksumMutation"}
+{"Time":"2026-10-02T19:33:47.021362252Z","Action":"output","Package":"sekscan-release","Test":"TestSymlinksAndChecksumMutation","Output":"=== RUN   TestSymlinksAndChecksumMutation\n"}
+{"Time":"2026-10-02T19:33:47.022694907Z","Action":"output","Package":"sekscan-release","Test":"TestSymlinksAndChecksumMutation","Output":"--- PASS: TestSymlinksAndChecksumMutation (0.00s)\n"}
+{"Time":"2026-10-02T19:33:47.022716238Z","Action":"pass","Package":"sekscan-release","Test":"TestSymlinksAndChecksumMutation","Elapsed":0}
+{"Time":"2026-10-02T19:33:47.022719213Z","Action":"run","Package":"sekscan-release","Test":"TestHelperListsTargetsWithoutProductionModules"}
+{"Time":"2026-10-02T19:33:47.022721536Z","Action":"output","Package":"sekscan-release","Test":"TestHelperListsTargetsWithoutProductionModules","Output":"=== RUN   TestHelperListsTargetsWithoutProductionModules\n"}
+{"Time":"2026-10-02T19:33:47.022724921Z","Action":"output","Package":"sekscan-release","Test":"TestHelperListsTargetsWithoutProductionModules","Output":"--- PASS: TestHelperListsTargetsWithoutProductionModules (0.00s)\n"}
+{"Time":"2026-10-02T19:33:47.022727014Z","Action":"pass","Package":"sekscan-release","Test":"TestHelperListsTargetsWithoutProductionModules","Elapsed":0}
+{"Time":"2026-10-02T19:33:47.022729217Z","Action":"run","Package":"sekscan-release","Test":"TestSourceDateEpoch"}
+{"Time":"2026-10-02T19:33:47.0227309Z","Action":"output","Package":"sekscan-release","Test":"TestSourceDateEpoch","Output":"=== RUN   TestSourceDateEpoch\n"}
+{"Time":"2026-10-02T19:33:47.022733313Z","Action":"output","Package":"sekscan-release","Test":"TestSourceDateEpoch","Output":"--- PASS: TestSourceDateEpoch (0.00s)\n"}
+{"Time":"2026-10-02T19:33:47.022736308Z","Action":"pass","Package":"sekscan-release","Test":"TestSourceDateEpoch","Elapsed":0}
+{"Time":"2026-10-02T19:33:47.02273802Z","Action":"output","Package":"sekscan-release","Output":"PASS\n"}
+{"Time":"2026-10-02T19:33:47.023290797Z","Action":"output","Package":"sekscan-release","Output":"coverage: 49.1% of statements\n"}
+{"Time":"2026-10-02T19:33:47.023791382Z","Action":"output","Package":"sekscan-release","Output":"ok  \tsekscan-release\t0.042s\tcoverage: 49.1% of statements\n"}
+{"Time":"2026-10-02T19:33:47.02380336Z","Action":"pass","Package":"sekscan-release","Elapsed":0.043}

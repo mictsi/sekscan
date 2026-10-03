@@ -1,0 +1,91 @@
+{
+  "complete": true,
+  "decisions": [
+    {
+      "decision": "fail",
+      "exception": "",
+      "fingerprint": "3f5149baf83ac4ea90e7f3422d04cf70b138435a09ae32080b9631cf6abd98e6",
+      "id": "3f5149baf83ac4ea90e7f342",
+      "reason": "Meets configured severity threshold"
+    },
+    {
+      "decision": "fail",
+      "exception": "",
+      "fingerprint": "c187acaa0d1711aad003e973d098314d7b0bb67bfe638cc5e0dd59307179729a",
+      "id": "c187acaa0d1711aad003e973",
+      "reason": "Meets configured severity threshold"
+    },
+    {
+      "decision": "fail",
+      "exception": "",
+      "fingerprint": "0e97cb8e6f8a202bf0c428b8d21f16b231432dea961a670e77bd03a60f1d4caa",
+      "id": "0e97cb8e6f8a202bf0c428b8",
+      "reason": "License expression does not satisfy the configured allow/deny policy without further review"
+    },
+    {
+      "decision": "fail",
+      "exception": "",
+      "fingerprint": "2ce43c674bd4685fa82eed5b5dde5b12e3e481393d9a795c532124cb65df5c95",
+      "id": "2ce43c674bd4685fa82eed5b",
+      "reason": "Meets configured severity threshold"
+    },
+    {
+      "decision": "fail",
+      "exception": "",
+      "fingerprint": "a87c4480c4f32170efcc509cf0f5ea6e90ac19463e6fd786ca470041fdbb0171",
+      "id": "a87c4480c4f32170efcc509c",
+      "reason": "Meets configured severity threshold"
+    },
+    {
+      "decision": "fail",
+      "exception": "",
+      "fingerprint": "b80954611e43daeb0ca353496e5ae23e464955974d386f35410092339abf3485",
+      "id": "b80954611e43daeb0ca35349",
+      "reason": "Meets configured severity threshold"
+    },
+    {
+      "decision": "fail",
+      "exception": "",
+      "fingerprint": "bddbfeca99fc45e84e65387de638310e7fbd2c6de28ed781869446afc5e5b1ba",
+      "id": "bddbfeca99fc45e84e65387d",
+      "reason": "Meets configured severity threshold"
+    },
+    {
+      "decision": "pass",
+      "exception": "",
+      "fingerprint": "ba7ddd0869c2a277c0b87b3e1b8187a47cdc73d7e36313c1515106d4a473ac4a",
+      "id": "ba7ddd0869c2a277c0b87b3e",
+      "reason": "Below configured failure threshold"
+    },
+    {
+      "decision": "pass",
+      "exception": "",
+      "fingerprint": "c3209dc29632864acef26a81b76d961042eabf6bcb42b31882fdd0713dde4680",
+      "id": "c3209dc29632864acef26a81",
+      "reason": "Below configured failure threshold"
+    },
+    {
+      "decision": "review",
+      "exception": "",
+      "fingerprint": "c6a7d6ea1e45c2225c205ebb6ff873a4baa02b0a1dc0b44e7de88d00e8b1190b",
+      "id": "c6a7d6ea1e45c2225c205ebb",
+      "reason": "No usable license evidence was discovered"
+    },
+    {
+      "decision": "review",
+      "exception": "",
+      "fingerprint": "f950c97c8292903431ca6fcd5b83e4e3c5263c8d92b4e7e918ae722028da3129",
+      "id": "f950c97c8292903431ca6fcd",
+      "reason": "Detected license text and package metadata contain different expressions; human review required"
+    },
+    {
+      "decision": "pass",
+      "exception": "",
+      "fingerprint": "d902e324b29bf188f2e8d0d7b1cddf2c680aa408b386cf6b15b165b540c6bd11",
+      "id": "d902e324b29bf188f2e8d0d7",
+      "reason": "Below configured failure threshold"
+    }
+  ],
+  "exit_code": 1,
+  "status": "failed"
+}

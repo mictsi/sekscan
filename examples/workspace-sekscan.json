@@ -1,0 +1,135 @@
+{
+  "portable": true,
+  "diagnostic_stderr": false,
+  "paths": {
+    "bin": "bin",
+    "cache": "cache",
+    "logs": "logs",
+    "data": "data"
+  },
+  "storage": {
+    "enabled": true,
+    "driver": "sqlite",
+    "path": "data/sekscan.db",
+    "dsn_env": "SEKSCAN_DB_DSN",
+    "required": true,
+    "auto_migrate": true,
+    "allow_insecure_tls": false,
+    "timeout": "30s",
+    "max_open_conns": 4,
+    "store_artifacts": true,
+    "max_artifact_mb": 64
+  },
+  "project": {
+    "namespace": "default"
+  },
+  "version": 2,
+  "tools": {
+    "actionlint": {
+      "native_config": "config/actionlint.yaml",
+      "version_args": [
+        "-version"
+      ],
+      "version": "latest"
+    },
+    "gitleaks": {
+      "version": "latest"
+    },
+    "go": {
+      "version_args": [
+        "version"
+      ],
+      "version": "latest"
+    },
+    "gosec": {
+      "native_config": "config/gosec.json",
+      "version_args": [
+        "-version"
+      ],
+      "version": "latest"
+    },
+    "govulncheck": {
+      "version_args": [
+        "-version"
+      ],
+      "version": "latest"
+    },
+    "grype": {
+      "native_config": "config/grype.yaml",
+      "version": "latest"
+    },
+    "hadolint": {
+      "native_config": "config/hadolint.yaml",
+      "version_args": [
+        "--version"
+      ],
+      "version": "latest"
+    },
+    "syft": {
+      "native_config": "config/syft.yaml",
+      "version": "latest"
+    },
+    "trivy": {
+      "native_config": "config/trivy.yaml",
+      "version": "latest"
+    },
+    "zizmor": {
+      "version_args": [
+        "--version"
+      ],
+      "version": "latest"
+    }
+  },
+  "checks": {
+    "hadolint": true,
+    "zizmor": true,
+    "govulncheck": true,
+    "gosec": true,
+    "vulnerabilities": true,
+    "licenses": true,
+    "secrets": true,
+    "misconfigurations": true,
+    "trivy_vulnerabilities": false,
+    "gitleaks": true,
+    "actionlint": true
+  },
+  "policy": {
+    "fail_at": "high",
+    "unknown_severity": "review",
+    "fail_on_review": true,
+    "only_new": false,
+    "require_fix": false,
+    "vulnerability_scopes": [
+      "application",
+      "operating-system",
+      "unknown"
+    ],
+    "licenses": {
+      "allow": [
+        "MIT",
+        "Apache-2.0",
+        "BSD-2-Clause",
+        "BSD-3-Clause",
+        "ISC",
+        "0BSD",
+        "Unlicense",
+        "CC0-1.0"
+      ],
+      "deny": [],
+      "unlisted": "review",
+      "unknown": "review",
+      "conflict": "review"
+    }
+  },
+  "exceptions": [],
+  "scope_overrides": [],
+  "exclude": [
+    ".git",
+    "security-report"
+  ],
+  "timeout": "15m",
+  "max_output_mb": 256,
+  "max_db_age": "120h",
+  "license_full": false,
+  "extensions": []
+}

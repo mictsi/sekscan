@@ -1,0 +1,3 @@
+go vet -modfile=go.offline.mod -tags=offline_sqltest ./...
+Exit status: 0. No diagnostics.
+Release-helper go vet: exit status 0. No diagnostics.

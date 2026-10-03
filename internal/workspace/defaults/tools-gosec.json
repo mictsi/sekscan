@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "tools": {
+    "gosec": {
+      "version": "latest",
+      "version_args": [
+        "-version"
+      ],
+      "install": {
+        "repository": "securego/gosec",
+        "executable": "gosec",
+        "checksums": "gosec_{version}_checksums.txt",
+        "assets": {
+          "linux/amd64": "gosec_{version}_{os}_{arch}.tar.gz",
+          "linux/arm64": "gosec_{version}_{os}_{arch}.tar.gz",
+          "darwin/amd64": "gosec_{version}_{os}_{arch}.tar.gz",
+          "darwin/arm64": "gosec_{version}_{os}_{arch}.tar.gz",
+          "windows/amd64": "gosec_{version}_{os}_{arch}.tar.gz",
+          "windows/arm64": "gosec_{version}_{os}_{arch}.tar.gz"
+        }
+      }
+    }
+  }
+}

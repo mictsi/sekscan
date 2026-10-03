@@ -1,0 +1,27 @@
+{
+  "version": "0.4.1-preview",
+  "date": "2026-10-02",
+  "production_binary_built": false,
+  "upstream_scanners_tested": false,
+  "live_postgresql_tested": false,
+  "live_mssql_tested": false,
+  "driver_mode": "offline_sqltest (test-only bridge to system SQLite)",
+  "go_test": {
+    "passed": 170,
+    "skipped": 2,
+    "failed": 0,
+    "passing_top_level": 96
+  },
+  "release_helper_tests": {
+    "passed": 15,
+    "skipped": 0,
+    "failed": 0,
+    "passing_top_level": 10
+  },
+  "race_detector": "passed",
+  "go_vet": "passed",
+  "release_helper_vet": "passed",
+  "history_workflow_checks": 27,
+  "portable_dashboard_checks": 14,
+  "statement_coverage_percent": 59.2
+}

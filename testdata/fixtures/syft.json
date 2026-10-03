@@ -1,0 +1,17 @@
+{
+  "artifacts": [
+    {"id":"log4j","name":"log4j-core","version":"2.14.1","type":"java-archive","purl":"pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1","locations":[{"path":"app/lib/log4j-core-2.14.1.jar"}],"licenses":[{"value":"Apache-2.0","spdxExpression":"Apache-2.0"}]},
+    {"id":"lodash","name":"lodash","version":"4.17.15","type":"npm","purl":"pkg:npm/lodash@4.17.15","locations":[{"path":"package-lock.json"}],"licenses":[{"value":"MIT"}]},
+    {"id":"requests","name":"requests","version":"2.19.1","type":"python","purl":"pkg:pypi/requests@2.19.1","locations":[{"path":"requirements.txt"}],"licenses":[{"value":"Apache-2.0"}]},
+    {"id":"busybox","name":"busybox","version":"1.35.0","type":"apk","purl":"pkg:apk/alpine/busybox@1.35.0","locations":[{"path":"lib/apk/db/installed"}],"licenses":[{"value":"GPL-2.0-only"}]},
+    {"id":"react","name":"react","version":"18.3.1","type":"npm","purl":"pkg:npm/react@18.3.1","locations":[{"path":"package-lock.json"}],"licenses":[{"value":"MIT"}]},
+    {"id":"axios","name":"axios","version":"1.7.4","type":"npm","purl":"pkg:npm/axios@1.7.4","locations":[{"path":"package-lock.json"}],"licenses":[{"value":"MIT"}]},
+    {"id":"widget","name":"internal-widget","version":"1.2.0","type":"npm","purl":"pkg:npm/internal-widget@1.2.0","locations":[{"path":"node_modules/internal-widget/package.json"}],"licenses":[{"value":"MIT"}]},
+    {"id":"legacy","name":"legacy-parser","version":"0.9.2","type":"npm","purl":"pkg:npm/legacy-parser@0.9.2","locations":[{"path":"package-lock.json"}],"licenses":[]},
+    {"id":"copyleft","name":"reporting-addon","version":"3.0.0","type":"npm","purl":"pkg:npm/reporting-addon@3.0.0","locations":[{"path":"package-lock.json"}],"licenses":[{"value":"AGPL-3.0-only"}]},
+    {"id":"dual","name":"dual-license-lib","version":"2.1.0","type":"npm","purl":"pkg:npm/dual-license-lib@2.1.0","locations":[{"path":"package-lock.json"}],"licenses":[{"value":"MIT OR GPL-3.0-only"}]}
+  ],
+  "source":{"id":"synthetic-test-source","type":"directory","metadata":{"path":"synthetic-demo-project"}},
+  "descriptor":{"name":"syft","version":"1.2.3-test-fixture"},
+  "schema":{"version":"16.0.0","url":"https://raw.githubusercontent.com/anchore/syft/main/schema/json/schema-16.0.0.json"}
+}

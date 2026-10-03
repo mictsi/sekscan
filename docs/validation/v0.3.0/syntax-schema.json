@@ -1,0 +1,24 @@
+{
+  "yaml_files_parsed": [
+    "internal/workspace/defaults/actionlint.yaml",
+    "internal/workspace/defaults/semgrep-rules.yaml",
+    "internal/workspace/defaults/grype.yaml",
+    "internal/workspace/defaults/syft.yaml",
+    "internal/workspace/defaults/trivy.yaml",
+    "examples/github-actions.yml",
+    "examples/azure-pipelines.yml",
+    ".github/workflows/test.yml"
+  ],
+  "sqlite_bootstrap_tables": [
+    "sekscan_schema_migrations",
+    "sekscan_projects",
+    "sekscan_scans",
+    "sekscan_engine_runs",
+    "sekscan_components",
+    "sekscan_findings",
+    "sekscan_artifacts"
+  ],
+  "sqlite_version": "3.46.1",
+  "shell_syntax": "all scripts/*.sh passed bash -n",
+  "javascript_syntax": "internal/report/web/app.js passed node --check"
+}

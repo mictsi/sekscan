@@ -1,0 +1,23 @@
+?   	sekscan/cmd/sekscan	[no test files]
+ok  	sekscan/internal/batch	1.225s
+ok  	sekscan/internal/cli	4.584s
+ok  	sekscan/internal/config	1.044s
+ok  	sekscan/internal/dbstore	1.497s
+ok  	sekscan/internal/deps	2.295s
+ok  	sekscan/internal/history	1.049s
+ok  	sekscan/internal/model	1.017s
+ok  	sekscan/internal/policy	1.022s
+ok  	sekscan/internal/report	1.032s
+?   	sekscan/internal/testsupport/fakescanner	[no test files]
+?   	sekscan/internal/testsupport/sqlitebridge	[no test files]
+?   	sekscan/schema	[no test files]
+ok  	sekscan/internal/runner	4.147s
+ok  	sekscan/internal/safearchive	1.055s
+ok  	sekscan/internal/scan	1.192s
+ok  	sekscan/internal/scannerdb	1.121s
+ok  	sekscan/internal/server	1.015s
+ok  	sekscan/internal/source	1.095s
+ok  	sekscan/internal/store	1.025s
+ok  	sekscan/internal/ui	1.030s
+ok  	sekscan/internal/workspace	1.035s
+ok  	sekscan/scripts/moduleupdate	2.060s

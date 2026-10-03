@@ -1,0 +1,15 @@
+?   	sekscan/cmd/sekscan	[no test files]
+ok  	sekscan/internal/cli	1.366s
+ok  	sekscan/internal/config	1.013s
+ok  	sekscan/internal/dbstore	1.115s
+ok  	sekscan/internal/deps	1.039s
+ok  	sekscan/internal/model	1.008s
+ok  	sekscan/internal/policy	1.013s
+ok  	sekscan/internal/report	1.010s
+?   	sekscan/internal/testsupport/fakescanner	[no test files]
+?   	sekscan/internal/testsupport/sqlitebridge	[no test files]
+ok  	sekscan/internal/runner	4.102s
+ok  	sekscan/internal/scan	1.013s
+ok  	sekscan/internal/server	1.009s
+ok  	sekscan/internal/store	1.016s
+ok  	sekscan/internal/workspace	1.017s

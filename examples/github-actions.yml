@@ -1,0 +1,39 @@
+# Example for THIS source repository, not an already-published binary URL.
+# Copy to .github/workflows/security.yml after reviewing policy and permissions.
+name: Security assessment
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      # Replace movable tags with reviewed full commit SHAs in production.
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache: false
+      - name: Build trusted security tool
+        run: |
+          go mod tidy
+          go mod verify
+          CGO_ENABLED=0 go build -trimpath -o "$RUNNER_TEMP/sekscan" ./cmd/sekscan
+      - name: Install scanners
+        # Use a reviewed platform-specific --config lock for repeatable CI.
+        run: '"$RUNNER_TEMP/sekscan" prepare --yes --config examples/sekscan.json --home "$RUNNER_TEMP/sekscan-workspace"'
+      - name: Scan source
+        run: '"$RUNNER_TEMP/sekscan" scan dir:. --ci --config examples/sekscan.json --home "$RUNNER_TEMP/sekscan-workspace" --project sekscan --out security-report'
+      - name: Publish reports even when policy fails
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: security-report
+          path: security-report/
+          if-no-files-found: error
+          retention-days: 14

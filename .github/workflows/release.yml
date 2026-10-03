@@ -1,0 +1,87 @@
+name: Release tagged binaries
+
+# Published releases (including prereleases) are the ONLY release-build trigger.
+# Branch/tag pushes, pull requests, draft releases, and edits do not publish files.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.event.release.id }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: ${{ github.event_name == 'release' && github.event.action == 'published' && !github.event.release.draft }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    outputs:
+      version: ${{ steps.release.outputs.version }}
+    steps:
+      - name: Check out the release event commit, not branch HEAD
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate the release tag, commit, and committed dependency lock
+        id: release
+        run: python3 scripts/release_event.py validate --require-modules
+
+      - name: Install the toolchain selected by the tagged source
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+          check-latest: false
+          cache: false
+
+      - name: Test publication controls
+        run: python3 -m unittest discover -s scripts/tests -v
+
+      - name: Test and package all six platforms, including Windows ARM64
+        env:
+          RELEASE_VERSION: ${{ steps.release.outputs.version }}
+        run: |
+          bash scripts/build-release.sh --version "$RELEASE_VERSION" --targets all
+          go mod verify
+          git diff --exit-code -- go.mod go.sum
+          python3 scripts/release_event.py seal --dist "dist/$RELEASE_VERSION"
+
+      - name: Transfer the complete artifact set to the publishing job
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: release-${{ github.event.release.id }}
+          path: dist/${{ steps.release.outputs.version }}/
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    # Only this job has write access. Building/testing dependencies does not.
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the same release commit for publication validation
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Download artifacts from this workflow run
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: release-${{ github.event.release.id }}
+          path: release-artifacts
+
+      - name: Verify and attach assets to the original release ID
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_PROMPT_DISABLED: '1'
+        run: python3 scripts/release_event.py publish --dist release-artifacts

@@ -1,0 +1,14 @@
+{
+  "python": "3.13.5",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "playwright": "1.57.0",
+  "unchanged_contracts": {
+    "go.mod": true,
+    "go.offline.mod": true,
+    "schema/sqlite.sql": true,
+    "schema/postgresql.sql": true,
+    "schema/mssql.sql": true,
+    "schema/batch.schema.json": true
+  },
+  "production_build": "not built; selected toolchain download attempt recorded separately"
+}

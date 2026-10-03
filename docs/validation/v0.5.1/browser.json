@@ -1,0 +1,21 @@
+{
+  "passed": 15,
+  "checks": [
+    "embedded dashboard and findings use separate accessible tabs without requests",
+    "search filters findings",
+    "severity filter",
+    "category filter",
+    "engine filter",
+    "application-only license view with explicit OS inventory access",
+    "component evidence dialog",
+    "scan-health diagnostics",
+    "per-tab filters are restored",
+    "filtered CSV content",
+    "JSON export content",
+    "JSON import, incomplete banner and untrusted text safety",
+    "pagination",
+    "mobile layout fits viewport",
+    "no uncaught JavaScript errors or network requests"
+  ],
+  "mode": "embedded HTML via Playwright set_content; export content captured before OS download"
+}

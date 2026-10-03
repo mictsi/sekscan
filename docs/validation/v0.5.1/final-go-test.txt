@@ -1,0 +1,22 @@
+?   	sekscan/cmd/sekscan	[no test files]
+ok  	sekscan/internal/batch	(cached)
+?   	sekscan/internal/testsupport/fakescanner	[no test files]
+?   	sekscan/internal/testsupport/sqlitebridge	[no test files]
+?   	sekscan/schema	[no test files]
+ok  	sekscan/internal/cli	1.052s
+ok  	sekscan/internal/config	(cached)
+ok  	sekscan/internal/dbstore	0.130s
+ok  	sekscan/internal/deps	(cached)
+ok  	sekscan/internal/history	(cached)
+ok  	sekscan/internal/model	(cached)
+ok  	sekscan/internal/policy	(cached)
+ok  	sekscan/internal/report	0.010s
+ok  	sekscan/internal/runner	(cached)
+ok  	sekscan/internal/scan	(cached)
+ok  	sekscan/internal/scannerdb	(cached)
+ok  	sekscan/internal/server	(cached)
+ok  	sekscan/internal/source	(cached)
+ok  	sekscan/internal/store	(cached)
+ok  	sekscan/internal/ui	(cached)
+ok  	sekscan/internal/workspace	(cached)
+ok  	sekscan/scripts/moduleupdate	(cached)

@@ -1,0 +1,23 @@
+{
+  "go-test.jsonl": {
+    "passed": 305,
+    "packages": 19,
+    "failed": 0,
+    "skipped": 2
+  },
+  "release-test.jsonl": {
+    "passed": 15,
+    "packages": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser.json": {
+    "passed": 15
+  },
+  "history.json": {
+    "passed": 43
+  },
+  "coverage": "total:\t\t\t\t\t\t\t\t(statements)\t\t\t66.5%",
+  "go_race": "passed",
+  "go_vet": "passed"
+}

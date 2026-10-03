@@ -1,0 +1,246 @@
+# sekscan {{.Version}} — {{.Target}}
+
+A local/CI security CLI with managed external scanners, SBOMs, application-license
+policies, an embedded dashboard, and SQLite/PostgreSQL/SQL Server scan history.
+
+This ZIP contains the **sekscan executable, docs, database schemas, and a clean
+workspace**. Scanner executables and vulnerability databases are **not bundled**;
+use `prepare` on a connected machine before scanning or copying an offline workspace.
+The executable is unsigned. Cross-compilation is not a native-platform runtime test.
+See `BUILD-INFO.json`, the outer `release.json`, and `TESTING.md` for validation details.
+
+`README.md` and the requested `readme.med` contain these same instructions.
+
+## 1. Verify and extract
+
+Verify the downloaded ZIP against the release's `SHA256SUMS.txt`, then extract the
+entire `{{.Directory}}/` directory. Do not move only the executable after preparation.
+Hashes detect corruption but do not authenticate a publisher; obtain release metadata
+through a trusted channel. On Unix, restore executable permission if the extractor lost it:
+
+```sh
+cd {{.Directory}}
+chmod +x sekscan
+./sekscan version
+```
+
+Windows PowerShell:
+
+```powershell
+Set-Location {{.Directory}}
+.\sekscan.exe version
+```
+
+Use the binary matching your OS and architecture. It is named `{{.Executable}}` in this ZIP.
+Windows ARM64 is a separate native application target, not the Windows x64 executable.
+Scanner availability is independent: each tool and runtime needs a compatible
+upstream distribution. Not every scanner publishes a Windows ARM64 asset.
+Preparation reports this limitation; it does not substitute an x64 or system binary.
+
+## 2. Prepare the portable tools and their data
+
+```sh
+./sekscan config validate --home .
+./sekscan prepare --home . --all --update-tools --with-java --yes
+./sekscan doctor --home . --all
+./sekscan db status --home . --all --with-java
+```
+
+Windows uses identical arguments with `.\sekscan.exe` in place of `./sekscan`.
+For example:
+
+```powershell
+.\sekscan.exe prepare --home . --all --update-tools --with-java --yes
+.\sekscan.exe doctor --home . --all
+```
+
+Managed copies are installed into `bin/` even if the tools are already on PATH.
+Normal scans do not silently update executables. `--all` selects configured tools,
+not every possible scanner. The expanded suite includes Hadolint and conditional
+source/workflow checks. Approved preparation installs the managed Go SDK and scanner
+runtimes as needed, but not arbitrary custom runtimes or PostgreSQL/SQL Server services.
+Compatible native distributions are required; see docs/DEFAULT-SCANNERS.md and
+TESTING.md. Pin reviewed tool versions with `deps lock` for CI.
+
+Existing explicit false flags remain unchanged. To enable the expanded suite without
+replacing an old config, use `config enable-default-scanners --config sekscan.json
+--out sekscan-expanded.json`, then select the new file during preparation and scanning.
+Go modules with uncached dependencies need explicit `prepare --go-module PATH --yes`;
+this may update the project's go.sum.
+
+## 3. Scan: a project name is required
+
+```sh
+./sekscan scan dir:/path/to/source --project payments-api \
+  --branch main --revision COMMIT_ID --out security-report
+./sekscan serve security-report
+```
+
+```powershell
+.\sekscan.exe scan 'dir:C:\work\payments-api' --project payments-api `
+  --branch main --revision COMMIT_ID --out security-report
+.\sekscan.exe serve security-report
+```
+
+Project names are stable database keys within a namespace. Reuse exactly the same
+name on every agent. `project.key` in `sekscan.json` may supply the name instead of
+`--project`; an empty key is rejected even for SQLite or `--no-store` scans.
+Use explicit branches and target-kind filters when reviewing trends.
+
+Scan a built image or local archive:
+
+```sh
+./sekscan scan image:my-service:build-123 --project payments-api --out image-report
+./sekscan scan docker-archive:./image.tar --project payments-api --offline --out archive-report
+```
+
+An offline scan requires all scanner data and local target/dependency content to
+be prepared already. A Dockerfile by itself is not a scanned image.
+
+**Exit codes:** 0 = completed/pass; 1 = completed/policy failure; 2 = error or
+incomplete required coverage. Run `serve` separately and publish artifacts even
+when the scan fails. Never use `|| true` to disguise the scan status in CI.
+
+## 4. Project history, paging, trends, and comparison
+
+```sh
+./sekscan serve
+./sekscan history projects --page 1 --page-size 25
+./sekscan history list --project payments-api --page 2 --page-size 25 --json
+./sekscan history trends --project payments-api --branch main --kind dir --trend-limit 100 --json
+./sekscan history compare BASE_RUN_ID HEAD_RUN_ID --project payments-api --page-size 25
+./sekscan history compare BASE_RUN_ID HEAD_RUN_ID --view components --json
+./sekscan history compare BASE_RUN_ID HEAD_RUN_ID --out comparison.json
+```
+
+The history dashboard opens with **Portfolio → Projects → Dashboard / Runs → Run details**. Use run-row
+buttons to select an earlier baseline and later candidate across pages. The project
+dashboard plots findings, severities, categories, inventory size, and elapsed time.
+First/previous/next/last links, a page jump, and page-size controls accompany lists.
+
+Comparison reports new, changed, unchanged, no-longer-reported, and unverified
+findings. Incomplete or changed coverage must not appear as remediation. Changed
+package versions have separate identities; no-longer-reported does not prove a fix.
+See `docs/HISTORY.md` for comparison limits and API pagination envelopes.
+
+## 5. Workspace and configuration
+
+```text
+{{.Directory}}/
+  {{.Executable}}        Application executable
+  sekscan.json           Main settings (project.key is intentionally empty)
+  config/                Standard native scanner and integration configs
+  bin/                   Managed scanner executables, populated by prepare
+  cache/                 Scanner databases, populated by prepare
+  logs/                  JSONL logs (never publish private diagnostic logs)
+  data/                  SQLite history database, created when used
+  docs/                  Architecture, security, history, portability, release guides
+  schema/                SQLite, PostgreSQL, SQL Server bootstrap schemas
+  examples/              Configuration, synthetic demo, CI examples
+  SOURCE-README.md        Complete source README
+  BUILD-INFO.json         Target/version/binary digest
+  GO-MODULES.json         Resolved application module graph
+  SHA256SUMS.txt          Checksums for files inside this package
+```
+
+Configuration lookup is explicit `--config`, then `SEKSCAN_CONFIG`, then
+`sekscan.json`/`config/sekscan.json` in the working folder and beside the executable.
+Use `--home DIR` for an explicit workspace. In CI select a trusted config explicitly;
+never allow a pull request to substitute its own scanner definitions or policy.
+
+SQLite is local and portable. To share results across machines, select `postgres`
+or `mssql` and supply the DSN through the configured environment variable. Use
+`storage migrate` with a migration identity; scan jobs should have only necessary
+permissions. See `docs/DATABASE.md`. The existing schema v1 already keys projects
+by namespace/name and needs no migration for history/comparison features.
+
+## 6. Portability and updates
+
+```sh
+./sekscan deps check --home . --all --json
+./sekscan prepare --home . --all --update-tools --with-java --yes
+./sekscan storage backup --home . --out history-backup.db
+```
+
+To transfer an offline workspace, stop scans/updates/database writers and copy the
+whole folder to the same OS/architecture. SQLite needs a consistent copy; external
+PostgreSQL/SQL Server databases are not copied with the folder. Scanner data is
+separate from scan-history storage. Native security controls are not an OS sandbox.
+
+## 7. Troubleshooting and source builds
+
+For a scanner failure, first use `doctor` and `db status`. Syft failure blocks
+Grype's SBOM-dependent scan. `--diagnostic-stderr` writes raw private logs that may
+contain secrets; never upload them blindly. See `docs/TROUBLESHOOTING.md`.
+
+Source release builds use `scripts/build-release.sh` or `scripts/build-release.ps1`:
+
+```sh
+bash scripts/build-release.sh --version {{.Version}} --targets all
+```
+
+```powershell
+.\scripts\build-release.ps1 --version {{.Version}} --targets all
+```
+
+Run these from the separate source checkout/package, not this runtime ZIP. Resolve,
+review, and commit `go.mod`/`go.sum` first. The release builder does not update them,
+requires production drivers, and refuses test-only binaries. See `docs/RELEASING.md`.
+
+
+## Batch and GitHub modes
+
+Create `projects.json` using `schema/batch.schema.json`:
+
+```json
+{"version":1,"projects":[
+  {"project":"payments-api","path":"../payments-api"},
+  {"repo_url":"https://github.com/mictsi/SekuraDesignMCP"}
+]}
+```
+
+```sh
+./sekscan batch validate projects.json
+./sekscan batch projects.json --home . --out batch-reports
+./sekscan github mictsi/SekuraDesignMCP --home .
+./sekscan serve --home .
+```
+
+Relative source paths are relative to the manifest. GitHub keys default to lowercase
+owner/repository and are recorded with the resolved commit. Tokens come from the
+environment, never JSON. GitHub snapshots use a portable source cache and do not
+require Git. For offline runs, use an exact already-cached commit. No repository
+scripts are executed. Read `docs/BATCH.md` for partial-source coverage and limits.
+
+Without a report directory, `serve` starts the portfolio Dashboard. Projects and
+All runs are separate tabs, as are project Dashboards / Runs and comparison Summary /
+Findings / Components. Reports use the same embedded Sekura design, credited in
+`docs/UI.md` and `third_party/SekuraDesignMCP-LICENSE`.
+
+
+## Sekura 3.0.2 presentation
+
+History and report pages share the same compact shell. Navigation expansion is
+separate from route selection. The mobile navigation drawer closes with Escape and
+returns focus; its background is blocked while open. Filter rows align labels,
+hints, controls and feedback. Use Table density for comfortable, compact or dense
+rows without changing the rest of the page. Appearance includes System and four
+explicit themes.
+
+Stored history renders with this executable's embedded UI. Previously exported
+HTML remains unchanged until regenerated from its results JSON:
+
+```sh
+./sekscan report ./old-report/results.json --out ./refreshed-report
+```
+
+Use a new output directory and keep the original SBOM files. No database migration
+or scanner update is required for this presentation change. See
+`docs/DESIGN-MIGRATION-3.0.2.md` and `TESTING.md` for the validation boundary.
+
+## Removed scanner
+
+Semgrep is no longer installed, tested or scanned. Legacy configuration entries are
+ignored with a migration warning; stored results and unused workspace files remain.
+See `docs/SEMGREP-REMOVAL.md`. No Python package/runtime setup is needed for the
+remaining default suite.

@@ -1,0 +1,40 @@
+{
+  "version": "0.4.0-preview",
+  "date": "2026-10-02",
+  "application": {
+    "passing_cases": 145,
+    "passing_top_level": 90,
+    "skipped_cases": [
+      "TestExternalDatabaseIntegration/postgres",
+      "TestExternalDatabaseIntegration/mssql"
+    ],
+    "coverage_percent": 58.9,
+    "covered_statements": 3050,
+    "statements": 5175
+  },
+  "release_helper": {
+    "passing_cases": 15,
+    "passing_top_level": 10,
+    "skipped_cases": [],
+    "coverage_percent": 49.1,
+    "covered_statements": 231,
+    "statements": 470
+  },
+  "browser_checks": 14,
+  "history_checks": 22,
+  "syntax_and_schema": {
+    "bash_syntax": "passed",
+    "javascript_syntax": "passed",
+    "python_syntax": "passed",
+    "yaml_parsing": "passed",
+    "default_json_parsing": "passed",
+    "schema_exports_match_except_generated_timestamp": "passed",
+    "standalone_sqlite_schema_execution": "passed",
+    "powershell_runtime_available": false
+  },
+  "production_release": "not built; unresolved go.sum correctly rejected by release preflight",
+  "real_scanners": "not run",
+  "live_postgresql_mssql": "not run; no DSNs",
+  "test_driver": "test-only CGo adapter to system SQLite; not production modernc driver",
+  "test_compiler": "go version go1.23.2 linux/amd64"
+}

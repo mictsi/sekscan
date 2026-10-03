@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "storage": {"driver": "postgres", "dsn_env": "SEKSCAN_DB_DSN", "auto_migrate": false, "required": true, "allow_insecure_tls": false},
+  "project": {"namespace": "engineering", "key": "example-service"}
+}

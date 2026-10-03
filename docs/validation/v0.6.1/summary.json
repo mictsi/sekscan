@@ -1,0 +1,11 @@
+{
+  "version": "0.6.1-preview",
+  "application_test_entries_passed": 342,
+  "external_service_test_entries_skipped": 2,
+  "release_test_entries_passed": 15,
+  "race": "passed (offline_sqltest)",
+  "vet": "passed (offline_sqltest)",
+  "statement_coverage_percent": 67.0,
+  "live_scanner_validation": false,
+  "production_binary_built": false
+}

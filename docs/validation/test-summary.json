@@ -1,0 +1,11 @@
+{
+  "test_cases": {
+    "pass": 85,
+    "skip": 2
+  },
+  "top_level_passed": 60,
+  "skipped": [
+    "TestExternalDatabaseIntegration/postgres",
+    "TestExternalDatabaseIntegration/mssql"
+  ]
+}

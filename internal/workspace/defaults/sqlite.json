@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "storage": {"driver": "sqlite", "path": "data/sekscan.db", "auto_migrate": true},
+  "project": {"namespace": "default", "key": "example-service"}
+}

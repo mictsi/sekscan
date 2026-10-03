@@ -1,0 +1,23 @@
+test_complete_artifact_set_and_seal (test_release_event.ReleaseTests.test_complete_artifact_set_and_seal) ... ok
+test_different_event_commit (test_release_event.ReleaseTests.test_different_event_commit) ... ok
+test_draft_immutable_and_identity_mismatch (test_release_event.ReleaseTests.test_draft_immutable_and_identity_mismatch) ... ok
+test_duplicate_or_unsafe_checksum (test_release_event.ReleaseTests.test_duplicate_or_unsafe_checksum) ... ok
+test_immutable_remote_stops_upload (test_release_event.ReleaseTests.test_immutable_remote_stops_upload) ... ok
+test_missing_platform (test_release_event.ReleaseTests.test_missing_platform) ... ok
+test_moved_remote_tag_never_uploads (test_release_event.ReleaseTests.test_moved_remote_tag_never_uploads) ... ok
+test_only_published_release (test_release_event.ReleaseTests.test_only_published_release) ... ok
+test_publication_uses_release_id_and_verifies_server_digest (test_release_event.ReleaseTests.test_publication_uses_release_id_and_verifies_server_digest) ... ok
+test_real_git_tag_and_locked_modules (test_release_event.ReleaseTests.test_real_git_tag_and_locked_modules) ... ok
+test_retry_skips_only_matching_assets (test_release_event.ReleaseTests.test_retry_skips_only_matching_assets) ... ok
+test_stable_and_prerelease_tags (test_release_event.ReleaseTests.test_stable_and_prerelease_tags) ... ok
+test_tampered_zip (test_release_event.ReleaseTests.test_tampered_zip) ... ok
+test_test_status_and_platform_gate (test_release_event.ReleaseTests.test_test_status_and_platform_gate) ... ok
+test_unexpected_artifact (test_release_event.ReleaseTests.test_unexpected_artifact) ... ok
+test_unsafe_and_invalid_tags (test_release_event.ReleaseTests.test_unsafe_and_invalid_tags) ... ok
+test_windows_arm64_is_required (test_release_event.ReleaseTests.test_windows_arm64_is_required) ... ok
+test_workflow_is_published_only_and_pinned (test_release_event.ReleaseTests.test_workflow_is_published_only_and_pinned) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.044s
+
+OK
