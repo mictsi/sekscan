@@ -234,13 +234,14 @@ func TestAllDefaultExtensionInvocations(t *testing.T) {
 					entry += ".exe"
 				}
 				if tool == "go" {
-					entry = filepath.Join("bin", "go")
+					entry = "bin/go"
 					if runtime.GOOS == "windows" {
 						entry += ".exe"
 					}
 				}
-				os.MkdirAll(filepath.Dir(filepath.Join(src, entry)), 0700)
-				os.WriteFile(filepath.Join(src, entry), []byte("fixture"), 0700)
+				bundlePath := filepath.Join(src, filepath.FromSlash(entry))
+				os.MkdirAll(filepath.Dir(bundlePath), 0700)
+				os.WriteFile(bundlePath, []byte("fixture"), 0700)
 				if _, err := m.ImportBundle(context.Background(), tool, "1.2.3", src, entry, nil); err != nil {
 					t.Fatal(err)
 				}

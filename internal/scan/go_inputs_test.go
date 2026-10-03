@@ -216,7 +216,7 @@ func TestApplicableGoFailureStaysIncompleteAndLogsModule(t *testing.T) {
 			entry += ".exe"
 		}
 		if name == "go" {
-			entry = filepath.Join("bin", "go")
+			entry = "bin/go"
 			if runtime.GOOS == "windows" {
 				entry += ".exe"
 			}
