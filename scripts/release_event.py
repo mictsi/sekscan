@@ -20,7 +20,7 @@ from urllib.parse import quote, urlencode
 LOG = logging.getLogger("release")
 TARGETS = tuple(json.loads((Path(__file__).resolve().parent / "release" / "targets.json").read_text(encoding="utf-8")))
 if not TARGETS or len(set(TARGETS)) != len(TARGETS) or any(
-    not isinstance(target, str) or not re.fullmatch(r"(linux|darwin|windows)/(amd64|arm64)", target)
+    not isinstance(target, str) or not re.fullmatch(r"(linux|darwin)/(amd64|arm64)", target)
     for target in TARGETS
 ):
     raise ValueError("invalid release target manifest")

@@ -1,5 +1,10 @@
 # Changes
 
+## Unreleased
+
+- Limit application releases and CI platform testing to Linux and macOS
+  (amd64/arm64 release packages); remove Windows release targets.
+
 ## 0.6.6-preview — 2026-11-07
 
 - Add native Linux `run.sh` lifecycle commands, literal `.env` configuration,

@@ -46,7 +46,7 @@ release.published
   -> verify tag points to that commit + committed module lock
   -> select tagged go.mod toolchain
   -> publication-control unit tests
-  -> existing release builder: modules, tests, vet, all six builds, packaging
+  -> existing release builder: modules, tests, vet, all four builds, packaging
   -> seal full artifact set with release ID/tag/commit + checksums
   -> upload build artifact
   -> separate publishing job (contents: write)
@@ -67,8 +67,6 @@ The jobs use GitHub-hosted Ubuntu 24.04. The first job cross-compiles:
 |---|---|
 | Linux x86-64 | `linux-amd64.zip` |
 | Linux ARM64 | `linux-arm64.zip` |
-| Windows x86-64 | `windows-amd64.zip` |
-| Windows ARM64 | `windows-arm64.zip` |
 | macOS Intel | `darwin-amd64.zip` |
 | macOS Apple Silicon | `darwin-arm64.zip` |
 
@@ -128,17 +126,17 @@ not sekscan runtime prerequisites.
 - [GitHub immutable releases](https://docs.github.com/en/code-security/concepts/supply-chain-security/immutable-releases)
 - [Release asset upload API](https://docs.github.com/en/rest/releases/assets#upload-a-release-asset)
 
-## 0.6.4 target and prerequisite boundary
+## Target and prerequisite boundary
 
-`scripts/release/targets.json` is the canonical six-platform list. The Go release
+`scripts/release/targets.json` is the canonical four-platform list. The Go release
 builder embeds it, and the publication validator loads the same tagged file. A
-release missing its Windows ARM64 archive fails validation. Include this file when
+release missing any Linux or macOS archive fails validation. Include this file when
 copying the workflow helpers; the full source ZIP contains the complete set.
 
-To build Windows ARM64 alone after resolving/reviewing the production dependencies:
+To build macOS ARM64 alone after resolving/reviewing the production dependencies:
 
 ```bash
-bash scripts/build-release.sh --version 0.6.6-preview --targets windows/arm64
+bash scripts/build-release.sh --version 0.6.6-preview --targets darwin/arm64
 ```
 
 An ARM64 application executable does not imply native availability of every external

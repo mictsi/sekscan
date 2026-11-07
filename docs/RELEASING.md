@@ -16,12 +16,10 @@ Only that workflow requires Python/GitHub CLI; the local Go builder below does n
 |---|---|
 | `linux/amd64` | `sekscan` |
 | `linux/arm64` | `sekscan` |
-| `windows/amd64` | `sekscan.exe` |
-| `windows/arm64` | `sekscan.exe` |
 | `darwin/amd64` | `sekscan` |
 | `darwin/arm64` | `sekscan` |
 
-`--targets all` means these six application targets, not every GOOS/GOARCH supported
+`--targets all` means these four application targets, not every GOOS/GOARCH supported
 by Go. Unsupported pairs are rejected. Availability of an upstream scanner release
 is separate from compiling the application; `prepare` verifies scanner prerequisites
 on the selected platform. A cross-compiled binary is not proof of native execution.
@@ -29,28 +27,13 @@ on the selected platform. A cross-compiled binary is not proof of native executi
 ## Prerequisites and dependency bootstrap
 
 Use the supported Go toolchain selected by the repository's `go.mod`; this snapshot
-requires Go 1.26.0 or newer and selects go1.27.1. Install Bash on Linux/macOS or use
-PowerShell on Windows. Permit required module/toolchain downloads, or prepopulate
+requires Go 1.26.0 or newer and selects go1.27.1. Install Bash on Linux/macOS. Permit required module/toolchain downloads, or prepopulate
 verified module and compiler caches through your approved offline process.
 
 The source preview has no fabricated `go.sum`. Bootstrap on a connected machine:
 
 ```sh
 bash scripts/build.sh
-# Review and commit go.mod and go.sum before proceeding.
-```
-
-Windows PowerShell:
-
-```powershell
-go mod tidy
-if ($LASTEXITCODE -ne 0) { throw 'Dependency resolution failed' }
-go mod verify
-if ($LASTEXITCODE -ne 0) { throw 'Module verification failed' }
-go test ./...
-if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
-go vet ./...
-if ($LASTEXITCODE -ne 0) { throw 'Vet failed' }
 # Review and commit go.mod and go.sum before proceeding.
 ```
 
@@ -68,17 +51,13 @@ From the source directory:
 bash scripts/build-release.sh --version 0.6.6-preview --targets all
 ```
 
-```powershell
-.\scripts\build-release.ps1 --version 0.6.6-preview --targets all
-```
-
 The helpers can also be called from another working directory; source-relative paths
 are resolved using the wrapper location. Flags are the same on Bash and PowerShell.
 Version defaults to the value in `internal/cli/cli.go`.
 
 ```sh
 bash scripts/build-release.sh --list-targets
-bash scripts/build-release.sh --version 0.6.6-preview --targets linux/amd64,windows/amd64
+bash scripts/build-release.sh --version 0.6.6-preview --targets linux/amd64,darwin/amd64
 bash scripts/build-release.sh --version 0.6.6-preview --out dist/review-build
 bash scripts/build-release.sh --help
 ```
@@ -96,8 +75,6 @@ in the release manifest; do not use it for a reviewed production release.
 dist/0.6.6-preview/
   sekscan-0.6.6-preview-linux-amd64.zip
   sekscan-0.6.6-preview-linux-arm64.zip
-  sekscan-0.6.6-preview-windows-amd64.zip
-  sekscan-0.6.6-preview-windows-arm64.zip
   sekscan-0.6.6-preview-darwin-amd64.zip
   sekscan-0.6.6-preview-darwin-arm64.zip
   sekscan-0.6.6-preview-source.zip
@@ -188,25 +165,11 @@ sha256sum --check SHA256SUMS.txt
 
 PowerShell, from the same release directory:
 
-```powershell
-Get-Content SHA256SUMS.txt | ForEach-Object {
-    $expected, $name = $_ -split '\s+', 2
-    $actual = (Get-FileHash -Algorithm SHA256 -LiteralPath $name.Trim()).Hash.ToLowerInvariant()
-    if ($actual -ne $expected) { throw "Checksum mismatch: $name" }
-}
-```
-
 Archive entries are sorted, use normalized modes, preserve executable permission,
 and use a controlled timestamp. `SOURCE_DATE_EPOCH` selects that timestamp:
 
 ```sh
 SOURCE_DATE_EPOCH=1790985600 bash scripts/build-release.sh --version 0.6.6-preview
-```
-
-```powershell
-$env:SOURCE_DATE_EPOCH = '1790985600'
-.\scripts\build-release.ps1 --version 0.6.6-preview
-Remove-Item Env:SOURCE_DATE_EPOCH
 ```
 
 ZIP fixture tests confirm deterministic packaging for identical inputs. Exact repeat
@@ -237,17 +200,17 @@ available. The batch source cache is runtime data and is not copied from the bui
 machine into a release. Populate managed tools/CVE data with `prepare`, and acquire
 needed repository commits online before transferring an offline workspace.
 
-## 0.6.4 target and prerequisite boundary
+## Target and prerequisite boundary
 
-`scripts/release/targets.json` is the canonical six-platform list. The Go release
+`scripts/release/targets.json` is the canonical four-platform list. The Go release
 builder embeds it, and the publication validator loads the same tagged file. A
-release missing its Windows ARM64 archive fails validation. Include this file when
+release missing any Linux or macOS archive fails validation. Include this file when
 copying the workflow helpers; the full source ZIP contains the complete set.
 
-To build Windows ARM64 alone after resolving/reviewing the production dependencies:
+To build macOS ARM64 alone after resolving/reviewing the production dependencies:
 
 ```bash
-bash scripts/build-release.sh --version 0.6.6-preview --targets windows/arm64
+bash scripts/build-release.sh --version 0.6.6-preview --targets darwin/arm64
 ```
 
 An ARM64 application executable does not imply native availability of every external

@@ -71,10 +71,10 @@ class ReleaseTests(unittest.TestCase):
         self.artifacts(); release.seal(self.root, self.info)
         self.assertEqual(len(release.verify_seal(self.root, self.info)), len(release.TARGETS) + 4)
 
-    def test_windows_arm64_is_required(self):
-        self.assertIn("windows/arm64", release.TARGETS)
+    def test_linux_and_macos_only(self):
+        self.assertEqual(set(release.TARGETS), {"linux/amd64", "linux/arm64", "darwin/amd64", "darwin/arm64"})
         self.artifacts()
-        (self.root / f"sekscan-{self.info['version']}-windows-arm64.zip").unlink()
+        (self.root / f"sekscan-{self.info['version']}-darwin-arm64.zip").unlink()
         with self.assertRaises(ValueError): release.seal(self.root, self.info)
 
     def test_missing_platform(self):

@@ -42,7 +42,7 @@ jobs:
       - name: Test publication controls
         run: python3 -m unittest discover -s scripts/tests -v
 
-      - name: Test and package all six platforms, including Windows ARM64
+      - name: Test and package all four Linux/macOS platforms
         env:
           RELEASE_VERSION: ${{ steps.release.outputs.version }}
         run: |

@@ -17,13 +17,13 @@ import (
 
 func TestTargetsAndVersionValidation(t *testing.T) {
 	all, e := parseTargets("all")
-	if e != nil || len(all) != 6 {
+	if e != nil || len(all) != 4 {
 		t.Fatal(all, e)
 	}
-	if _, e = parseTargets("linux/amd64,windows/amd64"); e != nil {
+	if _, e = parseTargets("linux/amd64,darwin/amd64"); e != nil {
 		t.Fatal(e)
 	}
-	for _, v := range []string{"", "linux/386", "windows/386", "linux/amd64,linux/amd64", "all,linux/amd64"} {
+	for _, v := range []string{"", "linux/386", "windows/386", "windows/amd64", "windows/arm64", "linux/amd64,linux/amd64", "all,linux/amd64"} {
 		if _, e := parseTargets(v); e == nil {
 			t.Fatal("accepted target", v)
 		}
@@ -266,19 +266,19 @@ func TestSourceDateEpoch(t *testing.T) {
 	}
 }
 
-func TestWindowsARM64ReleaseTargetAndBinaryGate(t *testing.T) {
-	targets, err := parseTargets("windows/arm64")
-	if err != nil || len(targets) != 1 || targets[0] != "windows/arm64" {
+func TestDarwinARM64ReleaseTargetAndBinaryGate(t *testing.T) {
+	targets, err := parseTargets("darwin/arm64")
+	if err != nil || len(targets) != 1 || targets[0] != "darwin/arm64" {
 		t.Fatal(targets, err)
 	}
 	info := productionBuildInfo()
-	info.Settings[0].Value = "windows"
+	info.Settings[0].Value = "darwin"
 	info.Settings[1].Value = "arm64"
-	if err = verifyBuildInfo(info, "windows/arm64"); err != nil {
+	if err = verifyBuildInfo(info, "darwin/arm64"); err != nil {
 		t.Fatal(err)
 	}
 	info.Settings[1].Value = "amd64"
-	if err = verifyBuildInfo(info, "windows/arm64"); err == nil {
+	if err = verifyBuildInfo(info, "darwin/arm64"); err == nil {
 		t.Fatal("x64 mislabeled ARM64 accepted")
 	}
 }

@@ -61,7 +61,7 @@ Use a platform ZIP attached to a reviewed release, when available, and check its
 SHA-256 against that release's `SHA256SUMS.txt`. Extract the **whole directory**.
 Linux/macOS extractors may require `chmod +x sekscan` afterward.
 
-The release builder supports Linux x86-64/ARM64, Windows x86-64/ARM64, and macOS
+The release builder supports Linux x86-64/ARM64 and macOS
 Intel/Apple Silicon. Scanner distribution and native-library compatibility must
 also be verified for the machine used; a cross-compiled executable does not prove
 that every scanner works on that platform.
@@ -78,22 +78,6 @@ The source declares `go 1.26.0` and selects `go1.27.1`. The bootstrap script res
 dependencies, runs tests/vet, and builds `./sekscan`. This preview has no fabricated
 `go.sum`: review and commit the resolved `go.mod` and `go.sum` before tagging a
 release. Do not disable Go module checksum verification.
-
-Windows PowerShell, from the source directory:
-
-```powershell
-go mod tidy
-if ($LASTEXITCODE -ne 0) { throw 'Dependency resolution failed' }
-go mod verify
-if ($LASTEXITCODE -ne 0) { throw 'Module verification failed' }
-go test ./...
-if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
-go vet ./...
-if ($LASTEXITCODE -ne 0) { throw 'Vet failed' }
-$env:CGO_ENABLED = '0'
-go build -trimpath -o sekscan.exe ./cmd/sekscan
-if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
-```
 
 ### Prepare once, then scan
 
@@ -114,13 +98,6 @@ From the extracted application directory:
 
 # Browse every project and its stored runs in the selected namespace.
 ./sekscan serve --home ./workspace
-```
-
-On Windows, substitute `.\sekscan.exe` for `./sekscan`, for example:
-
-```powershell
-.\sekscan.exe scan 'dir:C:\work\payments-api' --project payments-api --home .\workspace --out .\security-report
-.\sekscan.exe serve --home .\workspace
 ```
 
 **`--home` selects tools, caches, logs, and history—not the directory being scanned.**
@@ -154,7 +131,7 @@ secondary vulnerability scanner is disabled by default to reduce overlap.
 
 KICS runs as a standalone executable with local queries and libraries; no Docker or
 Checkmarx account is needed. Its default version is pinned to 2.1.20, which publishes
-native binaries and rule assets for all six release targets. See [KICS integration](docs/KICS.md).
+native binaries and rule assets for all four release targets. See [KICS integration](docs/KICS.md).
 
 See [default scanner behavior](docs/DEFAULT-SCANNERS.md) and [extension contracts](docs/EXTENSIONS.md).
 
@@ -441,9 +418,9 @@ GitHub release for the tag. The workflow builds the event's exact tagged commit,
 not the default branch or whichever commit is latest later.
 
 The canonical target list is [`scripts/release/targets.json`](scripts/release/targets.json).
-Both packaging and publication validation consume that file, including Windows ARM64.
+Both packaging and publication validation consume that file, for Linux and macOS.
 
-Each release gets six platform ZIPs, a source ZIP, documentation, `release.json`,
+Each release gets four platform ZIPs, a source ZIP, documentation, `release.json`,
 `release-source.json`, and `SHA256SUMS.txt`. Tests and packaging must finish before
 the publication job starts. Binaries and archive names take their version from the
 tag, with an optional leading `v` removed. Existing nonmatching assets are never

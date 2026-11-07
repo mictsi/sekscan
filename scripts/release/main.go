@@ -34,7 +34,7 @@ func loadTargetManifest() []string {
 	}
 	seen := map[string]bool{}
 	for _, target := range targets {
-		if !regexp.MustCompile(`^(linux|darwin|windows)/(amd64|arm64)$`).MatchString(target) || seen[target] {
+		if !regexp.MustCompile(`^(linux|darwin)/(amd64|arm64)$`).MatchString(target) || seen[target] {
 			panic("unsafe or duplicate embedded release target")
 		}
 		seen[target] = true

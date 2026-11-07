@@ -24,18 +24,9 @@ chmod +x sekscan
 ./sekscan version
 ```
 
-Windows PowerShell:
-
-```powershell
-Set-Location {{.Directory}}
-.\sekscan.exe version
-```
-
 Use the binary matching your OS and architecture. It is named `{{.Executable}}` in this ZIP.
-Windows ARM64 is a separate native application target, not the Windows x64 executable.
 Scanner availability is independent: each tool and runtime needs a compatible
-upstream distribution. Not every scanner publishes a Windows ARM64 asset.
-Preparation reports this limitation; it does not substitute an x64 or system binary.
+upstream distribution. Preparation reports unavailable native tools explicitly.
 
 ## 2. Prepare the portable tools and their data
 
@@ -44,14 +35,6 @@ Preparation reports this limitation; it does not substitute an x64 or system bin
 ./sekscan prepare --home . --all --update-tools --with-java --yes
 ./sekscan doctor --home . --all
 ./sekscan db status --home . --all --with-java
-```
-
-Windows uses identical arguments with `.\sekscan.exe` in place of `./sekscan`.
-For example:
-
-```powershell
-.\sekscan.exe prepare --home . --all --update-tools --with-java --yes
-.\sekscan.exe doctor --home . --all
 ```
 
 Managed copies are installed into `bin/` even if the tools are already on PATH.
@@ -74,12 +57,6 @@ this may update the project's go.sum.
 ./sekscan scan dir:/path/to/source --project payments-api \
   --branch main --revision COMMIT_ID --out security-report
 ./sekscan serve security-report
-```
-
-```powershell
-.\sekscan.exe scan 'dir:C:\work\payments-api' --project payments-api `
-  --branch main --revision COMMIT_ID --out security-report
-.\sekscan.exe serve security-report
 ```
 
 Project names are stable database keys within a namespace. Reuse exactly the same
@@ -177,10 +154,6 @@ Source release builds use `scripts/build-release.sh` or `scripts/build-release.p
 
 ```sh
 bash scripts/build-release.sh --version {{.Version}} --targets all
-```
-
-```powershell
-.\scripts\build-release.ps1 --version {{.Version}} --targets all
 ```
 
 Run these from the separate source checkout/package, not this runtime ZIP. Resolve,
