@@ -1,6 +1,8 @@
 # Changes
 
-## Unreleased
+## 0.6.7 — 2026-11-07
+
+- Remove the preview suffix from the application version.
 
 - Default the native launcher workspace to the app directory and direct CLI workspace to the executable directory; explicit workspace/config selections still override it.
 

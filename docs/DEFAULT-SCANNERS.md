@@ -1,4 +1,4 @@
-# Default source scanners — 0.6.6-preview
+# Default source scanners — 0.6.7
 
 ## Go applicability
 

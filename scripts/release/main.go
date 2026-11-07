@@ -103,7 +103,7 @@ func run(ctx context.Context, args []string, out, errOut io.Writer) error {
 	list := f.Bool("list-targets", false, "print supported release targets and exit")
 	f.Usage = func() {
 		fmt.Fprintln(errOut, "Build production sekscan releases: one ZIP per target, docs, configs, source ZIP, and SHA256SUMS.txt.")
-		fmt.Fprintln(errOut, "Usage: build-release [--version 0.6.4-preview] [--targets all] [--out DIRECTORY]")
+		fmt.Fprintln(errOut, "Usage: build-release [--version 0.6.7] [--targets all] [--out DIRECTORY]")
 		f.PrintDefaults()
 	}
 	if err := f.Parse(args); err != nil {
@@ -140,7 +140,7 @@ func run(ctx context.Context, args []string, out, errOut io.Writer) error {
 		o.Version = string(match[1])
 	}
 	if !versionPattern.MatchString(o.Version) {
-		return fmt.Errorf("invalid version %q; use a version such as 0.4.0-preview", o.Version)
+		return fmt.Errorf("invalid version %q; use a version such as 0.6.7", o.Version)
 	}
 	o.Version = strings.TrimPrefix(o.Version, "v")
 	if o.Targets, err = parseTargets(*targets); err != nil {
