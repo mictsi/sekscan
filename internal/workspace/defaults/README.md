@@ -1,7 +1,7 @@
 # Standard configuration files
 
 Installed by `sekscan init` and `prepare`; existing files are never overwritten.
-The default suite enables Gitleaks, actionlint, Hadolint, zizmor, govulncheck, gosec
+The default suite enables Gitleaks, actionlint, Hadolint, zizmor, govulncheck, gosec, KICS
 when applicable. Explicit false values/custom definitions are preserved.
 
 | File | Use |

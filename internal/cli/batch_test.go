@@ -42,6 +42,7 @@ func batchFixture(t *testing.T) (string, string) {
 		t.Fatal(e)
 	}
 	c := config.Default()
+	c.Checks.KICS = false // Core scanner fixture; KICS has its own adapter acceptance tests.
 	// This fixture isolates repository acquisition, not Go analyzer installation.
 	c.Checks.Govulncheck = false
 	c.Checks.Gosec = false

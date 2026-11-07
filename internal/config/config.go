@@ -32,6 +32,7 @@ type Tool struct {
 	SHA256       string         `json:"sha256,omitempty"` // Optional independent archive pin.
 }
 type Checks struct {
+	KICS                 bool `json:"kics"`
 	Hadolint             bool `json:"hadolint"`
 	Zizmor               bool `json:"zizmor"`
 	Govulncheck          bool `json:"govulncheck"`
@@ -77,8 +78,8 @@ type ScopeOverride struct {
 	Scope      string `json:"scope"`
 }
 type Extension struct {
-	When             string   `json:"when,omitempty"`   // go-modules, workflows, dockerfiles, source, or all.
-	Parser           string   `json:"parser,omitempty"` // sarif, hadolint-json, gosec-json.
+	When             string   `json:"when,omitempty"`   // go-modules, workflows, dockerfiles, iac, source, or all.
+	Parser           string   `json:"parser,omitempty"` // sarif, hadolint-json, gosec-json, kics-json.
 	Category         string   `json:"category,omitempty"`
 	Offline          bool     `json:"offline,omitempty"` // Trusted assertion; not a network sandbox.
 	RequiresTools    []string `json:"requires_tools,omitempty"`
@@ -311,10 +312,10 @@ func (c Config) Validate() error {
 				return fmt.Errorf("extension must select tool or executable, not both")
 			}
 		}
-		if e.When != "" && e.When != "all" && e.When != "source" && e.When != "go-modules" && e.When != "workflows" && e.When != "dockerfiles" {
+		if e.When != "" && e.When != "all" && e.When != "source" && e.When != "go-modules" && e.When != "workflows" && e.When != "dockerfiles" && e.When != "iac" {
 			return fmt.Errorf("invalid extension when selector %q", e.When)
 		}
-		if e.Parser != "" && e.Parser != "sarif" && e.Parser != "hadolint-json" && e.Parser != "gosec-json" {
+		if e.Parser != "" && e.Parser != "sarif" && e.Parser != "hadolint-json" && e.Parser != "gosec-json" && e.Parser != "kics-json" {
 			return fmt.Errorf("invalid extension parser %q", e.Parser)
 		}
 		if e.Category != "" && e.Category != "code" && e.Category != "misconfiguration" && e.Category != "vulnerability" {
@@ -352,7 +353,7 @@ func (c Config) Validate() error {
 				output = true
 			}
 		}
-		if !output && e.OutputSource != "stdout" {
+		if !output && e.OutputSource != "stdout" && !(e.Builtin && e.Name == "kics") {
 			return fmt.Errorf("extension %q must write SARIF to {output}", e.Name)
 		}
 		for _, t := range e.Targets {

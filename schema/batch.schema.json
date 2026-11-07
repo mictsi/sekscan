@@ -55,6 +55,7 @@
         "no_store": {
           "type": "boolean"
         },
+        "kics": {"type": "boolean", "description": "Enable standalone KICS IaC checks; omitted inherits application defaults."},
         "hadolint": {
           "type": "boolean",
           "description": "Enable hadolint when applicable; omitted inherits application defaults."

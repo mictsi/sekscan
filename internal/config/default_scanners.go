@@ -4,11 +4,12 @@ package config
 // Explicit false values in an existing configuration remain authoritative.
 func DefaultChecks() Checks {
 	return Checks{Vulnerabilities: true, Licenses: true, Secrets: true, Misconfigurations: true,
-		Gitleaks: true, Actionlint: true, Hadolint: true, Zizmor: true, Govulncheck: true, Gosec: true}
+		KICS: true, Gitleaks: true, Actionlint: true, Hadolint: true, Zizmor: true, Govulncheck: true, Gosec: true}
 }
 func DefaultTools() map[string]Tool {
 	return map[string]Tool{
 		"syft": {Version: "latest"}, "grype": {Version: "latest"}, "trivy": {Version: "latest"}, "gitleaks": {Version: "latest"},
+		"kics":        {Version: "2.1.20", VersionArgs: []string{"version"}},
 		"actionlint":  {Version: "latest", VersionArgs: []string{"-version"}},
 		"hadolint":    {Version: "latest", VersionArgs: []string{"--version"}},
 		"zizmor":      {Version: "latest", VersionArgs: []string{"--version"}},
@@ -37,6 +38,7 @@ func (c Config) EffectiveExtensions() []Extension {
 	add(c.Checks.Zizmor, Extension{Name: "zizmor", When: "workflows", Category: "misconfiguration", Offline: true, OutputSource: "stdout", Args: []string{"--offline", "--no-config", "--strict-collection", "--format=sarif", "--", "{inputs}"}})
 	add(c.Checks.Govulncheck, Extension{Name: "govulncheck", When: "go-modules", Category: "code", Offline: true, WorkingDirectory: "target", OutputSource: "stdout", RequiresTools: []string{"go"}, Args: []string{"-format=sarif", "-db", "{govulndb}", "./..."}})
 	add(c.Checks.Gosec, Extension{Name: "gosec", When: "go-modules", Parser: "gosec-json", Category: "code", Offline: true, WorkingDirectory: "target", OutputSource: "file", RequiresTools: []string{"go"}, Args: []string{"-conf", "{native_config}", "-fmt=json", "-out", "{output}", "-no-fail", "./..."}})
+	add(c.Checks.KICS, Extension{Name: "kics", When: "iac", Parser: "kics-json", Category: "misconfiguration", Offline: true, OutputSource: "file", Args: []string{"scan"}})
 	// Replacement is explicit and order-preserving; duplicates in custom input
 	// are retained so Validate rejects them rather than silently picking one.
 	seen := map[string]bool{}

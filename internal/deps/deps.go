@@ -30,7 +30,7 @@ import (
 	"sekscan/internal/store"
 )
 
-var Repositories = map[string]string{"syft": "anchore/syft", "grype": "anchore/grype", "trivy": "aquasecurity/trivy", "gitleaks": "gitleaks/gitleaks", "actionlint": "rhysd/actionlint", "hadolint": "hadolint/hadolint", "zizmor": "zizmorcore/zizmor", "gosec": "securego/gosec", "uv": "astral-sh/uv"}
+var Repositories = map[string]string{"kics": "Checkmarx/kics", "syft": "anchore/syft", "grype": "anchore/grype", "trivy": "aquasecurity/trivy", "gitleaks": "gitleaks/gitleaks", "actionlint": "rhysd/actionlint", "hadolint": "hadolint/hadolint", "zizmor": "zizmorcore/zizmor", "gosec": "securego/gosec", "uv": "astral-sh/uv"}
 
 type Asset struct {
 	Name   string `json:"name"`
@@ -345,7 +345,7 @@ func AssetName(name, version, goos, arch string) (string, error) {
 		extension = ".zip"
 	}
 	switch name {
-	case "syft", "grype", "actionlint":
+	case "syft", "grype", "actionlint", "kics":
 		return fmt.Sprintf("%s_%s_%s_%s%s", name, v, goos, arch, extension), nil
 	case "gosec":
 		return fmt.Sprintf("gosec_%s_%s_%s.tar.gz", v, goos, arch), nil
@@ -529,7 +529,7 @@ func (m *Manager) Install(ctx context.Context, name string, t config.Tool) (Inst
 	if expected == "" {
 		return installed, fmt.Errorf("release has no expected checksum manifest; refusing unverified installation")
 	}
-	if t.SHA256 != "" && !strings.EqualFold(t.SHA256, expected) {
+	if t.SHA256 != "" && !(name == "kics" && t.Install == nil) && !strings.EqualFold(t.SHA256, expected) {
 		return installed, fmt.Errorf("upstream checksum differs from independently configured SHA256 pin")
 	}
 	b, e := m.get(ctx, archive.URL, 512<<20, false)
@@ -543,6 +543,9 @@ func (m *Manager) Install(ctx context.Context, name string, t config.Tool) (Inst
 	}
 	if archive.Digest != "" && archive.Digest != "sha256:"+actual {
 		return installed, fmt.Errorf("GitHub asset digest differs from checksum manifest")
+	}
+	if name == "kics" && t.Install == nil {
+		return m.installKICSBundle(ctx, t, r, archive, b)
 	}
 	var exe []byte
 	if name == "hadolint" && t.Install == nil {

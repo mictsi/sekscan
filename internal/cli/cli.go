@@ -27,7 +27,7 @@ import (
 	"sekscan/internal/store"
 )
 
-var Version = "0.6.5-preview"
+var Version = "0.6.6-preview"
 
 const help = `sekscan — local-first application and container security
 
@@ -206,7 +206,7 @@ func scanCommand(ctx context.Context, args []string, out, errOut io.Writer) (int
 	noFailReview := f.Bool("allow-review", false, "do not fail solely on license/unknown-evidence review items")
 	inventoryOnly := f.Bool("inventory-only", false, "only generate inventory and SBOMs; skip security checks")
 	extraChecks := map[string]*bool{}
-	for _, name := range []string{"hadolint", "zizmor", "govulncheck", "gosec"} {
+	for _, name := range []string{"hadolint", "zizmor", "govulncheck", "gosec", "kics"} {
 		extraChecks[name] = f.Bool(name, false, "override this default check; use =false to disable")
 	}
 	withGitleaks := f.Bool("gitleaks", false, "override default Gitleaks scan; use =false to disable")
@@ -266,6 +266,9 @@ func scanCommand(ctx context.Context, args []string, out, errOut io.Writer) (int
 	}
 	if visited["govulncheck"] {
 		c.Checks.Govulncheck = *extraChecks["govulncheck"]
+	}
+	if visited["kics"] {
+		c.Checks.KICS = *extraChecks["kics"]
 	}
 	if visited["gosec"] {
 		c.Checks.Gosec = *extraChecks["gosec"]
@@ -561,6 +564,7 @@ func configCommand(ctx context.Context, args []string, out, errOut io.Writer) er
 		}
 		c.Checks.Gitleaks = true
 		c.Checks.Actionlint = true
+		c.Checks.KICS = true
 		c.Checks.Hadolint = true
 		c.Checks.Zizmor = true
 		c.Checks.Govulncheck = true

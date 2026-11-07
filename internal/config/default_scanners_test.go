@@ -11,7 +11,7 @@ func TestDefaultSourceSuite(t *testing.T) {
 	if err := c.Validate(); err != nil {
 		t.Fatal(err)
 	}
-	if !c.Checks.Gitleaks || !c.Checks.Actionlint || len(c.EffectiveExtensions()) != 4 {
+	if !c.Checks.Gitleaks || !c.Checks.Actionlint || len(c.EffectiveExtensions()) != 5 {
 		t.Fatal("default suite is disabled")
 	}
 	seen := map[string]bool{}
@@ -21,7 +21,7 @@ func TestDefaultSourceSuite(t *testing.T) {
 		}
 		seen[e.Name] = true
 	}
-	for _, n := range []string{"hadolint", "zizmor", "govulncheck", "gosec"} {
+	for _, n := range []string{"hadolint", "zizmor", "govulncheck", "gosec", "kics"} {
 		if !seen[n] {
 			t.Fatal(n)
 		}
@@ -34,7 +34,7 @@ func TestDefaultSuiteExplicitDisablesAndReplacement(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if c.Checks.Gitleaks || len(c.EffectiveExtensions()) != 3 {
+	if c.Checks.Gitleaks || len(c.EffectiveExtensions()) != 4 {
 		t.Fatal(c.Checks)
 	}
 	c = Default()
@@ -42,7 +42,7 @@ func TestDefaultSuiteExplicitDisablesAndReplacement(t *testing.T) {
 	if err = c.Validate(); err != nil {
 		t.Fatal(err)
 	}
-	if len(c.EffectiveExtensions()) != 4 || c.EffectiveExtensions()[0].Builtin {
+	if len(c.EffectiveExtensions()) != 5 || c.EffectiveExtensions()[0].Builtin {
 		t.Fatal("explicit replacement ignored")
 	}
 	c.Extensions = append(c.Extensions, c.Extensions[0])
@@ -74,5 +74,22 @@ func TestLegacyGoExtensionsInheritApplicabilityOnly(t *testing.T) {
 				t.Fatal("source configuration mutated")
 			}
 		})
+	}
+}
+
+func TestKICSExplicitDisable(t *testing.T) {
+	p := filepath.Join(t.TempDir(), "sekscan.json")
+	os.WriteFile(p, []byte(`{"checks":{"kics":false}}`), 0600)
+	c, err := Load(p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, e := range c.EffectiveExtensions() {
+		if e.Name == "kics" {
+			t.Fatal("explicit false ignored")
+		}
+	}
+	if c.Tools["kics"].Version != "2.1.20" {
+		t.Fatal("standalone release pin missing")
 	}
 }

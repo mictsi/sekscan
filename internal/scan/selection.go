@@ -57,6 +57,8 @@ func selectInputs(ctx context.Context, target model.Target, selector string, exc
 		lower := strings.ToLower(name)
 		match := false
 		switch selector {
+		case "iac":
+			match = kicsInput(name)
 		case "dockerfiles":
 			match = lower == "dockerfile" || lower == "containerfile" || strings.HasPrefix(lower, "dockerfile.") || strings.HasPrefix(lower, "containerfile.") || strings.HasSuffix(lower, ".dockerfile") || strings.HasSuffix(lower, ".containerfile")
 		case "workflows":
@@ -123,6 +125,7 @@ func excludedPath(p string, excludes []string) bool {
 func ToolsForTarget(ctx context.Context, c config.Config, target model.Target) ([]string, error) {
 	core := c
 	core.Extensions = nil
+	core.Checks.KICS = false
 	core.Checks.Hadolint = false
 	core.Checks.Zizmor = false
 	core.Checks.Govulncheck = false

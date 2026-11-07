@@ -19,7 +19,7 @@ The separate `test.yml` may run tests on pushes; it does not publish release ass
 4. Confirm the intended release is mutable. Published immutable releases cannot
    accept new assets. This workflow intentionally fails instead of changing security
    settings or claiming uploads succeeded.
-5. Tag the reviewed commit with a SemVer-style name such as `v0.6.5-preview` or
+5. Tag the reviewed commit with a SemVer-style name such as `v0.6.6-preview` or
    `v1.0.0`. Create and publish a GitHub release for that exact tag.
 
 Example from a trusted local checkout after all checks and module review:
@@ -28,10 +28,10 @@ Example from a trusted local checkout after all checks and module review:
 git add .github/workflows/release.yml scripts/ README.md readme.med docs/ \
   internal/ go.mod go.sum SOURCE-PACKAGE.json CHANGELOG.md TESTING.md
 git commit -m "Prepare sekscan release"
-git tag -a v0.6.5-preview -m "sekscan 0.6.5-preview"
+git tag -a v0.6.6-preview -m "sekscan 0.6.6-preview"
 git push origin HEAD
-git push origin v0.6.5-preview
-# Now publish a GitHub release for v0.6.5-preview in the repository UI.
+git push origin v0.6.6-preview
+# Now publish a GitHub release for v0.6.6-preview in the repository UI.
 # Pushing the tag alone does not build or publish binaries.
 ```
 
@@ -138,7 +138,7 @@ copying the workflow helpers; the full source ZIP contains the complete set.
 To build Windows ARM64 alone after resolving/reviewing the production dependencies:
 
 ```bash
-bash scripts/build-release.sh --version 0.6.5-preview --targets windows/arm64
+bash scripts/build-release.sh --version 0.6.6-preview --targets windows/arm64
 ```
 
 An ARM64 application executable does not imply native availability of every external

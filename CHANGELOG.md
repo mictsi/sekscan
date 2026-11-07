@@ -1,5 +1,18 @@
 # Changes
 
+## 0.6.6-preview — 2026-11-07
+
+- Add native Linux `run.sh` lifecycle commands, literal `.env` configuration,
+  persistent workspace handling, and graceful process management.
+
+- Add standalone KICS IaC scanning, enabled by default for candidate inputs and
+  configurable with `checks.kics`, `--kics=false`, and batch overrides.
+- Install the native KICS 2.1.20 executable and version-matched rule assets as one
+  verified portable bundle. No Docker or Checkmarx service is required.
+- Preserve native query severities and processing failures through a KICS JSON
+  adapter; omit resource values and snippets from normalized reports.
+
+
 ## 0.6.5-preview — 2026-10-03
 
 - Remove Semgrep from built-in scanning, preparation, runtime provisioning,

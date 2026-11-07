@@ -54,6 +54,7 @@ func TestExternalScannerEndToEnd(t *testing.T) {
 		t.Fatal(e)
 	}
 	c := config.Default()
+	c.Checks.KICS = false // Core scanner fixture; KICS has its own adapter acceptance tests.
 	c.Portable = false
 	for _, name := range []string{"syft", "grype", "trivy", "gitleaks"} {
 		p := filepath.Join(binDir, name+suffix)
@@ -139,6 +140,7 @@ func TestExternalScannerEndToEnd(t *testing.T) {
 	// Move managed executables and relative configuration, then scan offline.
 	managedRoot := filepath.Join(t.TempDir(), "portable-before")
 	portable := config.Default()
+	portable.Checks.KICS = false // Only core scanner fixtures are installed here.
 	for _, name := range []string{"syft", "grype", "trivy", "gitleaks"} {
 		executable := filepath.Join(managedRoot, "bin", name, "1.2.3", name+suffix)
 		if err := os.MkdirAll(filepath.Dir(executable), 0700); err != nil {

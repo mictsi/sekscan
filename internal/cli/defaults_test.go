@@ -17,6 +17,7 @@ func TestUpgradeDefaultScannerConfigPreservesPolicyAndPins(t *testing.T) {
 	cleanRuntimeEnv(t)
 	home := t.TempDir()
 	old := config.Default()
+	old.Checks.KICS = false
 	old.Checks.Hadolint = false
 	old.Checks.Gitleaks = false
 	old.Policy.FailAt = "critical"
@@ -36,7 +37,7 @@ func TestUpgradeDefaultScannerConfigPreservesPolicyAndPins(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !c.Checks.Hadolint || !c.Checks.Gitleaks || c.Policy.FailAt != "critical" || c.Tools["syft"].Version != "1.2.3" {
+	if !c.Checks.KICS || !c.Checks.Hadolint || !c.Checks.Gitleaks || c.Policy.FailAt != "critical" || c.Tools["syft"].Version != "1.2.3" {
 		t.Fatal(c.Checks, c.Policy)
 	}
 	after, _ := os.ReadFile(original)
@@ -51,7 +52,7 @@ func TestBatchDefaultCheckOverrides(t *testing.T) {
 	cleanRuntimeEnv(t)
 	home := t.TempDir()
 	manifest := filepath.Join(home, "projects.json")
-	os.WriteFile(manifest, []byte(`{"version":1,"defaults":{"hadolint":true,"gosec":true},"projects":[{"project":"app","path":".","settings":{"hadolint":false,"zizmor":false}}]}`), 0600)
+	os.WriteFile(manifest, []byte(`{"version":1,"defaults":{"hadolint":true,"gosec":true,"kics":true},"projects":[{"project":"app","path":".","settings":{"hadolint":false,"zizmor":false,"kics":false}}]}`), 0600)
 	var out, errs bytes.Buffer
 	if code := Run(context.Background(), []string{"batch", manifest, "--no-config", "--home", home, "--dry-run", "--gosec=false"}, &out, &errs); code != 0 {
 		t.Fatal(code, errs.String())
@@ -64,25 +65,33 @@ func TestBatchDefaultCheckOverrides(t *testing.T) {
 	// The JSON schema accepts the same explicit boolean settings as runtime planning.
 	m, jobs, err := batch.Load(manifest)
 	_ = m
-	if err != nil || len(jobs) != 1 || *jobs[0].Settings.Hadolint || *jobs[0].Settings.Zizmor {
+	if err != nil || len(jobs) != 1 || *jobs[0].Settings.Hadolint || *jobs[0].Settings.Zizmor || jobs[0].Settings.KICS == nil || *jobs[0].Settings.KICS {
 		t.Fatal(jobs, err)
 	}
-	s := settingsFlags([]string{"--gosec=false"}, batch.Settings{Gosec: boolPtr(false)})
+	s := settingsFlags([]string{"--gosec=false", "--kics=false"}, batch.Settings{Gosec: boolPtr(false), KICS: boolPtr(false)})
 	c := configureJob(config.Default(), batch.Job{Project: "app", Settings: s})
-	if c.Checks.Gosec {
+	if c.Checks.Gosec || c.Checks.KICS {
 		t.Fatal("explicit false lost")
 	}
 }
 func boolPtr(b bool) *bool { return &b }
 func TestScanExplicitFalseDisablesDefaultExtensions(t *testing.T) {
 	cfg, home := batchFixture(t)
+	c, err := config.Load(cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	c.Checks.KICS = true
+	if err = store.JSON(cfg, c); err != nil {
+		t.Fatal(err)
+	}
 	source := filepath.Join(home, "source")
 	os.MkdirAll(source, 0700)
 	os.WriteFile(filepath.Join(source, "Dockerfile"), []byte("FROM scratch\n"), 0600)
 	os.WriteFile(filepath.Join(source, "app.py"), []byte("eval(input())\n"), 0600)
 	output := filepath.Join(home, "report")
 	var out, errs bytes.Buffer
-	args := []string{"scan", "dir:" + source, "--project", "app", "--config", cfg, "--hadolint=false", "--gitleaks=false", "--actionlint=false", "--out", output}
+	args := []string{"scan", "dir:" + source, "--project", "app", "--config", cfg, "--hadolint=false", "--kics=false", "--gitleaks=false", "--actionlint=false", "--out", output}
 	if code := Run(context.Background(), args, &out, &errs); code != 1 {
 		t.Fatal(code, errs.String())
 	}
@@ -91,7 +100,7 @@ func TestScanExplicitFalseDisablesDefaultExtensions(t *testing.T) {
 		t.Fatal(err, r)
 	}
 	for _, e := range r.Engines {
-		if e.Name == "hadolint" || e.Name == "semgrep" || e.Name == "gitleaks" || e.Name == "actionlint" {
+		if e.Name == "kics" || e.Name == "hadolint" || e.Name == "semgrep" || e.Name == "gitleaks" || e.Name == "actionlint" {
 			t.Fatal("disabled engine ran", e)
 		}
 	}

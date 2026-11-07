@@ -36,6 +36,7 @@ func (m *Manager) Environment(offline bool) ([]string, error) {
 		"GRYPE_DB_AUTO_UPDATE=" + strconv.FormatBool(!offline),
 		"TRIVY_CACHE_DIR=" + filepath.Join(cache, "trivy"),
 		"TRIVY_DISABLE_TELEMETRY=true",
+		"DISABLE_CRASH_REPORT=0",
 		"SYFT_CACHE_DIR=" + filepath.Join(cache, "syft"),
 	}
 	if m.Portable {

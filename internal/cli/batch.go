@@ -89,7 +89,7 @@ func fileKey(project string) string {
 func commandSettings(f interface {
 	Bool(string, bool, string) *bool
 }) batch.Settings {
-	return batch.Settings{Hadolint: f.Bool("hadolint", false, "override default hadolint check"), Zizmor: f.Bool("zizmor", false, "override default zizmor check"), Govulncheck: f.Bool("govulncheck", false, "override default govulncheck check"), Gosec: f.Bool("gosec", false, "override default gosec check"), Offline: f.Bool("offline", false, "use cached databases; GitHub sources require a cached exact commit"), InventoryOnly: f.Bool("inventory-only", false, "generate only inventory/SBOMs"), Gitleaks: f.Bool("gitleaks", false, "enable Gitleaks"), Actionlint: f.Bool("actionlint", false, "enable actionlint"), TrivyVuln: f.Bool("trivy-vuln", false, "enable Trivy vulnerability checks"), NoStore: f.Bool("no-store", false, "disable history persistence")}
+	return batch.Settings{KICS: f.Bool("kics", false, "override default KICS check"), Hadolint: f.Bool("hadolint", false, "override default hadolint check"), Zizmor: f.Bool("zizmor", false, "override default zizmor check"), Govulncheck: f.Bool("govulncheck", false, "override default govulncheck check"), Gosec: f.Bool("gosec", false, "override default gosec check"), Offline: f.Bool("offline", false, "use cached databases; GitHub sources require a cached exact commit"), InventoryOnly: f.Bool("inventory-only", false, "generate only inventory/SBOMs"), Gitleaks: f.Bool("gitleaks", false, "enable Gitleaks"), Actionlint: f.Bool("actionlint", false, "enable actionlint"), TrivyVuln: f.Bool("trivy-vuln", false, "enable Trivy vulnerability checks"), NoStore: f.Bool("no-store", false, "disable history persistence")}
 }
 
 // Only explicitly supplied flags override manifest defaults (including =false).
@@ -116,6 +116,9 @@ func settingsFlags(args []string, s batch.Settings) batch.Settings {
 	}
 	if !has("actionlint") {
 		s.Actionlint = nil
+	}
+	if !has("kics") {
+		s.KICS = nil
 	}
 	if !has("hadolint") {
 		s.Hadolint = nil
@@ -243,6 +246,9 @@ func configureJob(c config.Config, j batch.Job) config.Config {
 	}
 	if s.Actionlint != nil {
 		c.Checks.Actionlint = *s.Actionlint
+	}
+	if s.KICS != nil {
+		c.Checks.KICS = *s.KICS
 	}
 	if s.Hadolint != nil {
 		c.Checks.Hadolint = *s.Hadolint

@@ -113,7 +113,7 @@ func Environment(extra ...string) []string {
 		k, _, _ := strings.Cut(e, "=")
 		upper := strings.ToUpper(k)
 		skip := strings.HasPrefix(upper, "SEKSCAN_") && upper != "SEKSCAN_FIXTURE_DIR" && upper != "SEKSCAN_FAIL_ENGINE" || upper == "GITHUB_TOKEN" || upper == "GH_TOKEN" || upper == "SYSTEM_ACCESSTOKEN" || upper == "AZURE_DEVOPS_EXT_PAT" || upper == "GOROOT" || upper == "GOVULNDB" || upper == "GITHUB_AUTHENTICATION_TOKEN"
-		for _, p := range []string{"SYFT_", "GRYPE_", "TRIVY_", "GITLEAKS_", "GOSEC_", "SEMGREP_", "ZIZMOR_", "HADOLINT_", "UV_", "PIP_", "PYTHON"} {
+		for _, p := range []string{"KICS_", "SYFT_", "GRYPE_", "TRIVY_", "GITLEAKS_", "GOSEC_", "SEMGREP_", "ZIZMOR_", "HADOLINT_", "UV_", "PIP_", "PYTHON"} {
 			if strings.HasPrefix(upper, p) && !allowed[upper] {
 				skip = true
 			}

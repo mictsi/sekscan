@@ -129,6 +129,9 @@ func validateTool(name string, t Tool) error {
 			return fmt.Errorf("invalid command_args for %s", name)
 		}
 	}
+	if name == "kics" && len(t.ExtraArgs) != 0 {
+		return fmt.Errorf("KICS extra_args are not supported by the controlled adapter; use an explicit extension for custom execution")
+	}
 	for _, arg := range t.ExtraArgs {
 		key := strings.SplitN(arg, "=", 2)[0]
 		switch key {

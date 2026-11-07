@@ -65,11 +65,11 @@ It checks module-file hashes again before publication to detect mutation.
 From the source directory:
 
 ```sh
-bash scripts/build-release.sh --version 0.6.5-preview --targets all
+bash scripts/build-release.sh --version 0.6.6-preview --targets all
 ```
 
 ```powershell
-.\scripts\build-release.ps1 --version 0.6.5-preview --targets all
+.\scripts\build-release.ps1 --version 0.6.6-preview --targets all
 ```
 
 The helpers can also be called from another working directory; source-relative paths
@@ -78,8 +78,8 @@ Version defaults to the value in `internal/cli/cli.go`.
 
 ```sh
 bash scripts/build-release.sh --list-targets
-bash scripts/build-release.sh --version 0.6.5-preview --targets linux/amd64,windows/amd64
-bash scripts/build-release.sh --version 0.6.5-preview --out dist/review-build
+bash scripts/build-release.sh --version 0.6.6-preview --targets linux/amd64,windows/amd64
+bash scripts/build-release.sh --version 0.6.6-preview --out dist/review-build
 bash scripts/build-release.sh --help
 ```
 
@@ -93,14 +93,14 @@ in the release manifest; do not use it for a reviewed production release.
 ## Output and archive contents
 
 ```text
-dist/0.6.5-preview/
-  sekscan-0.6.5-preview-linux-amd64.zip
-  sekscan-0.6.5-preview-linux-arm64.zip
-  sekscan-0.6.5-preview-windows-amd64.zip
-  sekscan-0.6.5-preview-windows-arm64.zip
-  sekscan-0.6.5-preview-darwin-amd64.zip
-  sekscan-0.6.5-preview-darwin-arm64.zip
-  sekscan-0.6.5-preview-source.zip
+dist/0.6.6-preview/
+  sekscan-0.6.6-preview-linux-amd64.zip
+  sekscan-0.6.6-preview-linux-arm64.zip
+  sekscan-0.6.6-preview-windows-amd64.zip
+  sekscan-0.6.6-preview-windows-arm64.zip
+  sekscan-0.6.6-preview-darwin-amd64.zip
+  sekscan-0.6.6-preview-darwin-arm64.zip
+  sekscan-0.6.6-preview-source.zip
   release.json
   SHA256SUMS.txt
 ```
@@ -182,7 +182,7 @@ checksums cover the runtime/source payload excluding the checksum file itself.
 Verify before extracting or executing:
 
 ```sh
-cd dist/0.6.5-preview
+cd dist/0.6.6-preview
 sha256sum --check SHA256SUMS.txt
 ```
 
@@ -200,12 +200,12 @@ Archive entries are sorted, use normalized modes, preserve executable permission
 and use a controlled timestamp. `SOURCE_DATE_EPOCH` selects that timestamp:
 
 ```sh
-SOURCE_DATE_EPOCH=1790985600 bash scripts/build-release.sh --version 0.6.5-preview
+SOURCE_DATE_EPOCH=1790985600 bash scripts/build-release.sh --version 0.6.6-preview
 ```
 
 ```powershell
 $env:SOURCE_DATE_EPOCH = '1790985600'
-.\scripts\build-release.ps1 --version 0.6.5-preview
+.\scripts\build-release.ps1 --version 0.6.6-preview
 Remove-Item Env:SOURCE_DATE_EPOCH
 ```
 
@@ -247,7 +247,7 @@ copying the workflow helpers; the full source ZIP contains the complete set.
 To build Windows ARM64 alone after resolving/reviewing the production dependencies:
 
 ```bash
-bash scripts/build-release.sh --version 0.6.5-preview --targets windows/arm64
+bash scripts/build-release.sh --version 0.6.6-preview --targets windows/arm64
 ```
 
 An ARM64 application executable does not imply native availability of every external

@@ -19,6 +19,7 @@ const MaxProjects = 1000
 // Settings are deliberately not executable definitions or security policy overrides.
 // Pointer values distinguish an omitted setting from an explicit false.
 type Settings struct {
+	KICS        *bool `json:"kics,omitempty"`
 	Hadolint    *bool `json:"hadolint,omitempty"`
 	Zizmor      *bool `json:"zizmor,omitempty"`
 	Govulncheck *bool `json:"govulncheck,omitempty"`
@@ -73,6 +74,9 @@ func Merge(a, b Settings) Settings {
 	}
 	if b.Actionlint != nil {
 		a.Actionlint = b.Actionlint
+	}
+	if b.KICS != nil {
+		a.KICS = b.KICS
 	}
 	if b.Hadolint != nil {
 		a.Hadolint = b.Hadolint

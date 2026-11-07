@@ -1,6 +1,6 @@
 # Configurable scanners and prerequisites
 
-The default source catalog now enables Hadolint, zizmor, govulncheck, and gosec on applicable inputs. Gitleaks/actionlint are also enabled by default. See [DEFAULT-SCANNERS.md](DEFAULT-SCANNERS.md) for prerequisites and upgrade instructions.
+The default source catalog now enables Hadolint, zizmor, govulncheck, gosec, and KICS on applicable inputs. Gitleaks/actionlint are also enabled by default. See [DEFAULT-SCANNERS.md](DEFAULT-SCANNERS.md) for prerequisites and upgrade instructions.
 
 Built-in inventory/native-output parsing remains Go code. Execution settings, native config files, version probes and GitHub release installation recipes are data. Additional scanners that produce SARIF 2.1.0 can join the normalized report without recompiling sekscan.
 
@@ -60,7 +60,7 @@ default catalog source analyzers use local/offline execution. Inventory-only dis
 all source extensions.
 
 `when` selects `all` (normally the omitted default), `source`, `go-modules`,
-`workflows`, or `dockerfiles`. Since 0.6.2, an omitted selector on an extension
+`workflows`, `dockerfiles`, or `iac`. Since 0.6.2, an omitted selector on an extension
 named `govulncheck`/`gosec`, or referencing one of those managed tools, defaults to
 `go-modules`. This repairs unconditional activation from legacy examples. Explicit
 selectors (including `all`) remain authoritative; args/working-directory/runtime
@@ -75,7 +75,7 @@ No applicable inputs means skipped/nonrequired. `{inputs}` expands into separate
 elements; file/module selectors run once per input. `{govulndb}` is reserved for the
 built-in govulncheck adapter, which verifies its local snapshot first. A custom adapter
 can use an explicit reviewed DB location. `requires_tools` lists managed runtime
-prerequisites. `parser` may be `sarif` (default), `hadolint-json`, or `gosec-json`.
+prerequisites. `parser` may be `sarif` (default), `hadolint-json`, `gosec-json`, or `kics-json`.
 These are named built-in parsers, not an arbitrary JSON transformation language.
 
 `checks.NAME=false` disables a catalog default. It does not disable an explicit
@@ -168,3 +168,8 @@ no downloaded runtimes or scanner executables. See [PORTABLE.md](PORTABLE.md) an
 Named Semgrep tool/extension entries are retired and ignored. They cannot be
 re-enabled by a legacy checks flag. Other external SARIF adapters remain supported;
 see [SEMGREP-REMOVAL.md](SEMGREP-REMOVAL.md).
+
+The built-in KICS adapter manages its output directory/name and isolated input
+snapshot itself. A custom KICS extension must supply its own invocation/output
+contract. Its native JSON parser checks processing counters and preserves query
+severity. See [KICS](KICS.md).

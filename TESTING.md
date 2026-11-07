@@ -1,3 +1,31 @@
+# Release validation — 0.6.6-preview (2026-11-07)
+
+- Production build reports `sekscan 0.6.6-preview [production-drivers]`.
+- Full application `go test ./...` and `go vet ./...` passed with Go 1.27.3.
+- All four native launcher integration tests passed against the versioned binary.
+- `bash -n run.sh` and `git diff --check` passed.
+- Real KICS Linux/amd64 acceptance is recorded below; its optional live test was
+  not rerun during this version-only validation. Live external database tests
+  retain their existing skips. No release assets were published.
+
+# Current change — standalone KICS (2026-10-11)
+
+- Production-module `go test ./...` and `go vet ./...` passed with Go 1.27.1.
+- The production application built successfully.
+- The application installed KICS 2.1.20 and its matching rule assets from upstream
+  into a temporary workspace, verifying both downloads and the resulting bundle.
+- The actual Linux/amd64 KICS executable passed the adapter acceptance test:
+  Terraform findings retain native severity and original locations; a plain npm
+  package manifest is reported as not applicable.
+- Regression tests cover rule-asset digest failure, rule tampering, bundle lock
+  reuse, all six package names, isolated inputs, source-path containment,
+  processing failures, redaction, and configuration/CLI/batch overrides.
+- Native Windows/macOS scanner execution and live PostgreSQL/SQL Server remain
+  outside this validation. External database tests retain their existing skips.
+
+See [KICS](docs/KICS.md) for the optional live-test command and operational limits.
+The earlier release record below is retained as historical evidence.
+
 # Validation record — sekscan 0.6.5-preview
 
 Date: 2026-10-03. This release removes the Semgrep integration. It does not include

@@ -58,6 +58,7 @@
       "native_config": "config/grype.yaml",
       "version": "latest"
     },
+    "kics": {"version": "2.1.20"},
     "hadolint": {
       "native_config": "config/hadolint.yaml",
       "version_args": [
@@ -81,6 +82,7 @@
     }
   },
   "checks": {
+    "kics": true,
     "hadolint": true,
     "zizmor": true,
     "govulncheck": true,

@@ -50,6 +50,9 @@ func (m *Manager) assetNames(name, version string) (string, string, error) {
 		return replace.Replace(raw), replace.Replace(t.Install.Checksums), nil
 	}
 	a, e := AssetName(name, version, m.GOOS, m.GOARCH)
+	if name == "kics" {
+		return a, "checksums.txt", e
+	}
 	if name == "hadolint" {
 		return a, "checksums.sha256", e
 	}

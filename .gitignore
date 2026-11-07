@@ -20,3 +20,10 @@ __pycache__/
 *.db-shm
 /.module-update-backup-*/
 /module-updates.json
+
+# Native launcher settings, process state and persistent workspace
+/.env
+/.env.*
+!/.env.example
+/.run/
+/workspace/

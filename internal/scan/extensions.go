@@ -3,6 +3,7 @@ package scan
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/url"
 	"os"
@@ -97,6 +98,10 @@ func (s *Scanner) runExtension(ctx context.Context, r *model.Report, o Options, 
 			er.Error = "Required runtime " + name + ": " + st.Error
 			return
 		}
+	}
+	if e.Builtin && e.Name == "kics" {
+		env = runner.Merge(env, "DISABLE_CRASH_REPORT=0")
+		r.Warnings = append(r.Warnings, "KICS analyzes selected IaC candidates in an isolated snapshot using local queries. Secrets scanning and OpenAPI reference resolution are disabled. Non-IaC JSON/YAML and unsupported formats may not be analyzed.")
 	}
 	if e.Builtin && e.When == "go-modules" {
 		// No dependency installation, network VCS, repository scripts, C compiler, or
@@ -238,6 +243,14 @@ func (s *Scanner) runExtension(ctx context.Context, r *model.Report, o Options, 
 				}
 			}
 		}
+		kicsStage := ""
+		if e.Builtin && e.Name == "kics" {
+			args, kicsStage, err = kicsArguments(ctx, o.Target.Value, temp, executable, output, inputs, e.NativeConfig)
+			if err != nil {
+				er.Error = err.Error()
+				return
+			}
+		}
 		if e.Tool != "" {
 			if e.Builtin {
 				if e.Name == "gosec" || e.Name == "govulncheck" {
@@ -275,6 +288,12 @@ func (s *Scanner) runExtension(ctx context.Context, r *model.Report, o Options, 
 					findings, runErr = ParseHadolint(b)
 				case "gosec-json":
 					findings, runErr = ParseGosec(b)
+				case "kics-json":
+					findings, runErr = ParseKICS(b)
+					if e.Builtin && errors.Is(runErr, errKICSNotApplicable) {
+						er.Status, er.Required, er.Error = "skipped", false, runErr.Error()
+						return
+					}
 				default:
 					findings, runErr = ParseSARIF(b, e.Name)
 				}
@@ -289,7 +308,13 @@ func (s *Scanner) runExtension(ctx context.Context, r *model.Report, o Options, 
 					}
 					if e.Builtin {
 						for k := range findings[j].Locations {
-							p, locationErr := analyzerLocation(e.Name, o.Target.Value, cwd, group, findings[j].Locations[k].Path)
+							var p string
+							var locationErr error
+							if kicsStage != "" {
+								p, locationErr = kicsLocation(o.Target.Value, cwd, kicsStage, inputs, findings[j].Locations[k].Path)
+							} else {
+								p, locationErr = analyzerLocation(e.Name, o.Target.Value, cwd, group, findings[j].Locations[k].Path)
+							}
 							if locationErr != nil {
 								if runErr == nil {
 									runErr = locationErr

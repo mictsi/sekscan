@@ -8,7 +8,7 @@ searchable reports. Run it against a directory, a built image, a GitHub reposito
 or a batch of projects. Store results locally in SQLite or share history through
 PostgreSQL or Microsoft SQL Server.
 
-**Current source: 0.6.5-preview.** This source package is not a verified production
+**Current source: 0.6.6-preview.** This source package is not a verified production
 binary distribution. It contains no scanner executables or vulnerability databases.
 See [validation and limitations](TESTING.md) before deployment. Production dependencies
 must be resolved and reviewed on a connected machine before publishing a release.
@@ -23,7 +23,7 @@ must be resolved and reviewed on a connected machine before publishing a release
 |---|---|
 | Inventory and SBOMs | Syft package inventory, CycloneDX JSON, SPDX JSON, and native Syft JSON |
 | Vulnerabilities | Grype matches packages to known advisories; optional secondary Trivy vulnerability analysis |
-| Source and configuration checks | gosec, govulncheck, Gitleaks, Trivy, actionlint, zizmor, and Hadolint run where applicable |
+| Source and configuration checks | gosec, govulncheck, Gitleaks, Trivy, actionlint, zizmor, Hadolint, and KICS run where applicable |
 | Application license policy | Application dependencies are evaluated against configured license rules; OS licenses are excluded from the application gate |
 | Reports | Self-contained HTML, normalized JSON, SARIF, JUnit, Markdown, and policy decisions |
 | Project history | Project-first navigation, pagination, filtering, trends, and comparisons between two runs |
@@ -40,6 +40,20 @@ version information are in [third_party](third_party) and [the UI guide](docs/UI
 *The screenshot uses synthetic demonstration data, not verified vulnerabilities.*
 
 ## Quick start
+
+For native Linux lifecycle management, edit `.env` (see `.env.example`), then run:
+
+```sh
+./run.sh build
+./run.sh start
+./run.sh logs
+./run.sh stop
+```
+
+`run.sh` also supports `restart`, `status`, `clean`, and `cli`. Settings, storage
+credentials, workspace paths, and the dashboard port come from `.env`.
+`clean` preserves scan data and scanner caches. See [native launcher](docs/RUNNING.md).
+
 
 ### Get the application
 
@@ -122,6 +136,7 @@ separately even when the scan returns a policy failure; do not chain it with `&&
 | Trivy | Secrets, misconfiguration, and license evidence | Supported filesystem/image inputs | `config/trivy.yaml` |
 | Gitleaks | Secrets in the current files | Directory/rootfs snapshots; not Git history | Generated redacting configuration or reviewed override |
 | actionlint | GitHub Actions syntax and expressions | Selected workflow files | `config/actionlint.yaml` |
+| KICS | Infrastructure-as-code misconfigurations | Selected local IaC candidates | Optional trusted JSON/YAML configuration |
 | Hadolint | Dockerfile/Containerfile checks | Discovered Dockerfiles and name variants | `config/hadolint.yaml` |
 | zizmor | GitHub workflow/action security | Discovered workflow/action YAML | Built-in offline audits; explicit extension for other settings |
 | govulncheck | Go dependency vulnerabilities informed by call analysis | Selected modules with module-owned Go source | Managed Go SDK, dependency cache, and local vulnerability DB |
@@ -136,6 +151,10 @@ General multi-language SAST is not bundled after Semgrep removal; an external
 SARIF analyzer can be configured separately. Go source analysis remains available.
 Build constraints, file-size limits, and exclusions can limit coverage. Trivy's
 secondary vulnerability scanner is disabled by default to reduce overlap.
+
+KICS runs as a standalone executable with local queries and libraries; no Docker or
+Checkmarx account is needed. Its default version is pinned to 2.1.20, which publishes
+native binaries and rule assets for all six release targets. See [KICS integration](docs/KICS.md).
 
 See [default scanner behavior](docs/DEFAULT-SCANNERS.md) and [extension contracts](docs/EXTENSIONS.md).
 
@@ -439,7 +458,7 @@ process for immutable releases instead. See [release workflow details](docs/RELE
 For an explicit local build after dependency review:
 
 ```bash
-bash scripts/build-release.sh --version 0.6.5-preview --targets all
+bash scripts/build-release.sh --version 0.6.6-preview --targets all
 ```
 
 The ZIPs contain sekscan and documentation, **not predownloaded scanner runtimes or

@@ -74,7 +74,7 @@ schema, not separate local/GitHub configuration formats.
 | `continue_on_error` | Defaults to `true`. `false` stops after the first nonzero result, including a policy failure. |
 
 Allowed settings: `offline`, `inventory_only`, `gitleaks`, `actionlint`, `hadolint`,
-`zizmor`, `govulncheck`, `gosec`, `trivy_vuln`, and `no_store`. Values must be booleans; `null` is not omission.
+`zizmor`, `govulncheck`, `gosec`, `kics`, `trivy_vuln`, and `no_store`. Values must be booleans; `null` is not omission.
 
 The seven source checks are enabled in the default application configuration and
 run only on applicable inputs. Explicit `false` remains an opt-out. Batch schema

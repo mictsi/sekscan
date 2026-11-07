@@ -1,4 +1,4 @@
-# Default source scanners — 0.6.5-preview
+# Default source scanners — 0.6.6-preview
 
 ## Go applicability
 
@@ -21,6 +21,7 @@ its own `required`, offline, arguments and parser settings govern execution.
 |---|---|---|---|---|
 | Gitleaks | Directory/rootfs file snapshots | Secret findings | Generated config, or reviewed gitleaks.toml override | Managed gitleaks |
 | actionlint | .github/workflows YAML files | Misconfiguration findings | config/actionlint.yaml | Managed actionlint; external helpers disabled |
+| KICS | IaC candidates: Terraform, YAML/JSON, templates, protobuf and Dockerfile variants | Native JSON → misconfiguration findings; coverage counters checked | Optional trusted native config; isolated input snapshot | Managed KICS binary plus matching local queries/libraries |
 | Hadolint | Dockerfile, Containerfile, prefix/suffix variants recursively | Native JSON → misconfiguration findings | config/hadolint.yaml | Managed hadolint; no Docker or CVE DB |
 | zizmor | Workflows and action.yml/action.yaml files | SARIF → misconfiguration findings | Fixed offline/no-config invocation; custom definition for alternatives | Managed zizmor |
 | govulncheck | Each discovered go.mod directory with its own Go source, including nested modules | SARIF → code findings | Managed local DB URL and controlled arguments | Managed govulncheck, Go SDK, prepared dependency cache and Go vulnerability DB |
@@ -89,7 +90,7 @@ SQL schema version 1, config version 2 and batch version 1 remain compatible.
 
 ## Controls and batch overrides
 
-The main config supports these six source-check booleans:
+The main config supports these seven source-check booleans:
 
 ```json
 {
@@ -97,6 +98,7 @@ The main config supports these six source-check booleans:
   "checks": {
     "gitleaks": true,
     "actionlint": true,
+    "kics": true,
     "hadolint": true,
     "zizmor": true,
     "govulncheck": true,
@@ -228,3 +230,10 @@ No scan history, findings, scanner files or caches are deleted automatically.
 Historical Semgrep findings remain visible; removing a scanner does not establish
 that its previous findings were fixed. No SQL migration is required. Old private
 Semgrep logs should not be shared or published as normal artifacts.
+
+## Standalone KICS
+
+KICS is enabled by default for candidate IaC files. The adapter preserves native
+severity, checks file/query failure counters, and records unsupported candidates
+as not applicable when KICS parses no IaC. See [KICS](KICS.md) for installation,
+offline behavior, limits, and validation.
