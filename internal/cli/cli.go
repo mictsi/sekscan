@@ -91,7 +91,7 @@ func addCommon(f *flag.FlagSet) *common {
 	f.StringVar(&c.config, "config", "", "trusted JSON configuration file")
 	f.StringVar(&c.tools, "tools-dir", "", "managed scanner installation directory")
 	f.StringVar(&c.cache, "cache-dir", "", "scanner cache directory")
-	f.StringVar(&c.home, "home", "", "workspace root (defaults to config location or working directory)")
+	f.StringVar(&c.home, "home", "", "workspace root (defaults to config location or executable directory)")
 	f.StringVar(&c.logs, "logs-dir", "", "application logs directory")
 	f.BoolVar(&c.noConfig, "no-config", false, "disable configuration discovery")
 	f.BoolVar(&c.ci, "ci", false, "require an explicitly trusted configuration when one is discovered")

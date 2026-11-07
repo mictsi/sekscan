@@ -49,6 +49,15 @@ class NativeLauncherTests(unittest.TestCase):
         self.run_app("stop")
         self.temp.cleanup()
 
+    def test_default_workspace_is_app_directory(self):
+        self.settings = self.settings.replace("SEKSCAN_WORKSPACE='./persistent workspace'\n", "")
+        self.env.pop("SEKSCAN_WORKSPACE", None)
+        self.write_env()
+        self.run_app("cli", "config", "show")
+        self.assertTrue((self.root / ".run-settings.json").exists())
+        self.assertTrue((self.root / ".sekscan-workspace").exists())
+        self.assertFalse((self.root / "workspace").exists())
+
     def test_lifecycle_and_preserved_data(self):
         self.run_app("status", expected=1)
         self.assertIn("Started:", self.run_app("start"))

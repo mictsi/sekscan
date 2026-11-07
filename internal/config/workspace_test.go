@@ -88,3 +88,28 @@ func TestExtensionAndInstallValidation(t *testing.T) {
 		t.Fatal(e)
 	}
 }
+
+func TestDefaultWorkspaceUsesExecutableDirectory(t *testing.T) {
+	t.Setenv("SEKSCAN_CONFIG", "")
+	app := t.TempDir()
+	cwd := t.TempDir()
+	t.Chdir(cwd)
+	if err := os.WriteFile(filepath.Join(cwd, "sekscan.json"), []byte("{}"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	exe := filepath.Join(app, "sekscan")
+	for _, disabled := range []bool{false, true} {
+		pick, err := Discover("", "", exe, disabled, false)
+		if err != nil || pick.Root != app || pick.File != "" {
+			t.Fatal(pick, err)
+		}
+	}
+	config := filepath.Join(app, "sekscan.json")
+	if err := os.WriteFile(config, []byte("{}"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	pick, err := Discover("", "", exe, false, false)
+	if err != nil || pick.Root != app || pick.File != config {
+		t.Fatal(pick, err)
+	}
+}

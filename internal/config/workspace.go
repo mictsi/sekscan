@@ -18,6 +18,13 @@ func Discover(explicit, home, executable string, disabled, ci bool) (Selection, 
 		return Selection{}, err
 	}
 	root := cwd
+	if executable != "" {
+		absExecutable, err := filepath.Abs(executable)
+		if err != nil {
+			return Selection{}, err
+		}
+		root = filepath.Dir(absExecutable)
+	}
 	if home != "" {
 		root, err = filepath.Abs(home)
 		if err != nil {
@@ -46,10 +53,7 @@ func Discover(explicit, home, executable string, disabled, ci bool) (Selection, 
 		return Selection{File: chosen, Root: root, Source: source}, nil
 	}
 	candidates := []string{filepath.Join(root, "sekscan.json"), filepath.Join(root, "config", "sekscan.json")}
-	if home == "" && executable != "" {
-		base := filepath.Dir(executable)
-		candidates = append(candidates, filepath.Join(base, "sekscan.json"), filepath.Join(base, "config", "sekscan.json"))
-	}
+
 	for _, p := range candidates {
 		st, e := os.Stat(p)
 		if os.IsNotExist(e) {

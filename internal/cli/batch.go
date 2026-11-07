@@ -30,7 +30,7 @@ type scanMetadata struct {
 	Warnings []string
 	DenyEnv  []string
 }
-type sourceClientKey struct{} // Test injection still observes destination allowlists.
+type sourceClientKey struct{} // Source command runner injection for tests.
 
 type batchRun struct {
 	Project    string     `json:"project"`

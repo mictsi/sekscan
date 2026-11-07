@@ -210,7 +210,7 @@ See [the batch guide](docs/BATCH.md) and [canonical schema](schema/batch.schema.
 ## Configuration
 
 `sekscan.json` is strict JSON; unknown fields are rejected. Local discovery checks
-explicit `--config`, `SEKSCAN_CONFIG`, the current directory, then the executable's
+explicit `--config`, `SEKSCAN_CONFIG`, then the executable's
 directory. `--home` confines discovery to that workspace. `--no-config` disables it.
 Configuration from an independently supplied target directory is **not** loaded implicitly.
 

@@ -54,12 +54,12 @@ JSON in `SEKSCAN_SETTINGS_JSON`, for example:
 
 ```dotenv
 SEKSCAN_PORT=8090
-SEKSCAN_WORKSPACE=./workspace
+SEKSCAN_WORKSPACE=.
 SEKSCAN_SETTINGS_JSON='{"version":2,"project":{"namespace":"engineering"},"checks":{"kics":true},"policy":{"fail_at":"high"}}'
 ```
 
 On `start` and `cli`, the launcher initializes missing workspace files without
-overwriting them, validates this JSON, and writes `workspace/.run-settings.json`.
+overwriting them, validates this JSON, and writes `.run-settings.json` in the workspace.
 This generated file is the explicit application configuration; an existing
 workspace `sekscan.json` is preserved but is not merged into it. `{}` selects
 application defaults. To use an existing reviewed configuration instead, set
@@ -104,3 +104,8 @@ SEKSCAN_TEST_BINARY="$PWD/.run/sekscan" \
 Tests use temporary directories and loopback ports. They cover startup, restart,
 shutdown, log access, settings propagation, invalid settings, occupied ports,
 literal environment parsing, stale PID handling, and preserving data during clean.
+
+The default workspace is the directory containing `run.sh`. Direct binary use
+defaults to the executable’s directory. Set `SEKSCAN_WORKSPACE` in `.env` or pass
+`--home` to the binary to select another directory. Existing data in an older
+`workspace/` directory is preserved; select that directory to reuse it.

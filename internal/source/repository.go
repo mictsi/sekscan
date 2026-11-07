@@ -1,4 +1,4 @@
-// Package source acquires bounded GitHub source snapshots without Git, shells,
+// Package source acquires bounded GitHub source snapshots using Git, without shells,
 // hooks, submodule execution, or credentials embedded in URLs.
 package source
 
@@ -46,7 +46,7 @@ func ParseRepository(raw string) (Repository, error) {
 	return Repository{Owner: strings.ToLower(parts[0]), Name: strings.ToLower(parts[1])}, nil
 }
 func ValidateRef(ref string) error {
-	if ref == "." || ref == ".." || len(ref) > 256 || strings.TrimSpace(ref) != ref || strings.IndexFunc(ref, unicode.IsControl) >= 0 {
+	if strings.ContainsAny(ref, ":~^?*[\\") || strings.Contains(ref, "..") || strings.Contains(ref, "@{") || strings.HasPrefix(ref, "-") || ref == "." || ref == ".." || len(ref) > 256 || strings.TrimSpace(ref) != ref || strings.IndexFunc(ref, unicode.IsControl) >= 0 {
 		return fmt.Errorf("ref must be at most 256 bytes without control characters or surrounding whitespace")
 	}
 	return nil

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Default the native launcher workspace to the app directory and direct CLI workspace to the executable directory; explicit workspace/config selections still override it.
+
+- GitHub scans now clone repositories into the workspace cache and pull existing checkouts with fast-forward-only updates, avoiding REST API source-download rate limits.
+
 - Limit application releases and CI platform testing to Linux and macOS
   (amd64/arm64 release packages); remove Windows release targets.
 

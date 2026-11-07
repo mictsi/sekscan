@@ -27,3 +27,6 @@ __pycache__/
 !/.env.example
 /.run/
 /workspace/
+
+/.run-settings.json
+/.run-settings.json.tmp

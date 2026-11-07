@@ -165,13 +165,18 @@ patterns with the `batch` command.
 
 The default project is `mictsi/sekuradesignmcp`, not just the repository basename.
 The URL is canonicalized; an optional `.git` suffix is removed. GitHub SSH-style
-`git@github.com:owner/repository.git` input is normalized to the same HTTPS API flow;
+`git@github.com:owner/repository.git` input is normalized to the same HTTPS Git flow;
 it **does not use SSH keys**. Non-GitHub hosts, enterprise instances, tree/blob URLs,
 credential-bearing URLs, query strings, and fragments are not supported.
 
-The client resolves the selected ref to a full commit and downloads an archive via
-GitHub's repository/commit/archive REST endpoints. It **does not require Git** and
-does not clone history. Authentication comes from `GITHUB_TOKEN`, or the environment
+Git must be installed on PATH. The first online scan runs `git clone` into the
+workspace cache; later scans update that checkout with `git pull --ff-only`.
+Local edits or divergent history cause an error rather than being overwritten.
+Explicit branches, tags, and commit SHAs are fetched separately without changing
+the cached checkout's default branch. No GitHub REST API calls are used for source
+acquisition, avoiding its API rate limit.
+
+Authentication comes from `GITHUB_TOKEN`, or the environment
 variable named by `--token-env`:
 
 ```sh
@@ -182,30 +187,28 @@ variable named by `--token-env`:
 
 Do not put token values in the manifest, URLs, command arguments, or committed
 configuration. Fine-grained tokens need repository Contents read access. Public
-repository archives can be accessed without a token, subject to API rate limits.
-HTTP errors distinguish access/rate-limit failures without storing raw response
-bodies. No retry scheduling/backoff is implemented; retry explicitly after resolving
-the cause. API documentation is linked below.
+repositories can be cloned without a token. Authentication or network failures
+leave the scan incomplete; stale source is never silently substituted.
 
-The token is sent only to `api.github.com`, stripped from redirects to the allowlisted
-`codeload.github.com` host, and excluded from scanner and version-probe environments.
-Unapproved redirect hosts/protocols are rejected. Paths, revisions, archive hashes,
-and the requested/resolved ref are recorded as source provenance; token values and
-signed archive redirect URLs are not recorded. The report's branch field carries
-the resolved named ref (which may be a tag); detached full commits leave it empty.
+The token is supplied through Git's process environment, never URL arguments or
+saved repository configuration. Git runs noninteractively with hooks, global Git
+configuration, credential helpers, redirects, and automatic submodule updates
+disabled. Git diagnostics are withheld to prevent credential leakage. Paths,
+revisions, archive hashes, and requested/resolved refs remain source provenance.
 
 ### Source cache and portability
 
 ```text
 workspace/cache/sources/github/<repository-hash>/
+├── repository/       # persistent Git clone
 ├── <commit>.tar.gz
 └── <commit>.tar.gz.json
 ```
 
-Downloads use temporary files and atomic moves. The metadata records a SHA-256
+Clones and snapshot archives use temporary paths and atomic moves. The metadata records a SHA-256
 checksum, rechecked before every reuse. Extraction creates a fresh isolated
 workspace, removed after the job. Source text is not retained in the shared history
-database; the portable source archive remains in this workspace cache. Reports and
+database; the Git clone and portable source archive remain in this workspace cache. Reports and
 SBOMs are still sensitive and should be protected like source code. Scanner-native
 SBOM evidence can include the temporary extraction path; normalized report identity
 is the stable repository/subdirectory URL.
@@ -241,16 +244,15 @@ a clean result. Build outputs, submodules and LFS content must be supplied as a
 complete local directory for that coverage. Directory secret scanning does not
 inspect old commits.
 
-Current limits: 512 MiB downloaded archive, 2 GiB expanded regular-file content,
-200,000 archive entries, bounded metadata and trailers, request timeout 10 minutes.
-Subdirectory scanning still downloads the whole archive. These limits are fixed in
-this version. GitHub-specific live integration still needs validation in a connected
-environment; current tests use controlled HTTPS transports and tar fixtures.
+Snapshot limits: 512 MiB compressed archive, 2 GiB expanded regular-file content,
+200,000 archive entries, and bounded trailers. Git operations have a 10-minute
+timeout. Cloned Git history has no byte-size cap. Subdirectory scans still clone
+the whole repository. These limits are fixed in this version. Tests cover local Git clone/pull updates,
+refs, offline reuse, and archive validation; live GitHub authentication is not covered.
 
 ## References
 
-- GitHub [repository archive API](https://docs.github.com/en/rest/repos/contents#download-a-repository-archive-tar).
-- GitHub [commit resolution API](https://docs.github.com/en/rest/commits/commits#get-a-commit).
+- Git [clone](https://git-scm.com/docs/git-clone) and [pull](https://git-scm.com/docs/git-pull).
 - [History, portfolio and comparison semantics](HISTORY.md).
 - [Workspace portability](PORTABLE.md).
 

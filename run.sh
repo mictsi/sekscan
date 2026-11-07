@@ -45,7 +45,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   fi
   export "$key=$value"
 done < "$ENV_FILE"
-SEKSCAN_WORKSPACE="${SEKSCAN_WORKSPACE:-./workspace}"
+SEKSCAN_WORKSPACE="${SEKSCAN_WORKSPACE:-$ROOT}"
 SEKSCAN_PORT="${SEKSCAN_PORT:-8080}"
 SEKSCAN_GO_BIN="${SEKSCAN_GO_BIN:-go}"
 SEKSCAN_BUILD_TESTS="${SEKSCAN_BUILD_TESTS:-true}"

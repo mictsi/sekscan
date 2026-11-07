@@ -7,8 +7,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
-	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -135,9 +133,6 @@ func TestBatchCLIContinuesAndPersists(t *testing.T) {
 	}
 }
 
-type githubTestTransport func(*http.Request) (*http.Response, error)
-
-func (f githubTestTransport) RoundTrip(r *http.Request) (*http.Response, error) { return f(r) }
 func TestGitHubCLIProvenanceAndOffline(t *testing.T) {
 	if testing.Short() {
 		t.Skip("external fixtures")
@@ -155,21 +150,23 @@ func TestGitHubCLIProvenanceAndOffline(t *testing.T) {
 	sha := strings.Repeat("a", 40)
 	calls := 0
 	t.Setenv("PRIVATE_GH_TOKEN_SENTINEL", "SECRET_SENTINEL_CREDENTIAL")
-	client := &source.Client{Transport: githubTestTransport(func(r *http.Request) (*http.Response, error) {
+	client := &source.Client{GitCommand: func(ctx context.Context, dir string, args ...string) ([]byte, error) {
 		calls++
-		var b []byte
-		if strings.Contains(r.URL.Path, "/commits/") {
-			b = []byte(`{"sha":"` + sha + `"}`)
-		} else if strings.Contains(r.URL.Path, "/tarball/") {
-			b = archive.Bytes()
-		} else {
-			b = []byte(`{"default_branch":"main"}`)
+		switch args[0] {
+		case "symbolic-ref":
+			return []byte("main"), nil
+		case "rev-parse":
+			return []byte(sha), nil
+		case "archive":
+			for _, arg := range args {
+				if strings.HasPrefix(arg, "--output=") {
+					return nil, os.WriteFile(strings.TrimPrefix(arg, "--output="), archive.Bytes(), 0600)
+				}
+			}
 		}
-		if r.Header.Get("Authorization") != "Bearer SECRET_SENTINEL_CREDENTIAL" {
-			t.Fatal("missing token")
-		}
-		return &http.Response{StatusCode: 200, Header: make(http.Header), Body: io.NopCloser(bytes.NewReader(b)), Request: r}, nil
-	})}
+		return nil, nil
+	}}
+
 	ctx := context.WithValue(context.Background(), sourceClientKey{}, client)
 	var out, errs bytes.Buffer
 	dest := filepath.Join(home, "remote-reports")
