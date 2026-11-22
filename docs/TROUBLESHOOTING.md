@@ -116,7 +116,7 @@ explicit installation error, not an implicit PATH fallback.
 
 ## Production build/module downloads
 
-The source selects Go 1.27.1 and needs at least Go 1.26 for the pinned SQLite module.
+The source selects Go 1.27.4 and needs at least Go 1.26 for the pinned SQLite module.
 A compiler/module-download failure is separate from the scanner failure. Review
 `docs/MODULES.md` and the retained validation output; the authoring container could
 not download the production graph. Do not release the test-only SQLite executable.

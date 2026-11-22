@@ -168,12 +168,26 @@ func update(ctx context.Context, root string) (err error) {
 		if e != nil {
 			return e
 		}
+		// Tidy removes requirements used only by dependencies' tests/tools.
+		// Updating those graph-only modules repeatedly cannot converge.
+		modfile, e := u.run(true, "mod", "edit", "-json")
+		if e != nil {
+			return e
+		}
+		var manifest struct{ Require []struct{ Path string } }
+		if e = json.Unmarshal(modfile, &manifest); e != nil {
+			return e
+		}
+		required := map[string]bool{}
+		for _, requirement := range manifest.Require {
+			required[requirement.Path] = true
+		}
 		args := []string{"get"}
 		for _, m := range list {
 			if m.Replace != nil {
 				return fmt.Errorf("module replacements require manual review: %s", m.Path)
 			}
-			if m.Main || m.Update == nil {
+			if m.Main || m.Update == nil || !required[m.Path] {
 				continue
 			}
 			if m.Path == "modernc.org/libc" {

@@ -1,25 +1,19 @@
 # Production Go modules and update workflow
 
-Checked against primary upstream release/package metadata on 2026-10-02:
+Updated on 2026-11-22 using the repository's module updater:
 
-| Dependency | Selected version | Result |
-|---|---|---|
-| Go toolchain | go1.27.1 | Latest stable shown by go.dev; toolchain directive updated |
-| github.com/jackc/pgx/v5 | v5.11.0 | Already matches the current release |
-| github.com/microsoft/go-mssqldb | v1.11.2 | Already matches the current release |
-| modernc.org/sqlite | v1.60.1 | Already matches the current module version retrieved |
-| modernc.org/libc | v1.77.1 | Kept exactly aligned with SQLite's own go.mod |
+| Dependency | Selected version |
+|---|---|
+| Go toolchain | go1.27.4 |
+| github.com/jackc/pgx/v5 | v5.13.0 |
+| github.com/microsoft/go-mssqldb | v1.12.0 |
+| modernc.org/sqlite | v1.63.0 |
+| modernc.org/libc | v1.80.1 |
 
-Minimum module Go version remains 1.26.0. Upstream explicitly warns that SQLite must
-use the same modernc.org/libc version as its own module file. A blind independent
-libc upgrade is not a supported way to meet "latest".
-
-**The complete production module graph was not downloaded or compiled here.** The
-container's Go 1.23.2 cannot build the current SQLite module, and the attempt to
-fetch the selected toolchain failed at DNS/network access. No go.sum or supposedly
-validated transitive upgrade is fabricated. `docs/validation/v0.3.0/production-bootstrap-attempt.txt`
-contains the failed command output. Existing direct pins were not newer releases
-introduced by this patch; they were verified and retained.
+The minimum Go version remains 1.26.0. Direct, test, and transitive modules
+are updated within their current major module paths. SQLite's libc dependency
+is deliberately held at the exact version required by SQLite's own go.mod.
+Production checksums are committed in `go.sum`.
 
 ## Update every resolvable module on a connected machine
 
@@ -38,8 +32,9 @@ go run ./scripts/moduleupdate --yes
 ```
 
 It updates direct, test and transitive dependencies using Go's latest resolution
-within their current module/major paths, inspects the entire module build list for
-remaining updates, and follows new dependencies until the graph converges. It
+within their current module/major paths, checks retained requirements for remaining updates, and follows new dependencies
+until the graph converges. Graph-only modules removed by tidy are recorded in the
+report but are not repeatedly re-added. It
 reapplies SQLite's tested libc requirement, runs `go mod tidy`, `go mod verify`,
 `go test ./...`, and `go vet ./...`, and records the resulting graph in
 `module-updates.json`. Replacements or unresolved upgrades require manual review.
@@ -52,7 +47,8 @@ The automatic updater does not migrate imports to a new major module path, certi
 API compatibility on untested platforms, or run real external SQL services.
 
 The updater's parsing and rollback have local tests with a synthetic Go-command
-fixture. Its actual network resolution and successful production build remain unverified.
+fixture. Its network resolution, module verification, full application tests, and vet
+passed on 2026-11-22 with Go 1.27.4.
 
 Primary references:
 - https://go.dev/dl/?mode=json

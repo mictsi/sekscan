@@ -18,10 +18,11 @@ the enabled default; existing explicit false settings remain false.
 
 ## Installation and portability
 
-The default pin is **2.1.20**. On 2026-10-11 this release provides native Linux,
-macOS, and Windows archives for amd64/arm64, whereas the newer 2.1.21 and 2.2.0
-release records have no attached native packages. Selecting an unavailable
-version fails explicitly; there is no silent fallback or container installation.
+The default pin remains **2.1.20**. Checked on 2026-11-22: the latest upstream
+release, **2.2.1**, has no attached release assets, so it cannot be installed as
+the standalone executable and matching rule bundle required by this app.
+Selecting an unavailable version fails explicitly; there is no silent fallback
+or container installation.
 
 The installer verifies the executable archive against `checksums.txt` and the
 matching `extracted-info.zip` rule archive against its GitHub SHA256 asset digest.

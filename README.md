@@ -8,7 +8,7 @@ searchable reports. Run it against a directory, a built image, a GitHub reposito
 or a batch of projects. Store results locally in SQLite or share history through
 PostgreSQL or Microsoft SQL Server.
 
-**Current source: 0.6.7.** This source package is not a verified production
+**Current source: 0.6.8.** This source package is not a verified production
 binary distribution. It contains no scanner executables or vulnerability databases.
 See [validation and limitations](TESTING.md) before deployment. Production dependencies
 must be resolved and reviewed on a connected machine before publishing a release.
@@ -74,10 +74,9 @@ bash scripts/build.sh
 ./sekscan version
 ```
 
-The source declares `go 1.26.0` and selects `go1.27.1`. The bootstrap script resolves
-dependencies, runs tests/vet, and builds `./sekscan`. This source package has no fabricated
-`go.sum`: review and commit the resolved `go.mod` and `go.sum` before tagging a
-release. Do not disable Go module checksum verification.
+The source declares `go 1.26.0` and selects `go1.27.4`. The bootstrap script resolves
+dependencies, runs tests/vet, and builds `./sekscan`. Production dependencies and their checksums are recorded in
+`go.mod` and `go.sum`; review dependency changes before tagging a release. Do not disable Go module checksum verification.
 
 ### Prepare once, then scan
 
@@ -435,7 +434,7 @@ process for immutable releases instead. See [release workflow details](docs/RELE
 For an explicit local build after dependency review:
 
 ```bash
-bash scripts/build-release.sh --version 0.6.7 --targets all
+bash scripts/build-release.sh --version 0.6.8 --targets all
 ```
 
 The ZIPs contain sekscan and documentation, **not predownloaded scanner runtimes or

@@ -1,5 +1,12 @@
 # Changes
 
+## 0.6.8 — 2026-11-22
+
+- Update the Go toolchain to 1.27.4 and refresh direct, test, and transitive modules, retaining SQLite’s required libc version.
+- Fix updater convergence when tidy removes unused graph-only module requirements.
+- Refresh dependency and release documentation. Keep KICS at 2.1.20 because upstream 2.2.1 publishes no standalone release assets.
+
+
 ## 0.6.7 — 2026-11-07
 
 - Remove the preview suffix from the application version.

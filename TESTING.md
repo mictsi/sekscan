@@ -1,3 +1,16 @@
+# Release validation — 0.6.8 (2026-11-22)
+
+- Go 1.27.4: module updater completed, module checksums verified, full application
+  tests and vet passed.
+- Production binary reports `sekscan 0.6.8 [production-drivers]`.
+- Release builder tests and vet passed.
+- All 23 Python launcher and release-event tests passed.
+- KICS upstream 2.2.1 has no attached assets; retained the verified standalone
+  2.1.20 pin. Live scanner and external SQL service tests were not rerun.
+- SQLite libc remains paired at v1.80.1 as required by SQLite v1.63.0.
+- Graph-only modules pruned by tidy are reported but not forced into go.mod.
+- No release assets were published.
+
 # Release validation — 0.6.6-preview (2026-11-07)
 
 - Production build reports `sekscan 0.6.6-preview [production-drivers]`.

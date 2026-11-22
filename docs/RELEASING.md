@@ -27,10 +27,10 @@ on the selected platform. A cross-compiled binary is not proof of native executi
 ## Prerequisites and dependency bootstrap
 
 Use the supported Go toolchain selected by the repository's `go.mod`; this snapshot
-requires Go 1.26.0 or newer and selects go1.27.1. Install Bash on Linux/macOS. Permit required module/toolchain downloads, or prepopulate
+requires Go 1.26.0 or newer and selects go1.27.4. Install Bash on Linux/macOS. Permit required module/toolchain downloads, or prepopulate
 verified module and compiler caches through your approved offline process.
 
-The source package has no fabricated `go.sum`. Bootstrap on a connected machine:
+Production dependencies and checksums are committed. Validate on a connected machine:
 
 ```sh
 bash scripts/build.sh
@@ -48,7 +48,7 @@ It checks module-file hashes again before publication to detect mutation.
 From the source directory:
 
 ```sh
-bash scripts/build-release.sh --version 0.6.7 --targets all
+bash scripts/build-release.sh --version 0.6.8 --targets all
 ```
 
 The helpers can also be called from another working directory; source-relative paths
@@ -57,8 +57,8 @@ Version defaults to the value in `internal/cli/cli.go`.
 
 ```sh
 bash scripts/build-release.sh --list-targets
-bash scripts/build-release.sh --version 0.6.7 --targets linux/amd64,darwin/amd64
-bash scripts/build-release.sh --version 0.6.7 --out dist/review-build
+bash scripts/build-release.sh --version 0.6.8 --targets linux/amd64,darwin/amd64
+bash scripts/build-release.sh --version 0.6.8 --out dist/review-build
 bash scripts/build-release.sh --help
 ```
 
@@ -72,12 +72,12 @@ in the release manifest; do not use it for a reviewed production release.
 ## Output and archive contents
 
 ```text
-dist/0.6.7/
-  sekscan-0.6.7-linux-amd64.zip
-  sekscan-0.6.7-linux-arm64.zip
-  sekscan-0.6.7-darwin-amd64.zip
-  sekscan-0.6.7-darwin-arm64.zip
-  sekscan-0.6.7-source.zip
+dist/0.6.8/
+  sekscan-0.6.8-linux-amd64.zip
+  sekscan-0.6.8-linux-arm64.zip
+  sekscan-0.6.8-darwin-amd64.zip
+  sekscan-0.6.8-darwin-arm64.zip
+  sekscan-0.6.8-source.zip
   release.json
   SHA256SUMS.txt
 ```
@@ -159,7 +159,7 @@ checksums cover the runtime/source payload excluding the checksum file itself.
 Verify before extracting or executing:
 
 ```sh
-cd dist/0.6.7
+cd dist/0.6.8
 sha256sum --check SHA256SUMS.txt
 ```
 
@@ -169,7 +169,7 @@ Archive entries are sorted, use normalized modes, preserve executable permission
 and use a controlled timestamp. `SOURCE_DATE_EPOCH` selects that timestamp:
 
 ```sh
-SOURCE_DATE_EPOCH=1790985600 bash scripts/build-release.sh --version 0.6.7
+SOURCE_DATE_EPOCH=1790985600 bash scripts/build-release.sh --version 0.6.8
 ```
 
 ZIP fixture tests confirm deterministic packaging for identical inputs. Exact repeat
@@ -210,7 +210,7 @@ copying the workflow helpers; the full source ZIP contains the complete set.
 To build macOS ARM64 alone after resolving/reviewing the production dependencies:
 
 ```bash
-bash scripts/build-release.sh --version 0.6.7 --targets darwin/arm64
+bash scripts/build-release.sh --version 0.6.8 --targets darwin/arm64
 ```
 
 An ARM64 application executable does not imply native availability of every external

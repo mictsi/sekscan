@@ -1,6 +1,6 @@
 {
   "application": "sekscan",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "license": "MIT",
   "package_type": "source",
   "production_binaries_included": false,
@@ -14,7 +14,7 @@
     "darwin/arm64"
   ],
   "validation_record": "TESTING.md",
-  "module_state": "go.sum unresolved; connected bootstrap and review required",
+  "module_state": "resolved production dependencies; checksums recorded in go.sum",
   "batch_schema_version": 1,
   "design_reference": {
     "repository": "mictsi/SekuraDesignMCP",

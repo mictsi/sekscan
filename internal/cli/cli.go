@@ -27,7 +27,7 @@ import (
 	"sekscan/internal/store"
 )
 
-var Version = "0.6.7"
+var Version = "0.6.8"
 
 const help = `sekscan — local-first application and container security
 
